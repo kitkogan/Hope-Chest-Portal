@@ -34,4 +34,6 @@ const queryText = `INSERT INTO "events" ("contact_first_name","contact_last_name
     .catch(() => res.sendStatus(500));
 });
 
+
+
 module.exports = router;
