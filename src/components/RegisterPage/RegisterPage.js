@@ -13,6 +13,7 @@ class RegisterPage extends Component {
     event.preventDefault();
 
     if (this.state.username && this.state.password && this.state.first_name && this.state.last_name) {
+      console.log('in reg saga if statemwnt')
       this.props.dispatch({
         type: 'REGISTER',
         payload: {
@@ -24,6 +25,7 @@ class RegisterPage extends Component {
       });
     } else {
       this.props.dispatch({type: 'REGISTRATION_INPUT_ERROR'});
+      console.log('in REGISTERUSER saga below error')
     }
   } // end registerUser
 
