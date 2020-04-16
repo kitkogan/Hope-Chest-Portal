@@ -22,7 +22,7 @@ handleChange=(event, typeOf)=>{
     })
 }
 
-handleBackClick=()=>{
+handleBackClick=(event)=>{
   event.preventDefault()
   // console.log('state', this.state.newRestaurant.name)
   this.props.history.push("/form-page-2")
@@ -54,7 +54,7 @@ addInformation = (event) => {
         <input type="text" onChange={((event)=>this.handleChange(event, 'amount'))} /><br/>
 
 
-        <label for="contribution submission">How do you anticipate submitting your contributions?:</label><br/>
+        <label for="contribution submission">How do you anticipate submitting your contributions?</label><br/>
         <select type="dropdown" onChange={((event)=>this.handleChange(event, 'submission'))}>
                 <option value="0">Please select method</option>
                 <option value="Electronic payment">Electronic payment</option>
