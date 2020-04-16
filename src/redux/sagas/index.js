@@ -18,9 +18,6 @@ export default function* rootSaga() {
   yield all([
     loginSaga(),
     registrationSaga(),
-    userSaga(),
-    formSaga(),
-    reviewSaga(),
-    calendarSaga()
+    userSaga()
   ]);
 }
