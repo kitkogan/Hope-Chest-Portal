@@ -18,6 +18,10 @@ class FormPg1 extends Component {
     contact_phone_number: "",
     contact_email: "",
   };
+  goToFormPage2 = () => {
+    this.props.history.push('/form-page-2');
+  }
+
   render() {
     return (
       <div className="FormPg1">
