@@ -17,6 +17,16 @@ import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 
+//importing the newly built components:
+import Welcome from '../Welcome/Welcome';
+import Confirmation from '../Confirmation/Confirmation';
+import FormPg1 from '../Form/FormPg1';
+import FormPg2 from '../Form/FormPg2';
+import FormPg3 from '../Form/FormPg3';
+import ReviewForm from '../ReviewForm/ReviewForm';
+import Calendar from '../Calendar/Calendar';
+import Admin from '../Admin/Admin';
+
 import './App.css';
 
 class App extends Component {
@@ -47,6 +57,47 @@ class App extends Component {
               exact
               path="/home"
               component={UserPage}
+            />
+            {/* Protected Routes for Components that were built for group project are below */}
+             <ProtectedRoute
+              exact
+              path="/welcome"
+              component={Welcome}
+            />
+             <ProtectedRoute
+              exact
+              path="/confirmation"
+              component={Confirmation}
+            />
+             <ProtectedRoute
+              exact
+              path="/form-page-1"
+              component={FormPg1}
+            />
+             <ProtectedRoute
+              exact
+              path="/form-page-2"
+              component={FormPg2}
+            />
+             <ProtectedRoute
+              exact
+              path="/form-page-3"
+              component={FormPg3}
+            />
+             <ProtectedRoute
+              exact
+              path="/review-form"
+              component={ReviewForm}
+            />
+             <ProtectedRoute
+              exact
+              path="/calendar"
+              component={Calendar}
+            />
+             <ProtectedRoute
+              exact
+              path="/admin"
+              component={Admin}
             />
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
