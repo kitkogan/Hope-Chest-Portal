@@ -22,7 +22,7 @@ handleChange=(event, typeOf)=>{
     })
 }
 
-handleBackClick=()=>{
+handleBackClick=(event)=>{
   event.preventDefault()
   // console.log('state', this.state.newRestaurant.name)
   this.props.history.push("/form-page-2")
@@ -72,7 +72,7 @@ addInformation = (event) => {
 
 
         <label for="image">Upload your logo:</label><br/>
-        <input type="image" onChange={((event)=>this.handleChange(event, 'image'))} /><br/>
+        <input type="image" alt="logo" onChange={((event)=>this.handleChange(event, 'image'))} /><br/>
 
         <input type="submit" onClick={this.addInformation}/>
       </form>

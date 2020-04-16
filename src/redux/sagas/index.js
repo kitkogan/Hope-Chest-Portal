@@ -2,9 +2,9 @@ import { all } from 'redux-saga/effects';
 import loginSaga from './loginSaga';
 import registrationSaga from './registrationSaga';
 import userSaga from './userSaga';
-import formSaga from './formSaga';
-import reviewSaga from './reviewSaga';
-import calendarSaga from './calendarSaga';
+// import formSaga from './formSaga';
+// import reviewSaga from './reviewSaga';
+// import calendarSaga from './calendarSaga';
 
 
 // rootSaga is the primary saga.
