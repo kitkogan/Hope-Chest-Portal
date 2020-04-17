@@ -13,6 +13,7 @@ class FormPg1 extends Component {
     company_city: "",
     company_state: "",
     company_zip: "",
+    show_contact_option: "",
     contact_first_name: "",
     contact_last_name: "",
     contact_phone_number: "",
@@ -127,42 +128,65 @@ class FormPg1 extends Component {
           <br />
           <label>Contact Person</label>
           <br />
-          <input type="radio" id="Same as above" />
-          <label for="Same as above">Same as above</label>
-          <input type="radio" id="Enter new contact information" />
-          <label for="Enter new contact information">
-            Enter new contact information
-          </label>
-          <br />
-          <label>First Name: </label>
-          <input
-            type="text"
-            placeholder="First Name"
-            onChange={(event) => this.handleChange(event, "contact_first_name")}
-          />
-          <br />
-          <label>Last Name: </label>
-          <input
-            type="text"
-            placeholder="Last Name"
-            onChange={(event) => this.handleChange(event, "contact_last_name")}
-          />
-          <br />
-          <label>Phone Number: </label>
-          <input
-            type="tel"
-            placeholder="Phone Number"
+          <div
             onChange={(event) =>
-              this.handleChange(event, "contact_phone_number")
+              this.handleChange(event, "show_contact_option")
             }
-          />
-          <br />
-          <label>Email: </label>
-          <input
-            type="email"
-            placeholder="Email"
-            onChange={(event) => this.handleChange(event, "contact_email")}
-          />
+          >
+            <input
+              type="radio"
+              id="sameContact"
+              value="Same contact"
+              name="contact"
+            />
+            <label for="sameContact">Same as above</label>
+            <input
+              type="radio"
+              id="newContact"
+              value="New contact"
+              name="contact"
+            />
+            <label for="newContact">Enter new contact information</label>
+          </div>
+          {this.state.show_contact_option === "New contact" ? (
+            <>
+              <label>First Name: </label>
+              <input
+                type="text"
+                placeholder="First Name"
+                onChange={(event) =>
+                  this.handleChange(event, "contact_first_name")
+                }
+              />
+              <br />
+              <label>Last Name: </label>
+              <input
+                type="text"
+                placeholder="Last Name"
+                onChange={(event) =>
+                  this.handleChange(event, "contact_last_name")
+                }
+              />
+              <br />
+              <label>Phone Number: </label>
+              <input
+                type="tel"
+                placeholder="Phone Number"
+                onChange={(event) =>
+                  this.handleChange(event, "contact_phone_number")
+                }
+              />
+              <br />
+              <label>Email: </label>
+              <input
+                type="email"
+                placeholder="Email"
+                onChange={(event) => this.handleChange(event, "contact_email")}
+              />
+            </>
+          ) : (
+            <></>
+          )}
           <br />
           <input type="submit" value="Next" />
         </form>
