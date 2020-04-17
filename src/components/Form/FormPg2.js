@@ -34,15 +34,11 @@ class FormPg2 extends Component {
     });
   };
 
-  //Adds user event inputs to db and review form page
-  addEventInformation = (event) => {
+
+  //Stores user event inputs and advances user to form page 3 on "Next" button click
+  goToFormPage3 = (event) => {
     event.preventDefault();
     this.props.dispatch({ type: "EVENT_INFO", payload: this.state.event });
-    this.props.history.push("/review-form");
-  };
-
-  //Advances user to form page 3 on "Next" button click
-  goToFormPage3 = () => {
     this.props.history.push("/form-page-3");
   };
   //Sends user back to form page 1 on "back" button click
@@ -171,7 +167,6 @@ class FormPg2 extends Component {
             <input
               type="submit"
               value="Next"
-              onClick={this.addEventInformation}
             />
           </form>
         </center>

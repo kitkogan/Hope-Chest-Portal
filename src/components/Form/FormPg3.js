@@ -45,7 +45,7 @@ addInformation = (event) => {
        <br/>
        <h2>Share your promotional and donation plans</h2>
        
-      <form>
+      <form onSubmit={this.addInformation}>
        
         <label for="funds collection description">Please describe how you will be collecting funds for Hope Chest:</label><br/>
         <textarea type="text" onChange={((event)=>this.handleChange(event, 'description'))} /><br/>
@@ -73,8 +73,8 @@ addInformation = (event) => {
 
         <label for="image">Upload your logo:</label><br/>
         <input type="image" alt="logo" onChange={((event)=>this.handleChange(event, 'image'))} /><br/>
-
-        <input type="submit" onClick={this.addInformation}/>
+        <button onClick={this.handleBackClick}>Back</button>
+        <input type="submit"/>
       </form>
       </div>
     );
