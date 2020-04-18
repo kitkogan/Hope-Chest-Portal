@@ -27,7 +27,8 @@ class FormPg1 extends Component {
   }; //sets corresponding state of each input field when the user enters a value
   goToFormPage2 = (event) => {
     event.preventDefault();
-    this.props.dispatch({ type: "EVENT_INFO", payload: this.state.event });
+    this.props.dispatch({ type: "EVENT_INFO", payload: this.state });
+    console.log('in gotoformpage2', this.state);
     this.props.history.push("/form-page-2");
   }; //when the user clicks next, this function will run and take the user to the second page of the form
   render() {

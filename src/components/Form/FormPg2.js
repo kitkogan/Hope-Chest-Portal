@@ -38,7 +38,8 @@ class FormPg2 extends Component {
   //Stores user event inputs and advances user to form page 3 on "Next" button click
   goToFormPage3 = (event) => {
     event.preventDefault();
-    this.props.dispatch({ type: "EVENT_INFO", payload: this.state.event });
+    this.props.dispatch({ type: "EVENT_INFO", payload: this.state});
+    console.log("in gotoformpage3", this.state);
     this.props.history.push("/form-page-3");
   };
   //Sends user back to form page 1 on "back" button click

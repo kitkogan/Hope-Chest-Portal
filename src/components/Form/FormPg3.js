@@ -32,7 +32,8 @@ handleBackClick=(event)=>{
 addInformation = (event) => {
     event.preventDefault()
     // console.log('state', this.state.newRestaurant.name)
-    this.props.dispatch({ type: 'FUNDS',  payload: this.state.funds})
+    this.props.dispatch({ type: "EVENT_INFO",  payload: this.state.funds})
+    console.log("in addInformation", this.state);
     this.props.history.push('/review-form')
     // this.emptyInputs()
   
