@@ -18,13 +18,13 @@ class FormPg2 extends Component {
   };
 
 // display text input for Event Type "other" select option
-  otherEventType = () => {
-    if (this.value === "other") {
-      this.form["other"].style.visibility = "visible";
-    } else {
-      this.form["other"].style.visibility = "hidden";
-    }
-  };
+  // otherEventType = () => {
+  //   if (this.value === "other") {
+  //     this.form["other"].style.visibility = "visible";
+  //   } else {
+  //     this.form["other"].style.visibility = "hidden";
+  //   }
+  // };
 
   //Saves user inputs upon entry
   handleChange = (event, typeOf) => {
@@ -119,6 +119,16 @@ class FormPg2 extends Component {
               onChange={(event) => this.handleChange(event, "zip")}
             />
             <br></br>
+                 {/* {this.state.show_contact_option === "New contact" ? (
+            <>
+              <label>First Name: </label>
+              <input
+                type="text"
+                placeholder="First Name"
+                onChange={(event) =>
+                  this.handleChange(event, "contact_first_name")
+                }
+              /> */}
             <select
               id="Event Type"
               name="Event Type"
@@ -137,11 +147,18 @@ class FormPg2 extends Component {
                 Bakery and Food Promotion
               </option>
               <option id="Floral Promotion">Floral Promotion</option>
-              <option id="Other" onChange={this.otherEventType}>
-                Other
-              </option>
-              {/* add other text input here for Other selection */}
+              <option id="Other">Other</option> 
             </select>
+            <br/>
+            {this.state.eventType === "Other" ? (
+              <>
+              <label>Other Event Type:</label>
+              <input type="text" placeholder="other" onChange={(event) => this.handleChange(event, "other" )}
+              />
+              </>
+            ) : (
+            <></>
+            )}
             <p>
               Please include a 30-50 word description of the event below. This
               is how it will be displayed on the event calendar.
