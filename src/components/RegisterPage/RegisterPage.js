@@ -5,21 +5,31 @@ class RegisterPage extends Component {
   state = {
     email: '',
     password: '',
+    first_name: '', 
+    last_name: '',
   };
 
   registerUser = (event) => {
     event.preventDefault();
 
-    if (this.state.email && this.state.password) {
+// <<<<<<< HEAD
+//     if (this.state.email && this.state.password) {
+// =======
+    if (this.state.username && this.state.password && this.state.first_name && this.state.last_name) {
+      console.log('in reg saga if statemwnt')
+// >>>>>>> 1ef8df83ca3608a832131f700d29b10cbfdb226b
       this.props.dispatch({
         type: 'REGISTER',
         payload: {
           email: this.state.email,
           password: this.state.password,
+          first_name: this.state.first_name,
+          last_name: this.state.last_name
         },
       });
     } else {
       this.props.dispatch({type: 'REGISTRATION_INPUT_ERROR'});
+      console.log('in REGISTERUSER saga below error')
     }
   } // end registerUser
 
@@ -43,7 +53,29 @@ class RegisterPage extends Component {
         <form onSubmit={this.registerUser}>
           <h1>Register User</h1>
           <div>
-            <label htmlFor="email">
+            <label htmlFor="first_name">
+              First Name:
+              <input
+                type="text"
+                name="first_name"
+                value={this.state.first_name}
+                onChange={this.handleInputChangeFor('first_name')}
+              />
+            </label>
+          </div>
+          <div>
+            <label htmlFor="last_name">
+              Last Name:
+              <input
+                type="text"
+                name="last_name"
+                value={this.state.last_name}
+                onChange={this.handleInputChangeFor('last_name')}
+              />
+            </label>
+          </div>
+          <div>
+            <label htmlFor="username">
               Email:
               <input
                 type="text"
