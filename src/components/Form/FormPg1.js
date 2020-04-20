@@ -35,9 +35,9 @@ class FormPg1 extends Component {
   render() {
     return (
       <div className="FormPg1">
-        <h1>Event Submission Form</h1>
+        <h1 className="heading">Event Submission Form</h1>
         <h2>Progress bar here!!!</h2>
-        <h3>Contact Information</h3>
+        <h3 className="heading3">Contact Information</h3>
         <p>
           Please enter the requested information in each field. If any
           information is unavailable, please put "N/A" or "TBD" on the form,

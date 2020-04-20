@@ -1,11 +1,11 @@
-h1 {
+.heading {
   color: #e95a9b;
 }
-h3 {
+.heading3 {
   color: #09123c;
   text-align: center;
 }
-p {
+.formPage1 p {
   text-align: center;
   margin: 0 22%;
 }

@@ -42,9 +42,9 @@ addInformation = (event) => {
   render() {
     return (
       <div className="FormPg3">
-       <h1>Event Submission Form</h1>
+       <h1 className="heading">Event Submission Form</h1>
        <br/>
-       <h2>Share your promotional and donation plans</h2>
+       <h3 lassName="heading3">Share your promotional and donation plans</h3>
        
       <form onSubmit={this.addInformation}>
        

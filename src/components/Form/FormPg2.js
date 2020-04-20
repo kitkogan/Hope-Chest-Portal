@@ -51,7 +51,7 @@ class FormPg2 extends Component {
     return (
       <div className="FormPg2">
         <center>
-          <h1>Event Submission Form</h1>
+          <h1 className="heading">Event Submission Form</h1>
           <h2>Progress bar here</h2>
           <p>
             Please enter your event information as you would like it to appear
