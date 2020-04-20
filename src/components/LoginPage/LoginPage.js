@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 class LoginPage extends Component {
   state = {
-    username: '',
+    email: '',
     password: '',
   };
 
@@ -14,7 +14,7 @@ class LoginPage extends Component {
       this.props.dispatch({
         type: 'LOGIN',
         payload: {
-          username: this.state.username,
+          email: this.state.email,
           password: this.state.password,
         },
       });
@@ -43,13 +43,17 @@ class LoginPage extends Component {
         <form onSubmit={this.login}>
           <h1>Login</h1>
           <div>
+{/* <<<<<<< HEAD
+            <label htmlFor="email">
+======= */}
             <label htmlFor="username">
+{/* >>>>>>> 1ef8df83ca3608a832131f700d29b10cbfdb226b */}
               Email:
               <input
                 type="text"
-                name="username"
-                value={this.state.username}
-                onChange={this.handleInputChangeFor('username')}
+                name="email"
+                value={this.state.email}
+                onChange={this.handleInputChangeFor('email')}
               />
             </label>
           </div>

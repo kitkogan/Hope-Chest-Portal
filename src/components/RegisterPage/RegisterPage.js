@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 class RegisterPage extends Component {
   state = {
-    username: '',
+    email: '',
     password: '',
     first_name: '', 
     last_name: '',
@@ -12,12 +12,16 @@ class RegisterPage extends Component {
   registerUser = (event) => {
     event.preventDefault();
 
+// <<<<<<< HEAD
+//     if (this.state.email && this.state.password) {
+// =======
     if (this.state.username && this.state.password && this.state.first_name && this.state.last_name) {
       console.log('in reg saga if statemwnt')
+// >>>>>>> 1ef8df83ca3608a832131f700d29b10cbfdb226b
       this.props.dispatch({
         type: 'REGISTER',
         payload: {
-          username: this.state.username,
+          email: this.state.email,
           password: this.state.password,
           first_name: this.state.first_name,
           last_name: this.state.last_name
@@ -75,9 +79,9 @@ class RegisterPage extends Component {
               Email:
               <input
                 type="text"
-                name="username"
-                value={this.state.username}
-                onChange={this.handleInputChangeFor('username')}
+                name="email"
+                value={this.state.email}
+                onChange={this.handleInputChangeFor('email')}
               />
             </label>
           </div>
