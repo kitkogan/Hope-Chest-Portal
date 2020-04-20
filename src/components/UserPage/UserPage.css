@@ -1,0 +1,21 @@
+.UserPage{
+    padding-top: 50px;
+}
+
+.start{
+    margin-left: 300px; 
+    color: #f2f2f2;
+    background-color: rgb(223, 69, 124);
+    text-align: center;
+    padding: 15px 20px;
+    font-size: 18px;
+    font-weight: 700;
+    border-color: rgb(223, 69, 124);
+    border-radius: 8px;
+    box-shadow: 1px 5px 5px 0px rgb(0, 0, 0)
+}
+
+.start:hover {
+    background-color: rgb(42, 41, 116);
+    border-color:  rgb(42, 41, 116);
+  }

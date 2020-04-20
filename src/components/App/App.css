@@ -12,12 +12,22 @@ body {
 }
 
 form {
+
   /* background-color: #dbd5d5; */
   width: 35%;
   height: 250px;
   margin: 20px auto;
   padding: 25px;
   /* border-radius: 2px; */
+
+    background-color: #dbd5d5;
+    width: 30%;
+    height: 250px;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 2px;
+    box-shadow: 1px 5px 5px 0px rgb(73, 73, 73)
+
 }
 
 input {

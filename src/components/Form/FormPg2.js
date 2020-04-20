@@ -18,13 +18,13 @@ class FormPg2 extends Component {
   };
 
 // display text input for Event Type "other" select option
-  otherEventType = () => {
-    if (this.value === "other") {
-      this.form["other"].style.visibility = "visible";
-    } else {
-      this.form["other"].style.visibility = "hidden";
-    }
-  };
+  // otherEventType = () => {
+  //   if (this.value === "other") {
+  //     this.form["other"].style.visibility = "visible";
+  //   } else {
+  //     this.form["other"].style.visibility = "hidden";
+  //   }
+  // };
 
   //Saves user inputs upon entry
   handleChange = (event, typeOf) => {
@@ -34,15 +34,12 @@ class FormPg2 extends Component {
     });
   };
 
-  //Adds user event inputs to db and review form page
-  addEventInformation = (event) => {
-    event.preventDefault();
-    this.props.dispatch({ type: "EVENT_INFO", payload: this.state.event });
-    this.props.history.push("/review-form");
-  };
 
-  //Advances user to form page 3 on "Next" button click
-  goToFormPage3 = () => {
+  //Stores user event inputs and advances user to form page 3 on "Next" button click
+  goToFormPage3 = (event) => {
+    event.preventDefault();
+    this.props.dispatch({ type: "EVENT_INFO", payload: this.state});
+    console.log("in gotoformpage3", this.state);
     this.props.history.push("/form-page-3");
   };
   //Sends user back to form page 1 on "back" button click
@@ -122,6 +119,16 @@ class FormPg2 extends Component {
               onChange={(event) => this.handleChange(event, "zip")}
             />
             <br></br>
+                 {/* {this.state.show_contact_option === "New contact" ? (
+            <>
+              <label>First Name: </label>
+              <input
+                type="text"
+                placeholder="First Name"
+                onChange={(event) =>
+                  this.handleChange(event, "contact_first_name")
+                }
+              /> */}
             <select
               id="Event Type"
               name="Event Type"
@@ -140,11 +147,18 @@ class FormPg2 extends Component {
                 Bakery and Food Promotion
               </option>
               <option id="Floral Promotion">Floral Promotion</option>
-              <option id="Other" onChange={this.otherEventType}>
-                Other
-              </option>
-              {/* add other text input here for Other selection */}
+              <option id="Other">Other</option> 
             </select>
+            <br/>
+            {this.state.eventType === "Other" ? (
+              <>
+              <label>Other Event Type:</label>
+              <input type="text" placeholder="other" onChange={(event) => this.handleChange(event, "other" )}
+              />
+              </>
+            ) : (
+            <></>
+            )}
             <p>
               Please include a 30-50 word description of the event below. This
               is how it will be displayed on the event calendar.
@@ -171,7 +185,6 @@ class FormPg2 extends Component {
             <input
               type="submit"
               value="Next"
-              onClick={this.addEventInformation}
             />
           </form>
         </center>
