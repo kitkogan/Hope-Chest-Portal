@@ -1,3 +1,13 @@
+
+.heading {
+  color: #e95a9b;
+}
+.heading3 {
+  color: #09123c;
+  text-align: center;
+}
+.formPage1 p {
+
 .FormPages form{
   margin: auto 100px;
   padding: 20px 18em;
@@ -10,6 +20,7 @@
   text-align: center;
 }
 .PHead {
+
   text-align: center;
   margin: 0 22%;
 }

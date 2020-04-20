@@ -58,8 +58,8 @@ class App extends Component {
               path="/home"
               component={UserPage}
             />
-            {/* Protected Routes for Components that were built for group project are below */}
-             <ProtectedRoute
+            {/* Protected/Routes for Components that were built for group project are below */}
+             <Route
               exact
               path="/welcome"
               component={Welcome}

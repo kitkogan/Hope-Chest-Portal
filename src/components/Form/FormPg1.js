@@ -34,11 +34,13 @@ class FormPg1 extends Component {
   }; //when the user clicks next, this function will run and take the user to the second page of the form
   render() {
     return (
+
       <div className="FormPages">
         <h1>Event Submission Form</h1>
         <h2>Progress bar here!!!</h2>
         <h3>Contact Information</h3>
         <p className="PHead">
+
           Please enter the requested information in each field. If any
           information is unavailable, please put "N/A" or "TBD" on the form,
           otherwise the form cannot be submitted. All * fields are required.
