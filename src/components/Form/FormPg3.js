@@ -41,7 +41,7 @@ addInformation = (event) => {
 
   render() {
     return (
-      <div className="FormPg3">
+      <div className="FormPages">
        <h1>Event Submission Form</h1>
        <br/>
        <h2>Share your promotional and donation plans</h2>

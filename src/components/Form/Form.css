@@ -1,11 +1,11 @@
-h1 {
+.FormPages h1 {
   color: #e95a9b;
 }
-h3 {
+.FormPages h3 {
   color: #09123c;
   text-align: center;
 }
-p {
+.FormPages p {
   text-align: center;
   margin: 0 22%;
 }

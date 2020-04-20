@@ -49,7 +49,7 @@ class FormPg2 extends Component {
 
   render() {
     return (
-      <div className="FormPg2">
+      <div className="FormPages">
         <center>
           <h1>Event Submission Form</h1>
           <h2>Progress bar here</h2>
