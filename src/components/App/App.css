@@ -5,7 +5,10 @@ body {
 
 .alert {
   background-color: #ff454529;
-  margin: 50px;
+  border-radius: 8px;
+  text-align: center;
+  margin: 50px 15em 0px 15em;
+  padding: 15px;
 }
 
 form {
