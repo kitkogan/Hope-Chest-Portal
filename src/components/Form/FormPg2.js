@@ -49,27 +49,26 @@ class FormPg2 extends Component {
 
   render() {
     return (
-      <div className="FormPg2">
-        <center>
+      <div className="FormPages">
           <h1>Event Submission Form</h1>
           <h2>Progress bar here</h2>
-          <p>
+          <h3 className="PHead">
             Please enter your event information as you would like it to appear
             in the events calendar.
-          </p>
+          </h3>
           <form onSubmit={this.goToFormPage3}>
             <label>Event Name: </label>
             <input
               type="text"
               placeholder="Event Name"
               onChange={(event) => this.handleChange(event, "eventName")}
-            />
+            /><br/>
             <label>Event Website: </label>
             <input
               type="text"
               placeholder="Event Website"
               onChange={(event) => this.handleChange(event, "website")}
-            />
+            /><br/>
             <label>Date: </label>
             <input
               type="text"
@@ -90,15 +89,17 @@ class FormPg2 extends Component {
               placeholder="Event Location Name"
               onChange={(event) => this.handleChange(event, "locationName")}
             />
-            <br></br>
-            <label>Event Location Address:</label>
+          <div className="secondaryLabel">
+            <label>Event Location Address</label>
+            </div>
+            <label>Street Address:</label>
             <input
               type="text"
               placeholder="Street Address"
               onChange={(event) => this.handleChange(event, "locationAddress")}
             />
             <br></br>
-            <label>City</label>
+            <label>City:</label>
             <input
               type="text"
               placeholder="City"
@@ -119,16 +120,6 @@ class FormPg2 extends Component {
               onChange={(event) => this.handleChange(event, "zip")}
             />
             <br></br>
-                 {/* {this.state.show_contact_option === "New contact" ? (
-            <>
-              <label>First Name: </label>
-              <input
-                type="text"
-                placeholder="First Name"
-                onChange={(event) =>
-                  this.handleChange(event, "contact_first_name")
-                }
-              /> */}
             <select
               id="Event Type"
               name="Event Type"
@@ -153,15 +144,16 @@ class FormPg2 extends Component {
             {this.state.eventType === "Other" ? (
               <>
               <label>Other Event Type:</label>
-              <input type="text" placeholder="other" onChange={(event) => this.handleChange(event, "other" )}
+              <input type="text" placeholder="o\Other" onChange={(event) => this.handleChange(event, "other" )}
               />
               </>
             ) : (
             <></>
             )}
-            <p>
+          <br/>
+            <p className="eventDesc">
               Please include a 30-50 word description of the event below. This
-              is how it will be displayed on the event calendar.
+              is how it will be displayed on the event calendar. *
             </p>
             <textarea
               required
@@ -181,13 +173,13 @@ class FormPg2 extends Component {
               <option id="No">No</option>
             </select>
             <br></br>
-            <button onClick={this.backButton}>Back</button>
+            <button className="back" onClick={this.backButton}>Back</button>
             <input
+              className="submit"
               type="submit"
               value="Next"
             />
           </form>
-        </center>
       </div>
     );
   }

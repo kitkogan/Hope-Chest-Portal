@@ -5,26 +5,20 @@ body {
 
 .alert {
   background-color: #ff454529;
-  margin: 50px;
+  border-radius: 8px;
+  text-align: center;
+  margin: 50px 10em;
+  padding: 10px;
 }
 
-form {
-
-  /* background-color: #dbd5d5; */
-  width: 35%;
+.LoginForm {
+  background-color: #dbd5d5;
+  width: 30%;
   height: 250px;
   margin: 20px auto;
   padding: 25px;
-  /* border-radius: 2px; */
-
-    background-color: #dbd5d5;
-    width: 30%;
-    height: 250px;
-    margin: 20px auto;
-    padding: 25px;
-    border-radius: 2px;
-    box-shadow: 1px 5px 5px 0px rgb(73, 73, 73)
-
+  border-radius: 2px;
+  box-shadow: 1px 5px 5px 0px rgb(73, 73, 73);
 }
 
 input {
@@ -38,8 +32,8 @@ input {
   background-color: #e95a9b;
   border-radius: 4px;
   color: #f8f8f8;
-  min-height: 30px;
-  min-width: 60px;
+  min-height: 40px;
+  min-width: 85px;
   font-weight: 600;
   outline: 0;
   cursor: pointer;

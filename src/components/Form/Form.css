@@ -1,17 +1,24 @@
-h1 {
+.FormPages form{
+  margin: auto 100px;
+  padding: 20px 18em;
+}
+.FormPages h1 {
   color: #e95a9b;
 }
-h3 {
+.FormPages h3 {
   color: #09123c;
   text-align: center;
 }
-p {
+.PHead {
   text-align: center;
   margin: 0 22%;
 }
+.eventDesc{
+  text-align: center;
+}
 .secondaryLabel{
     margin: 10px 0;
-    text-align: center;
+    /* text-align: center; */
     font-size: large;
 }
 .radioInput{
@@ -22,10 +29,22 @@ p {
     border: none;
     border-radius: 4px;
     color: #f8f8f8;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 16px;
     min-height: 30px;
     min-width: 60px;
     cursor: pointer;
     margin-bottom: 100px;
+}
+.back{
+  background-color: gainsboro;
+  border: none;
+  border-radius: 4px;
+  color: black;
+  font-weight: 500;
+  font-size: 16px;
+  min-height: 30px;
+  min-width: 60px;
+  cursor: pointer;
+  margin-bottom: 100px;
 }

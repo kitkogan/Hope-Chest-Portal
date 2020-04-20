@@ -9,8 +9,8 @@ const Nav = (props) => (
     <Link to="/home">
       <img className="hclogo" src="/HopeChestPNG.png" alt="Logo"/>
     </Link>
-    <div className="nav-right">
-      <Link className="nav-link" to="/home">
+    <div className="nav-right"class="row">
+      <Link className="nav-link" to="/home"class="col-lg">
         {/* Show this link if they are logged in or not,
         but call this link 'Home' if they are logged in,
         and call this link 'Login / Register' if they are not */}
@@ -19,15 +19,15 @@ const Nav = (props) => (
       {/* Show the link to the info page and the logout button if the user is logged in */}
       {props.user.id && (
         <>
-          <Link className="nav-link" to="/form-page-1">
+          <Link className="nav-link" to="/form-page-1"class="col-lg">
             Start Fundraiser
           </Link>
 
-          <Link className="nav-link" to="/calendar">
+          <Link className="nav-link" to="/calendar"class="col-lg">
             Events/Calendar
           </Link>
 
-          <LogOutButton className="nav-link"/>
+          <LogOutButton/>
         </>
       )}
     </div>
