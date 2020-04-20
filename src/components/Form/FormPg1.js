@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import "./Form.css"
 
 class FormPg1 extends Component {
   state = {
@@ -93,9 +94,9 @@ class FormPg1 extends Component {
             value="http:www.google.com"
             onChange={(event) => this.handleChange(event, "company_website")}
           />
-          <br />
-          <label className="address">Company Address</label>
-          <br />
+          <div className="secondaryLabel">
+          <label>Company Address</label>
+          </div>
           <label>Street Address: </label>
           <input
             type="text"
@@ -125,10 +126,10 @@ class FormPg1 extends Component {
             placeholder="Zip"
             onChange={(event) => this.handleChange(event, "company_zip")}
           />
-          <br />
+          <div className="secondaryLabel">
           <label>Contact Person</label>
-          <br />
-          <div
+          </div>
+          <div className="radioInput"
             onChange={(event) =>
               this.handleChange(event, "show_contact_option")
             }
@@ -139,7 +140,7 @@ class FormPg1 extends Component {
               value="Same contact"
               name="contact"
             />
-            <label for="sameContact">Same as above</label>
+            <label for="sameContact">Same as above </label>
             <input
               type="radio"
               id="newContact"
@@ -150,6 +151,7 @@ class FormPg1 extends Component {
           </div>
           {this.state.show_contact_option === "New contact" ? (
             <>
+              <br/>
               <label>First Name: </label>
               <input
                 type="text"
@@ -188,7 +190,7 @@ class FormPg1 extends Component {
             <></>
           )}
           <br />
-          <input type="submit" value="Next" />
+          <input className="submit" type="submit" value="Next" />
         </form>
       </div>
     );
