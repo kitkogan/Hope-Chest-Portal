@@ -23,13 +23,36 @@
   text-decoration: none;
   font-size: 18px;
   border: 2px solid white;
-  padding: 10px 132px 10px 130px; 
-  
+  padding: 10px 133px 10px 132px;
+  width: 10%;
 
 }
 
 .nav-link:hover {
   background-color: rgb(42, 41, 116);
   color: white;
+}
+
+
+/* .nav-right {
+  float: right;
+} */
+.col-lg {
+  color: #f2f2f2;
+  background-color: rgb(223, 69, 124);
+  text-align: center;
+  padding: 15px 0px;
+  text-decoration: none;
+  font-size: 18px;
+  border: 2px solid white;
+  padding: 10px 133px 10px 132px;
+}
+.col-lg:hover {
+  background-color: rgb(42, 41, 116);
+  color: white;
+  text-decoration: none;
+}
+.row{
+  width: 100%;
 }
 
