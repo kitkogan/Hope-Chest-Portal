@@ -62,33 +62,33 @@ class FormPg2 extends Component {
             <input
               type="text"
               placeholder="Event Name"
-              onChange={(event) => this.handleChange(event, "eventName")}
+              onChange={(event) => this.handleChange(event, "event_name")}
             /><br/>
             <label>Event Website: </label>
             <input
               type="text"
               placeholder="Event Website"
-              onChange={(event) => this.handleChange(event, "website")}
+              onChange={(event) => this.handleChange(event, "event_website")}
             /><br/>
             <label>Date: </label>
             <input
               type="text"
               placeholder="Date"
-              onChange={(event) => this.handleChange(event, "date")}
+              onChange={(event) => this.handleChange(event, "event_date")}
             />
             <br></br>
             <label>Event Time: </label>
             <input
               type="text"
               placeholder="Event Time"
-              onChange={(event) => this.handleChange(event, "time")}
+              onChange={(event) => this.handleChange(event, "event_time")}
             />
             <br></br>
             <label>Event Location Name: </label>
             <input
               type="text"
               placeholder="Event Location Name"
-              onChange={(event) => this.handleChange(event, "locationName")}
+              onChange={(event) => this.handleChange(event, "event_location_name")}
             />
           <div className="secondaryLabel">
             <label>Event Location Address</label>
@@ -97,34 +97,34 @@ class FormPg2 extends Component {
             <input
               type="text"
               placeholder="Street Address"
-              onChange={(event) => this.handleChange(event, "locationAddress")}
+              onChange={(event) => this.handleChange(event, "event_location_street")}
             />
             <br></br>
             <label>City:</label>
             <input
               type="text"
               placeholder="City"
-              onChange={(event) => this.handleChange(event, "city")}
+              onChange={(event) => this.handleChange(event, "event_location_city")}
             />
             <br></br>
             <label>Event State:</label>
             <input
               type="text"
               placeholder="State"
-              onChange={(event) => this.handleChange(event, "state")}
+              onChange={(event) => this.handleChange(event, "event_location_state")}
             />
             <br></br>
             <label>Zip:</label>
             <input
               type="number"
               placeholder="Zip"
-              onChange={(event) => this.handleChange(event, "zip")}
+              onChange={(event) => this.handleChange(event, "event_location_zip")}
             />
             <br></br>
             <select
               id="Event Type"
               name="Event Type"
-              onChange={(event) => this.handleChange(event, "eventType")}
+              onChange={(event) => this.handleChange(event, "event_type")}
             >
               <option id="Event Type">Event Type</option>
               <option id="Shopping Night">Shopping Night</option>
@@ -157,15 +157,15 @@ class FormPg2 extends Component {
               is how it will be displayed on the event calendar. *
             </p>
             <textarea
-              required
+              // required
               type="text"
               placeholder="Please include a 30-50 word description of the event below. This is how it will be displayed on the event calendar."
               rows="10"
               cols="50"
-              onChange={(event) => this.handleChange(event, "description")}
+              onChange={(event) => this.handleChange(event, "event_description")}
             />
             <select
-              onChange={(event) => this.handleChange(event, "firstTimeEvent")}
+              onChange={(event) => this.handleChange(event, "event_first_time")}
             >
               <option id="Is this a First Time event?">
                 Is this a First Time event?

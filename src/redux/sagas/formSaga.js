@@ -16,9 +16,8 @@ function* fetchEvents(action) {
 
 function* postEvents(action) {
     try {
-    
-    yield axios.post("/form", action.payload);
-
+    console.log('in postEvents', action.payload);  
+    yield axios.post("/form/form", action.payload);
   } catch (error) {
     console.log("Error with adding event:", error);
     yield put({ type: "ADDING_EVENT_FAILED" });
@@ -36,7 +35,7 @@ function* postEvents(action) {
 
 function* formSaga() {
   yield takeEvery('FETCH_EVENT', fetchEvents);
-  yield takeEvery('EVENT_INFO', postEvents);
+  yield takeEvery('POST_EVENT', postEvents);
   // yield takeEvery('', deleteEvents);
   // yield takeEvery('', updateEvents);
 

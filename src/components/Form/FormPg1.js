@@ -2,15 +2,26 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./Form.css"
 
+// const contact_first_name = req.body.contact_first_name;
+// const contact_last_name  = req.body.contact_last_name;
+// const contact_phone = req.body.contact_phone;
+// const contact_email = req.body.contact_email;
+// const company_name = req.body.company_name;
+// const company_website = req.body.company_website;
+// const company_street = req.body.company_street;
+// const company_city = req.body.company_city;
+// const company_state = req.body.company_state;
+// const company_zip = req.body.company_zip;
 class FormPg1 extends Component {
+
   state = {
-    first_name: "",
-    last_name: "",
-    phone_number: "",
-    email: "",
+    contact_first_name: "",
+    contact_last_name: "",
+    contact_phone: "",
+    contact_email: "",
     company_name: "",
     company_website: "",
-    company_street_address: "",
+    company_street: "",
     company_city: "",
     company_state: "",
     company_zip: "",
@@ -20,18 +31,21 @@ class FormPg1 extends Component {
     contact_phone_number: "",
     contact_email: "",
   }; //state holds the values of each input field from the form
+
   handleChange = (event, typeOf) => {
     console.log(event.target.value, typeOf);
     this.setState({
       [typeOf]: event.target.value,
     });
   }; //sets corresponding state of each input field when the user enters a value
+
   goToFormPage2 = (event) => {
     event.preventDefault();
-    this.props.dispatch({ type: "EVENT_INFO", payload: this.state });
+    this.props.dispatch({ type: "POST_EVENT", payload: this.state });
     console.log('in gotoformpage2', this.state);
     this.props.history.push("/form-page-2");
   }; //when the user clicks next, this function will run and take the user to the second page of the form
+
   render() {
     return (
 
@@ -50,21 +64,21 @@ class FormPg1 extends Component {
           <input
             type="text"
             placeholder="First Name"
-            onChange={(event) => this.handleChange(event, "first_name")}
+            onChange={(event) => this.handleChange(event, "contact_first_name")}
           />
           <br />
           <label>Last Name: * </label>
           <input
             type="text"
             placeholder="Last Name"
-            onChange={(event) => this.handleChange(event, "last_name")}
+            onChange={(event) => this.handleChange(event, "contact_last_name")}
           />
           <br />
           <label>Phone Number: * </label>
           <input
             type="tel"
             placeholder="Phone Number"
-            onChange={(event) => this.handleChange(event, "phone_number")}
+            onChange={(event) => this.handleChange(event, "contact_phone")}
           />
           <br />
           <label>Email: * </label>
@@ -76,8 +90,8 @@ class FormPg1 extends Component {
           <input
             type="email"
             placeholder="Email"
-            value="test@test.com"
-            onChange={(event) => this.handleChange(event, "email")}
+            // value="Email"
+            onChange={(event) => this.handleChange(event, "contact_email")}
           />
           <br />
           <label>Company Name: * </label>
@@ -91,7 +105,7 @@ class FormPg1 extends Component {
           <input
             type="url"
             placeholder="Company Website"
-            value="http:www.google.com"
+            // value="http:www.google.com"
             onChange={(event) => this.handleChange(event, "company_website")}
           />
           <div className="secondaryLabel">
@@ -102,7 +116,7 @@ class FormPg1 extends Component {
             type="text"
             placeholder="Street Address"
             onChange={(event) =>
-              this.handleChange(event, "company_street_address")
+              this.handleChange(event, "company_street")
             }
           />
           <br />
@@ -140,14 +154,14 @@ class FormPg1 extends Component {
               value="Same contact"
               name="contact"
             />
-            <label for="sameContact">Same as above </label>
+            <label htmlFor="sameContact">Same as above </label>
             <input
               type="radio"
               id="newContact"
               value="New contact"
               name="contact"
             />
-            <label for="newContact">Enter new contact information</label>
+            <label htmlFor="newContact">Enter new contact information</label>
           </div>
           {this.state.show_contact_option === "New contact" ? (
             <>

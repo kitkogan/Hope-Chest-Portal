@@ -9,7 +9,7 @@ const Nav = (props) => (
     <Link to="/home">
       <img className="hclogo" src="/HopeChestPNG.png" alt="Logo"/>
     </Link>
-    <div className="nav-right"class="row">
+    <div className="nav-right" class="row">
       <Link className="nav-link" to="/home"class="col-lg">
         {/* Show this link if they are logged in or not,
         but call this link 'Home' if they are logged in,
