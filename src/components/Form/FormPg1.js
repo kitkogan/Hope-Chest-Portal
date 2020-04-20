@@ -27,6 +27,9 @@ class FormPg1 extends Component {
     });
   }; //sets corresponding state of each input field when the user enters a value
   goToFormPage2 = (event) => {
+    event.preventDefault();
+    this.props.dispatch({ type: "EVENT_INFO", payload: this.state });
+    console.log('in gotoformpage2', this.state);
     this.props.history.push("/form-page-2");
   }; //when the user clicks next, this function will run and take the user to the second page of the form
   render() {
@@ -40,10 +43,9 @@ class FormPg1 extends Component {
           information is unavailable, please put "N/A" or "TBD" on the form,
           otherwise the form cannot be submitted. All * fields are required.
         </p>
-        <form onSubmit={this.goToFormPage2}>
+        <form className="Form1" onSubmit={this.goToFormPage2}>
           <label>First Name: * </label>
           <input
-            required
             type="text"
             placeholder="First Name"
             onChange={(event) => this.handleChange(event, "first_name")}
@@ -51,7 +53,6 @@ class FormPg1 extends Component {
           <br />
           <label>Last Name: * </label>
           <input
-            required
             type="text"
             placeholder="Last Name"
             onChange={(event) => this.handleChange(event, "last_name")}
@@ -59,7 +60,6 @@ class FormPg1 extends Component {
           <br />
           <label>Phone Number: * </label>
           <input
-            required
             type="tel"
             placeholder="Phone Number"
             onChange={(event) => this.handleChange(event, "phone_number")}
@@ -67,11 +67,11 @@ class FormPg1 extends Component {
           <br />
           <label>Email: * </label>
           {/*
+          Add in required to first 6 inputs.
           I hard-coded a value in email and website to make testing easier.
           If I don't get to it before you, please delete it when we're done! thanks!
           */}
           <input
-            required
             type="email"
             placeholder="Email"
             value="test@test.com"
@@ -80,7 +80,6 @@ class FormPg1 extends Component {
           <br />
           <label>Company Name: * </label>
           <input
-            required
             type="text"
             placeholder="Company Name"
             onChange={(event) => this.handleChange(event, "company_name")}
@@ -88,7 +87,6 @@ class FormPg1 extends Component {
           <br />
           <label>Company Website: * </label>
           <input
-            required
             type="url"
             placeholder="Company Website"
             value="http:www.google.com"
