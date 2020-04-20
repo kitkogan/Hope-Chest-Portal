@@ -1,3 +1,7 @@
+.FormPages form{
+  margin: auto 100px;
+  padding: 20px 20em;
+}
 .FormPages h1 {
   color: #e95a9b;
 }

@@ -11,7 +11,7 @@ body {
   padding: 10px;
 }
 
-form {
+.LoginForm {
   background-color: #dbd5d5;
   width: 30%;
   height: 250px;

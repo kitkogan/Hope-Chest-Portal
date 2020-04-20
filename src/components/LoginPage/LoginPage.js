@@ -40,14 +40,10 @@ class LoginPage extends Component {
             {this.props.errors.loginMessage}
           </h2>
         )}
-        <form onSubmit={this.login}>
+        <form onSubmit={this.login} className="LoginForm">
           <h1>Login</h1>
           <div>
-{/* <<<<<<< HEAD
-            <label htmlFor="email">
-======= */}
             <label htmlFor="username">
-{/* >>>>>>> 1ef8df83ca3608a832131f700d29b10cbfdb226b */}
               Email:
               <input
                 type="text"
