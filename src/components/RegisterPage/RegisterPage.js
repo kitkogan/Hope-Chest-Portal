@@ -12,16 +12,12 @@ class RegisterPage extends Component {
   registerUser = (event) => {
     event.preventDefault();
 
-// <<<<<<< HEAD
-//     if (this.state.email && this.state.password) {
-// =======
-    if (this.state.username && this.state.password && this.state.first_name && this.state.last_name) {
+    if (this.state.email && this.state.password && this.state.first_name && this.state.last_name) {
       console.log('in reg saga if statemwnt')
-// >>>>>>> 1ef8df83ca3608a832131f700d29b10cbfdb226b
       this.props.dispatch({
         type: 'REGISTER',
         payload: {
-          email: this.state.email,
+          username: this.state.email,
           password: this.state.password,
           first_name: this.state.first_name,
           last_name: this.state.last_name

@@ -4,9 +4,9 @@ import { connect } from "react-redux";
 class FormPg3 extends Component {
   state = {
     funds: {
-      description: "",
-      amount: "",
-      submission: "",
+      funds: "",
+      contribution_amount: "",
+      contribution_submission: "",
       promotion: "",
       comments: "",
       image: "",
@@ -52,7 +52,7 @@ class FormPg3 extends Component {
             rows="5"
             cols="50"
             placeholder="Please describe how you will be collecting funds for Hope Chest"
-            onChange={(event) => this.handleChange(event, "description")}
+            onChange={(event) => this.handleChange(event, "funds")}
           />
           <br />
 
@@ -64,7 +64,7 @@ class FormPg3 extends Component {
             type="number"
             step="0.01"
             min=".01"
-            onChange={(event) => this.handleChange(event, "amount")}
+            onChange={(event) => this.handleChange(event, "contribution_amount")}
           />
           <br />
 
@@ -74,7 +74,7 @@ class FormPg3 extends Component {
           <br />
           <select
             type="dropdown"
-            onChange={(event) => this.handleChange(event, "submission")}
+            onChange={(event) => this.handleChange(event, "contribution_submission")}
           >
             <option value="0">Please select method</option>
             <option value="Electronic payment">Electronic payment</option>
