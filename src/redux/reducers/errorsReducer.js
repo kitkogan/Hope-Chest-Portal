@@ -32,10 +32,20 @@ const registrationMessage = (state = '', action) => {
   }
 };
 
+const formMessage = (state = '', action) => {
+  switch (action.type) {
+    case 'ADDING_EVENT_FAILED':
+      return 'Oops! The event couldn\'t post at this time. Try again later!';
+    default:
+      return state;
+  }
+};
+
 // make one object that has keys loginMessage, registrationMessage
 // these will be on the redux state at:
 // state.errors.loginMessage and state.errors.registrationMessage
 export default combineReducers({
   loginMessage,
   registrationMessage,
+  formMessage,
 });

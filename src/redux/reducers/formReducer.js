@@ -1,11 +1,9 @@
 const formReducer = (state = [], action) => {
     switch (action.type) {
-        case 'SET_EVENT':
-            return action.payload;
-        case 'EVENT_INFO':
-            return [...state, action.payload];
-        default:
-            return state;
+      case "POST_FORM1":
+        return action.payload;
+      default:
+        return state;
     }
 }
 

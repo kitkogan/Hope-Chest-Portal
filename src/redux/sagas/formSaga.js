@@ -13,16 +13,34 @@ function* fetchEvents(action) {
   }
 }
 
-
-function* postEvents(action) {
+function* postForm1(action) {
     try {
-    
-    yield axios.post("/form", action.payload);
-
+    console.log('in postFORM1 for form pg 1', action.payload);
+    yield axios.post("/form/userForm", action.payload);
   } catch (error) {
     console.log("Error with adding event:", error);
     yield put({ type: "ADDING_EVENT_FAILED" });
   }
+}
+
+function* postForm2(action) {
+  try {
+  console.log('in postFORM 2 for form pg 2', action.payload);
+  yield axios.post("/form/eventForm", action.payload);
+} catch (error) {
+  console.log("Error with adding event:", error);
+  yield put({ type: "ADDING_EVENT_FAILED" });
+}
+}
+
+function* postForm3(action) {
+  try {
+  console.log('in postFORM 3 for form pg 3', action.payload);
+  yield axios.post("/form/fundForm", action.payload);
+} catch (error) {
+  console.log("Error with adding event:", error);
+  yield put({ type: "ADDING_EVENT_FAILED" });
+}
 }
 
 // function* deleteEvents(action) {
@@ -36,7 +54,9 @@ function* postEvents(action) {
 
 function* formSaga() {
   yield takeEvery('FETCH_EVENT', fetchEvents);
-  yield takeEvery('EVENT_INFO', postEvents);
+  yield takeEvery('POST_FORM1', postForm1);
+  yield takeEvery('POST_FORM2', postForm2);
+  yield takeEvery('POST_FORM3', postForm3);
   // yield takeEvery('', deleteEvents);
   // yield takeEvery('', updateEvents);
 

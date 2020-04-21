@@ -2,16 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./Form.css"
 
-// const contact_first_name = req.body.contact_first_name;
-// const contact_last_name = req.body.contact_last_name;
-// const contact_phone = req.body.contact_phone;
-// const contact_email = req.body.contact_email;
-// const company_name = req.body.company_name;
-// const company_website = req.body.company_website;
-// const company_street = req.body.company_street;
-// const company_city = req.body.company_city;
-// const company_state = req.body.company_state;
-// const company_zip = req.body.company_zip;
+ 
 class FormPg1 extends Component {
   state = {
     contact_first_name: "",
@@ -38,7 +29,7 @@ class FormPg1 extends Component {
   }; //sets corresponding state of each input field when the user enters a value
   goToFormPage2 = (event) => {
     event.preventDefault();
-    this.props.dispatch({ type: "EVENT_INFO", payload: this.state });
+    this.props.dispatch({ type: "POST_FORM1", payload: this.state,  });
     console.log("in gotoformpage2", this.state);
     this.props.history.push("/form-page-2");
   }; //when the user clicks next, this function will run and take the user to the second page of the form
@@ -72,7 +63,7 @@ class FormPg1 extends Component {
           <input
             type="tel"
             placeholder="Phone Number"
-            onChange={(event) => this.handleChange(event, "phone_number")}
+            onChange={(event) => this.handleChange(event, "contact_phone")}
           />
           <br />
           <label>Email: * </label>
@@ -84,8 +75,8 @@ class FormPg1 extends Component {
           <input
             type="email"
             placeholder="Email"
-            value="test@test.com"
-            onChange={(event) => this.handleChange(event, "email")}
+            // value="test@test.com"
+            onChange={(event) => this.handleChange(event, "contact_email")}
           />
           <br />
           <label>Company Name: * </label>
@@ -99,8 +90,8 @@ class FormPg1 extends Component {
           <input
             type="url"
             placeholder="Company Website"
-            value="http:www.google.com"
-            onChange={(event) => this.handleChange(event, "contact_phone")}
+            // value="http:www.google.com"
+            onChange={(event) => this.handleChange(event, "company_website")}
           />
           <div className="secondaryLabel">
             <label>Company Address</label>

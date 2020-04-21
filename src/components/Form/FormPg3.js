@@ -3,14 +3,12 @@ import { connect } from "react-redux";
 
 class FormPg3 extends Component {
   state = {
-    funds: {
-      funds: "",
+      fund_description: "",
       contribution_amount: "",
       contribution_submission: "",
       promotion: "",
-      comments: "",
+      other_comment: "",
       image: "",
-    },
   };
 
   handleChange = (event, typeOf) => {
@@ -29,7 +27,7 @@ class FormPg3 extends Component {
   addInformation = (event) => {
     event.preventDefault();
     // console.log('state', this.state.newRestaurant.name)
-    this.props.dispatch({ type: "EVENT_INFO", payload: this.state.funds });
+    this.props.dispatch({ type: "POST_FORM3", payload: this.state });
     console.log("in addInformation", this.state);
     this.props.history.push("/review-form");
     // this.emptyInputs()
@@ -52,7 +50,7 @@ class FormPg3 extends Component {
             rows="5"
             cols="50"
             placeholder="Please describe how you will be collecting funds for Hope Chest"
-            onChange={(event) => this.handleChange(event, "funds")}
+            onChange={(event) => this.handleChange(event, "fund_description")}
           />
           <br />
 
@@ -101,7 +99,7 @@ class FormPg3 extends Component {
           <input
             type="text"
             placeholder="Other Comments/Questions"
-            onChange={(event) => this.handleChange(event, "comments")}
+            onChange={(event) => this.handleChange(event, "other_comment")}
           />
           <br />
 
