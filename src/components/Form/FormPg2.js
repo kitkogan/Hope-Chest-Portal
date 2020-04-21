@@ -15,6 +15,7 @@ class FormPg2 extends Component {
     event_type: "",
     event_description: "",
     event_first_time: "",
+    user_id: this.props.reduxState.user.id,
   };
 
 // display text input for Event Type "other" select option
@@ -28,7 +29,6 @@ class FormPg2 extends Component {
 
   //Saves user inputs upon entry
   handleChange = (event, typeOf) => {
-    console.log(event.target.value, typeOf);
     this.setState({
       [typeOf]: event.target.value,
     });

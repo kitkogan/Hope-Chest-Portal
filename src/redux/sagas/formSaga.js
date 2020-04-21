@@ -12,6 +12,16 @@ function* fetchEvents(action) {
     console.log(error);
   }
 }
+// function* postEntry(action) {
+//   console.log("in feedingSaga POST REQ with:", action.payload);
+//   try {
+//     const response = yield axios.post(`/entries/post`, action.payload );
+//     console.log('in feedingSaga POST (try) with', response.data);
+//     yield put({ type: "GET_FEEDING", payload: action.payload.userId });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
 
 function* postForm1(action) {
     try {

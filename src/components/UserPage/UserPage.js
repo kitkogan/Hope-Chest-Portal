@@ -25,10 +25,16 @@ class UserPage extends Component {
     return (
       <div className="UserPage">
        <h1>User Home Page</h1>
+       <h2>
+       Welcome, { this.props.reduxState.user.first_name }!
+       Your ID is: {this.props.reduxState.user.id}
+      </h2>
        <br/>
        <button className="start" onClick={this.goToFormPage}>Start a Fundraiser</button>
        <br/><br/><br/>
        <h1>My Upcoming Events</h1>
+       
+       
       </div>
     );
   }

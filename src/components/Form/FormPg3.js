@@ -8,11 +8,11 @@ class FormPg3 extends Component {
       contribution_submission: "",
       promotion: "",
       other_comment: "",
-      image: "",
+    image: "",
+    user_id: this.props.reduxState.user.id
   };
 
   handleChange = (event, typeOf) => {
-    console.log(event.target.value, typeOf);
     this.setState({
       [typeOf]: event.target.value,
     });

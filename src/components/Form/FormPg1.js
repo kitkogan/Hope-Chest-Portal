@@ -20,17 +20,22 @@ class FormPg1 extends Component {
     event_contact_last_name: "",
     event_contact_phone: "",
     event_contact_email: "",
+    user_id: this.props.reduxState.user.id
   }; //state holds the values of each input field from the form
   handleChange = (event, typeOf) => {
-    console.log(event.target.value, typeOf);
+    // console.log(event.target.value, typeOf);
     this.setState({
       [typeOf]: event.target.value,
     });
   }; //sets corresponding state of each input field when the user enters a value
+
   goToFormPage2 = (event) => {
     event.preventDefault();
-    this.props.dispatch({ type: "POST_FORM1", payload: this.state,  });
-    console.log("in gotoformpage2", this.state);
+    this.props.dispatch({
+      type: "POST_FORM1",
+      payload: this.state
+    })        
+    console.log("in gotoformpage2", this.state, "userId", this.props.reduxState.user.id);
     this.props.history.push("/form-page-2");
   }; //when the user clicks next, this function will run and take the user to the second page of the form
   render() {
