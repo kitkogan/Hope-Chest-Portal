@@ -73,7 +73,7 @@ class FormPg2 extends Component {
           <br />
           <label>Date: </label>
           <input
-            type="text"
+            type="date"
             placeholder="Date"
             onChange={(event) => this.handleChange(event, "event_date")}
           />

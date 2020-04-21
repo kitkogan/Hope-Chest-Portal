@@ -145,7 +145,7 @@ class FormPg1 extends Component {
               value="Same contact"
               name="contact"
             />
-            <label for="sameContact">Same as above </label>
+            <label htmlFor="sameContact">Same as above </label>
             <input
               type="radio"
               id="newContact"
