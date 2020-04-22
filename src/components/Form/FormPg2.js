@@ -14,7 +14,7 @@ class FormPg2 extends Component {
     event_location_zip: "",
     event_type: "",
     event_description: "",
-    event_first_time: "",
+    event_first_time: false,
     user_id: this.props.reduxState.user.id,
   };
 
@@ -180,8 +180,8 @@ class FormPg2 extends Component {
             <option id="Is this a First Time event?">
               Is this a First Time event?
             </option>
-            <option id="Yes">Yes</option>
-            <option id="No">No</option>
+            <option id="true" value="true">Yes</option>
+            <option id="false" value="false">No</option>
           </select>
           <br></br>
           <button className="back" onClick={this.backButton}>

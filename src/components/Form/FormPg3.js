@@ -10,7 +10,7 @@ class FormPg3 extends Component {
       promotion: "",
       other_comment: "",
       image: "",
-    user_id: this.props.reduxState.user.id
+      user_id: this.props.reduxState.user.id
   };
 
   handleChange = (event, typeOf) => {
@@ -26,8 +26,19 @@ class FormPg3 extends Component {
   };
 
   addInformation = (event) => {
+    console.log('in submitForm on ReviewForm', this.props.reduxState.form);
     this.props.dispatch({ type: "POST_FORM3", payload: this.state });
-    console.log("in addInformation on form page 3", this.state);
+    // create new form object and dispatch to payload to saga
+    const formIntake = {
+      form: this.props.reduxState.form,
+      form2: this.props.reduxState.form2,
+      form3: this.props.reduxState.form3
+    };
+    console.log('formIntake', formIntake);
+    this.props.dispatch({
+            type:'SUBMIT_FORM',
+            payload: formIntake
+    })
     this.props.history.push("/review");
   };
 

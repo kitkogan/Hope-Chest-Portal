@@ -12,7 +12,7 @@ password varchar NOT NULL,
 admin boolean default false
 );
 
-CREATE TABLE "contact" (
+CREATE TABLE "form" (
 "id" SERIAL PRIMARY KEY,
 contact_first_name varchar NOT NULL,
 contact_last_name varchar NOT NULL,
@@ -28,11 +28,6 @@ event_contact_first_name varchar,
 event_contact_last_name varchar,
 event_contact_phone varchar,
 event_contact_email varchar,
-user_id INT REFERENCES "user"
-);
-
-CREATE TABLE "event" (
-"id" SERIAL PRIMARY KEY,
 event_name varchar,
 event_website varchar, 
 event_date date,   
@@ -45,16 +40,11 @@ event_location_zip VARCHAR,
 event_type VARCHAR,
 event_description varchar(300) NOT NULL,
 event_first_time boolean default false, 
-user_id INT REFERENCES "user"
-);
-
-CREATE TABLE "funds"(
-"id" SERIAL PRIMARY KEY,
 fund_description varchar,
 contribution_amount MONEY, 
 contribution_submission varchar,
 promotion varchar,
-comments varchar,
-image bytea, 
+other_comment varchar,
+image bytea,
 user_id INT REFERENCES "user"
 );

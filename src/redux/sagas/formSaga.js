@@ -1,5 +1,5 @@
 import { put, takeEvery } from 'redux-saga/effects';
-// import axios from 'axios';
+import axios from 'axios';
 
 
 function* fetchEvents(action) { 
@@ -56,13 +56,22 @@ function* fetchEvents(action) {
 function* submitForm(action) {
   try {
   console.log('in submitFORM', action.payload);
-  // yield axios.post("/form/fundForm", action.payload);
+  yield axios.post("/form/form", action.payload);
 } catch (error) {
   console.log("Error with adding event:", error);
   yield put({ type: "ADDING_EVENT_FAILED" });
 }
 }
 
+// function* updateForm(action) {
+//   try {
+//   console.log('in updateFORM', action.payload);
+//   // yield axios.post("/form/fundForm", action.payload);
+// } catch (error) {
+//   console.log("Error updating event:", error);
+//   yield put({ type: "ADDING_EVENT_FAILED" });
+// }
+// }
 // function* deleteEvents(action) {
   
 // }
@@ -71,10 +80,34 @@ function* submitForm(action) {
   
 // }
 
+function* fetchFruit() {
+  const fruitResponse = yield axios.get('/fruit')
+  console.log('fruits', fruitResponse);
+  yield put({
+      type: 'FETCH_FRUIT',
+      payload: fruitResponse.data
+  })
+}
+
+function* addFruit(action) {
+  try {
+      console.log('addfruit payload:', action.payload);
+      
+      yield axios.post('/fruit', action.payload)
+      yield put({
+          type: 'SET_BASKET'
+      })
+      console.log('in addFruit POST', action.payload);
+  } catch (error) {
+      console.log(error);
+  }
+}
 
 function* formSaga() {
   // yield takeEvery('FETCH_EVENT', fetchEvents);
   yield takeEvery('SUBMIT_FORM', submitForm);
+  // yield takeEvery('UPDATE_FORM', updateForm);
+
   // yield takeEvery('POST_FORM1', postForm1);
   // yield takeEvery('POST_FORM2', postForm2);
   // yield takeEvery('POST_FORM3', postForm3);
