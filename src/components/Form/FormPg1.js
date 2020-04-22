@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./Form.css"
 
+ 
 class FormPg1 extends Component {
   state = {
-    first_name: "",
-    last_name: "",
-    phone_number: "",
-    email: "",
+    contact_first_name: "",
+    contact_last_name: "",
+    contact_phone: "",
+    contact_email: "",
     company_name: "",
     company_website: "",
     company_street_address: "",
@@ -15,32 +16,35 @@ class FormPg1 extends Component {
     company_state: "",
     company_zip: "",
     show_contact_option: "",
-    contact_first_name: "",
-    contact_last_name: "",
-    contact_phone_number: "",
-    contact_email: "",
+    event_contact_first_name: "",
+    event_contact_last_name: "",
+    event_contact_phone: "",
+    event_contact_email: "",
+    user_id: this.props.reduxState.user.id
   }; //state holds the values of each input field from the form
   handleChange = (event, typeOf) => {
-    console.log(event.target.value, typeOf);
+    // console.log(event.target.value, typeOf);
     this.setState({
       [typeOf]: event.target.value,
     });
   }; //sets corresponding state of each input field when the user enters a value
+
   goToFormPage2 = (event) => {
     event.preventDefault();
-    this.props.dispatch({ type: "EVENT_INFO", payload: this.state });
-    console.log('in gotoformpage2', this.state);
+    this.props.dispatch({
+      type: "POST_FORM1",
+      payload: this.state
+    })        
+    console.log("in gotoformpage2", this.state, "userId", this.props.reduxState.user.id);
     this.props.history.push("/form-page-2");
   }; //when the user clicks next, this function will run and take the user to the second page of the form
   render() {
     return (
-
       <div className="FormPages">
         <h1>Event Submission Form</h1>
         <h2>Progress bar here!!!</h2>
         <h3>Contact Information</h3>
         <p className="PHead">
-
           Please enter the requested information in each field. If any
           information is unavailable, please put "N/A" or "TBD" on the form,
           otherwise the form cannot be submitted. All * fields are required.
@@ -50,21 +54,21 @@ class FormPg1 extends Component {
           <input
             type="text"
             placeholder="First Name"
-            onChange={(event) => this.handleChange(event, "first_name")}
+            onChange={(event) => this.handleChange(event, "contact_first_name")}
           />
           <br />
           <label>Last Name: * </label>
           <input
             type="text"
             placeholder="Last Name"
-            onChange={(event) => this.handleChange(event, "last_name")}
+            onChange={(event) => this.handleChange(event, "contact_last_name")}
           />
           <br />
           <label>Phone Number: * </label>
           <input
             type="tel"
             placeholder="Phone Number"
-            onChange={(event) => this.handleChange(event, "phone_number")}
+            onChange={(event) => this.handleChange(event, "contact_phone")}
           />
           <br />
           <label>Email: * </label>
@@ -76,8 +80,8 @@ class FormPg1 extends Component {
           <input
             type="email"
             placeholder="Email"
-            value="test@test.com"
-            onChange={(event) => this.handleChange(event, "email")}
+            // value="test@test.com"
+            onChange={(event) => this.handleChange(event, "contact_email")}
           />
           <br />
           <label>Company Name: * </label>
@@ -91,11 +95,11 @@ class FormPg1 extends Component {
           <input
             type="url"
             placeholder="Company Website"
-            value="http:www.google.com"
+            // value="http:www.google.com"
             onChange={(event) => this.handleChange(event, "company_website")}
           />
           <div className="secondaryLabel">
-          <label>Company Address</label>
+            <label>Company Address</label>
           </div>
           <label>Street Address: </label>
           <input
@@ -127,9 +131,10 @@ class FormPg1 extends Component {
             onChange={(event) => this.handleChange(event, "company_zip")}
           />
           <div className="secondaryLabel">
-          <label>Contact Person</label>
+            <label>Contact Person</label>
           </div>
-          <div className="radioInput"
+          <div
+            className="radioInput"
             onChange={(event) =>
               this.handleChange(event, "show_contact_option")
             }
@@ -140,7 +145,7 @@ class FormPg1 extends Component {
               value="Same contact"
               name="contact"
             />
-            <label for="sameContact">Same as above </label>
+            <label htmlFor="sameContact">Same as above </label>
             <input
               type="radio"
               id="newContact"
@@ -151,13 +156,13 @@ class FormPg1 extends Component {
           </div>
           {this.state.show_contact_option === "New contact" ? (
             <>
-              <br/>
+              <br />
               <label>First Name: </label>
               <input
                 type="text"
                 placeholder="First Name"
                 onChange={(event) =>
-                  this.handleChange(event, "contact_first_name")
+                  this.handleChange(event, "event_contact_first_name")
                 }
               />
               <br />
@@ -166,7 +171,7 @@ class FormPg1 extends Component {
                 type="text"
                 placeholder="Last Name"
                 onChange={(event) =>
-                  this.handleChange(event, "contact_last_name")
+                  this.handleChange(event, "event_contact_last_name")
                 }
               />
               <br />
@@ -175,7 +180,7 @@ class FormPg1 extends Component {
                 type="tel"
                 placeholder="Phone Number"
                 onChange={(event) =>
-                  this.handleChange(event, "contact_phone_number")
+                  this.handleChange(event, "event_contact_phone")
                 }
               />
               <br />
@@ -183,7 +188,9 @@ class FormPg1 extends Component {
               <input
                 type="email"
                 placeholder="Email"
-                onChange={(event) => this.handleChange(event, "contact_email")}
+                onChange={(event) =>
+                  this.handleChange(event, "event_contact_email")
+                }
               />
             </>
           ) : (

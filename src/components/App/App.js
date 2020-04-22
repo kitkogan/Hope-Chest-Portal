@@ -86,7 +86,7 @@ class App extends Component {
             />
              <ProtectedRoute
               exact
-              path="/review-form"
+              path="/review"
               component={ReviewForm}
             />
              <ProtectedRoute
