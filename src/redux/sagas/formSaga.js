@@ -80,28 +80,28 @@ function* submitForm(action) {
   
 // }
 
-function* fetchFruit() {
-  const fruitResponse = yield axios.get('/fruit')
-  console.log('fruits', fruitResponse);
-  yield put({
-      type: 'FETCH_FRUIT',
-      payload: fruitResponse.data
-  })
-}
+// function* fetchFruit() {
+//   const fruitResponse = yield axios.get('/fruit')
+//   console.log('fruits', fruitResponse);
+//   yield put({
+//       type: 'FETCH_FRUIT',
+//       payload: fruitResponse.data
+//   })
+// }
 
-function* addFruit(action) {
-  try {
-      console.log('addfruit payload:', action.payload);
+// function* addFruit(action) {
+//   try {
+//       console.log('addfruit payload:', action.payload);
       
-      yield axios.post('/fruit', action.payload)
-      yield put({
-          type: 'SET_BASKET'
-      })
-      console.log('in addFruit POST', action.payload);
-  } catch (error) {
-      console.log(error);
-  }
-}
+//       yield axios.post('/fruit', action.payload)
+//       yield put({
+//           type: 'SET_BASKET'
+//       })
+//       console.log('in addFruit POST', action.payload);
+//   } catch (error) {
+//       console.log(error);
+//   }
+// }
 
 function* formSaga() {
   // yield takeEvery('FETCH_EVENT', fetchEvents);

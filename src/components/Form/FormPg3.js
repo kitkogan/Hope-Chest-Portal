@@ -4,13 +4,13 @@ import { withRouter } from "react-router-dom";
 
 class FormPg3 extends Component {
   state = {
-      fund_description: "",
-      contribution_amount: "",
-      contribution_submission: "",
-      promotion: "",
-      other_comment: "",
-      image: "",
-      user_id: this.props.reduxState.user.id
+    fund_description: "",
+    contribution_amount: "",
+    contribution_submission: "",
+    promotion: "",
+    other_comment: "",
+    image: "",
+    user_id: this.props.reduxState.user.id
   };
 
   handleChange = (event, typeOf) => {
@@ -25,22 +25,20 @@ class FormPg3 extends Component {
     this.props.history.push("/form-page-2");
   };
 
-  addInformation = (event) => {
-    console.log('in submitForm on ReviewForm', this.props.reduxState.form);
-    this.props.dispatch({ type: "POST_FORM3", payload: this.state });
-    // create new form object and dispatch to payload to saga
+addInformation = (event) => {
+  console.log('in submitForm on ReviewForm', this.props.reduxState.form);
+  this.props.dispatch({ type: "POST_FORM3", payload: this.state })
     const formIntake = {
       form: this.props.reduxState.form,
       form2: this.props.reduxState.form2,
-      form3: this.props.reduxState.form3
+      form3: this.state
     };
-    console.log('formIntake', formIntake);
     this.props.dispatch({
-            type:'SUBMIT_FORM',
-            payload: formIntake
-    })
-    this.props.history.push("/review");
-  };
+      type: 'SUBMIT_FORM',
+      payload: formIntake
+    });
+  this.props.history.push("/review");
+}
 
   render() {
     return (

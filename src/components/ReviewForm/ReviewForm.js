@@ -30,24 +30,7 @@ class ReviewForm extends Component {
   })
   }
 
-  // buttonClick = () =>{
-  //   let objectToSend = {
-  //     feeling: this.props.reduxState.feeling,
-  //     understanding: this.props.reduxState.understanding,
-  //     supported: this.props.reduxState.supported,
-  //     comments: this.props.reduxState.comments,
-  //   }
-  //      axios({
-  //       method: 'POST',
-  //       url: '/feedback',
-  //       data: objectToSend
-  //     }).then((response)=>{
-  //       console.log('response from POST', response);
-  //     }).catch((error)=> {
-  //       console.log('ERROR submitting Feedback', error);
-  //     })
 
-  // }
 
   back=()=>{
     console.log('going back to form page 3');
