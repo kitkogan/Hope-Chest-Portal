@@ -1,11 +1,11 @@
 const reviewReducer = (state = [], action) => {
     switch (action.type) {
-        case 'SET_DETAILS':
-            return action.payload;
+        case "DISPLAY_FORM":
+          return action.payload;
         default:
-            return state;
-    }
-}
+          return state;
+      }
+    };
 
 export default reviewReducer;
   

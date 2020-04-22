@@ -11,7 +11,7 @@ class FormPg1 extends Component {
     contact_email: "",
     company_name: "",
     company_website: "",
-    company_street_address: "",
+    company_street: "",
     company_city: "",
     company_state: "",
     company_zip: "",
@@ -106,7 +106,7 @@ class FormPg1 extends Component {
             type="text"
             placeholder="Street Address"
             onChange={(event) =>
-              this.handleChange(event, "company_street_address")
+              this.handleChange(event, "company_street")
             }
           />
           <br />

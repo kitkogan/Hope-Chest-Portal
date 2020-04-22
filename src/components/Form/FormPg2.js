@@ -154,8 +154,8 @@ class FormPg2 extends Component {
               <label>Other Event Type:</label>
               <input
                 type="text"
-                placeholder="o\Other"
-                onChange={(event) => this.handleChange(event, "other")}
+                placeholder="Other"
+                onChange={(event) => this.handleChange(event, "Other")}
               />
             </>
           ) : (

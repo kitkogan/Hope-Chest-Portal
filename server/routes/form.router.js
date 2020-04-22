@@ -2,16 +2,41 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-/**
- * GET route template
- */
+
+ //GET route to grab all inputs from event submission and display to Review page
 router.get('/', (req, res) => {
+console.log("in server GET");
+const queryText = `select * from "form"
+where "id" = ${req.params.id};`;
+pool.query(queryText)
+.then(result => {
+        res.send(result.rows);
+})
+.catch(error => {
+    console.log('Error getting query', error);
+    res.sendStatus(500);
+ });
+  
+});
     
+//Get route to grab events by user_id and display on user home page
+router.get("/:id", (req, res) => {
+  console.log("in server/:id GET");
+  const queryText = `select * from "form"
+where "user_id" = ${req.params.id};`;
+  pool
+    .query(queryText)
+    .then((result) => {
+      res.send(result.rows);
+    })
+    .catch((error) => {
+      console.log("Error getting query", error);
+      res.sendStatus(500);
+    });
 });
 
-/**
- * POST route template
- */
+
+//Post route to send event form inputs to the form table in the db
 router.post('/form', (req, res) => {
 console.log('in router form POST with', req.body);
 //form1
