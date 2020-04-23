@@ -2,16 +2,16 @@ import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
 
-function* fetchEvents(action) { 
-  console.log("saga coming from formSaga with:", action);
-  try {
-    // const response = yield axios.get(`/form/${action.id}`);
-    // console.log("in saga with", response.data);
-    // yield put({ type: "SET_EVENT", payload: response.data });
-  } catch (error) {
-    console.log(error);
-  }
-}
+// function* fetchEvents(action) { 
+//   console.log("saga coming from formSaga with:", action);
+//   try {
+//     // const response = yield axios.get(`/form/${action.id}`);
+//     // console.log("in saga with", response.data);
+//     // yield put({ type: "SET_EVENT", payload: response.data });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
 // function* postEntry(action) {
 //   console.log("in feedingSaga POST REQ with:", action.payload);
 //   try {
