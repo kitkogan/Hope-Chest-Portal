@@ -113,7 +113,8 @@ addInformation = (event) => {
           <label htmlFor="image">Upload your logo:</label>
           <br />
           <input
-            type="image"
+            type="file"
+            accept="image/*"
             alt="logo"
             onChange={(event) => this.handleChange(event, "image")}
           />
