@@ -5,13 +5,14 @@ import "./Form.css"
  
 class FormPg1 extends Component {
   state = {
+    contact: {
     contact_first_name: "",
     contact_last_name: "",
     contact_phone: "",
     contact_email: "",
     company_name: "",
     company_website: "",
-    company_street_address: "",
+    company_street: "",
     company_city: "",
     company_state: "",
     company_zip: "",
@@ -21,7 +22,8 @@ class FormPg1 extends Component {
     event_contact_phone: "",
     event_contact_email: "",
     user_id: this.props.reduxState.user.id
-  }; //state holds the values of each input field from the form
+  } 
+}; //state holds the values of each input field from the form
   handleChange = (event, typeOf) => {
     // console.log(event.target.value, typeOf);
     this.setState({
@@ -29,11 +31,34 @@ class FormPg1 extends Component {
     });
   }; //sets corresponding state of each input field when the user enters a value
 
+  populateInputs=()=>{
+    this.setState({
+      contact: {
+        contact_first_name: "Kathy",
+        contact_last_name: "Johnson",
+        contact_phone: "(234) 345-5673",
+        contact_email: "kathy.johnson@gmail.com",
+        company_name: "Plush",
+        company_website: "https://www.plush.com/",
+        company_street: "PO Box 43",
+        company_city: "Minneapolis",
+        company_state: "MN",
+        company_zip: "55440",
+        show_contact_option: "",
+        event_contact_first_name: "Kathy",
+        event_contact_last_name: "Johnson",
+        event_contact_phone: "(234) 345-5673",
+        event_contact_email: "kathy.johnson@gmail.com",
+        user_id: this.props.reduxState.user.id
+      }
+    })
+  }
+
   goToFormPage2 = (event) => {
     event.preventDefault();
     this.props.dispatch({
       type: "POST_FORM1",
-      payload: this.state
+      payload: this.state.contact
     })        
     console.log("in gotoformpage2", this.state, "userId", this.props.reduxState.user.id);
     this.props.history.push("/form-page-2");
@@ -50,19 +75,23 @@ class FormPg1 extends Component {
           information is unavailable, please put "N/A" or "TBD" on the form,
           otherwise the form cannot be submitted. All * fields are required.
         </p>
+        <div className="invisibleClick" onClick = {this.populateInputs}>
         <form onSubmit={this.goToFormPage2}>
           <label>First Name: * </label>
           <input
             type="text"
             placeholder="First Name"
             onChange={(event) => this.handleChange(event, "contact_first_name")}
+            value = {this.state.contact.contact_first_name}
           />
+          
           <br />
           <label>Last Name: * </label>
           <input
             type="text"
             placeholder="Last Name"
             onChange={(event) => this.handleChange(event, "contact_last_name")}
+            value = {this.state.contact.contact_last_name}
           />
           <br />
           <label>Phone Number: * </label>
@@ -70,6 +99,7 @@ class FormPg1 extends Component {
             type="tel"
             placeholder="Phone Number"
             onChange={(event) => this.handleChange(event, "contact_phone")}
+            value = {this.state.contact.contact_phone}
           />
           <br />
           <label>Email: * </label>
@@ -83,6 +113,7 @@ class FormPg1 extends Component {
             placeholder="Email"
             // value="test@test.com"
             onChange={(event) => this.handleChange(event, "contact_email")}
+            value = {this.state.contact.contact_email}
           />
           <br />
           <label>Company Name: * </label>
@@ -90,6 +121,7 @@ class FormPg1 extends Component {
             type="text"
             placeholder="Company Name"
             onChange={(event) => this.handleChange(event, "company_name")}
+            value = {this.state.contact.company_name}
           />
           <br />
           <label>Company Website: * </label>
@@ -98,6 +130,7 @@ class FormPg1 extends Component {
             placeholder="Company Website"
             // value="http:www.google.com"
             onChange={(event) => this.handleChange(event, "company_website")}
+            value = {this.state.contact.company_website}
           />
           <div className="secondaryLabel">
             <label>Company Address</label>
@@ -107,8 +140,9 @@ class FormPg1 extends Component {
             type="text"
             placeholder="Street Address"
             onChange={(event) =>
-              this.handleChange(event, "company_street_address")
+              this.handleChange(event, "company_street")
             }
+            value = {this.state.contact.company_street}
           />
           <br />
           <label>City: </label>
@@ -116,6 +150,7 @@ class FormPg1 extends Component {
             type="text"
             placeholder="City"
             onChange={(event) => this.handleChange(event, "company_city")}
+            value = {this.state.contact.company_city}
           />
           <br />
           <label>State: </label>
@@ -123,6 +158,7 @@ class FormPg1 extends Component {
             type="text"
             placeholder="State"
             onChange={(event) => this.handleChange(event, "company_state")}
+            value = {this.state.contact.company_state}
           />
           <br />
           <label>Zip: </label>
@@ -130,6 +166,7 @@ class FormPg1 extends Component {
             type="number"
             placeholder="Zip"
             onChange={(event) => this.handleChange(event, "company_zip")}
+            value = {this.state.contact.company_zip}
           />
           <div className="secondaryLabel">
             <label>Contact Person</label>
@@ -165,6 +202,7 @@ class FormPg1 extends Component {
                 onChange={(event) =>
                   this.handleChange(event, "event_contact_first_name")
                 }
+                value = {this.state.contact.event_contact_first_name}
               />
               <br />
               <label>Last Name: </label>
@@ -174,6 +212,7 @@ class FormPg1 extends Component {
                 onChange={(event) =>
                   this.handleChange(event, "event_contact_last_name")
                 }
+                value = {this.state.contact.event_contact_last_name}
               />
               <br />
               <label>Phone Number: </label>
@@ -183,6 +222,7 @@ class FormPg1 extends Component {
                 onChange={(event) =>
                   this.handleChange(event, "event_contact_phone")
                 }
+                value = {this.state.contact.event_contact_phone}
               />
               <br />
               <label>Email: </label>
@@ -192,6 +232,7 @@ class FormPg1 extends Component {
                 onChange={(event) =>
                   this.handleChange(event, "event_contact_email")
                 }
+                value = {this.state.contact.event_contact_email}
               />
             </>
           ) : (
@@ -200,6 +241,7 @@ class FormPg1 extends Component {
           <br />
           <input className="submit" type="submit" value="Next" />
         </form>
+        </div>
       </div>
     );
   }
