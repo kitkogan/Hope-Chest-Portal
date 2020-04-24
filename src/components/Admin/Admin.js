@@ -7,6 +7,7 @@ class Admin extends Component {
     return (
       <div className="Admin">
         <h1>Welcome Admin!</h1>
+        <p>Kathy's Shopping Night </p>
           <select>
             <option >UNAPPROVE</option>
             <option>APPROVE</option>
