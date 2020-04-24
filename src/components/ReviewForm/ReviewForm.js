@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import '../Form/Form.css';
 // import UpdateForm from "./UpdateForm";
 
 class ReviewForm extends Component {
@@ -37,7 +38,7 @@ class ReviewForm extends Component {
     contribution_submission: "",
     promotion: "",
     other_comment: "",
-    image: "",
+    image: ""
   };
   componentDidMount = () => {
     this.getForm();
@@ -72,10 +73,11 @@ class ReviewForm extends Component {
     this.props.dispatch({
       type: "UPDATE_FORM",
       payload: this.state,
-      id: this.props.reduxState.review[0].id});
+      id: this.props.reduxState.review[0].id
+    });
     this.setState({
       isEditable: false,
-    });
+    }); 
   };
 
   edit = () => {
@@ -85,13 +87,43 @@ class ReviewForm extends Component {
     });
   };
 
+
+  // handleChange = (event, typeOf) => {
+  //   console.log(event.target.value);
+  //   console.log(event.target.placeholder);
+
+  //   if (event.target.value === "") {
+  //     this.setState({
+  //       [typeOf]: event.target.placeholder,
+  //     });
+  //   } else {
+  //     this.setState({
+  //       [typeOf]: event.target.value,
+  //     });
+  //   }
+  // };
+
+  edit = () => {
+    console.log("editing");
+    this.setState({
+      isEditable: true,
+    });
+    console.log(this.props.reduxState.review.length -1);
+    
+  };
+
   cancel = () => {
     console.log("cancel edits");
     this.setState({
       isEditable: false,
     });
   };
-
+  
+  goHome = ()=>{
+    alert("Your form has been submitted!");
+    this.props.history.push("/home");
+  } 
+  
   render() {
     return (
       <div className="ReviewForm">
@@ -99,7 +131,7 @@ class ReviewForm extends Component {
         <h3> Review Your Form </h3>
         {this.state.isEditable ? (
           <>
-            {this.props.reduxState.review.map(intake => intake[0].map(intake => (<center>
+            {this.props.reduxState.review.map(intake => (<center>
                 <p>
                   Contact First Name:
                   <input
@@ -401,7 +433,7 @@ class ReviewForm extends Component {
                     onChange={(event) => this.handleChange(event, "image")}
                   />
                 </p>
-              </center>))
+              </center>)
               
             )}
           </>
@@ -440,7 +472,7 @@ class ReviewForm extends Component {
                 </p>
                 <p>Promotion: {intake.promotion}</p>
                 <p>Other Comments: {intake.other_comment}</p>
-                <p>Logo: {intake.image}</p>
+                {/* <img>Logo: {intake.image}</p> */}
               </center>
             ))}
           </>
@@ -452,7 +484,10 @@ class ReviewForm extends Component {
               <button onClick={() => this.updateForm()}>Update</button>
             </>
           ) : (
-            <button onClick={() => this.edit()}>Edit</button>
+            <>
+              <button className="back" onClick={() => this.edit()}>Edit</button>
+              <button className="submit" onClick={() => this.goHome()}>Submit</button>
+            </>
           )}
         </center>
       </div>

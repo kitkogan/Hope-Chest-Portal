@@ -25,9 +25,9 @@ function* submitForm(action) {
 
 function* updateForm(action) {
   try {
-  console.log('in updateFORM with', action.payload, 'form id', action.id);
-    yield axios.put(`/form/form/${action.id}`, action.payload);
-    console.log('back from update server');
+  console.log('in updateFORM with', action.payload, 'id', action.id);
+    // yield axios.put(`/form/form/${action.id}`, action.payload);
+    // console.log('back from update server');
     
 } catch (error) {
   console.log("Error updating event:", error);

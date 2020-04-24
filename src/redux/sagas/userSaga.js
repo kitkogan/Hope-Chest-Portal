@@ -24,8 +24,23 @@ function* fetchUser() {
   }
 }
 
+function* getUserEvents(action) {
+
+  console.log("saga coming from userSaga with:", action);
+  try {
+    const response = yield axios.get(`/form/${action.userId}`);
+    console.log("in saga with", response.data);
+    yield put({ type: "SET_EVENT", payload: response.data });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);
+  yield takeLatest('SET_EVENT1', getUserEvents);
 }
+
+
 
 export default userSaga;

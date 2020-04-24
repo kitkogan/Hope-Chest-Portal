@@ -7,6 +7,9 @@ import calendar from './calendarReducer';
 import form from './formReducer';
 import form2 from './form2Reducer';
 import form3 from './form3Reducer';
+import admin from './adminReducer';
+import userEvents from "./userEventReducer";
+
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -23,6 +26,8 @@ const rootReducer = combineReducers({
   form3,
   review,
   calendar,
+  admin,
+  userEvents,
 
 });
 

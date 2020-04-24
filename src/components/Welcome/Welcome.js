@@ -1,9 +1,13 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
-
-
 class Welcome extends Component {
+
+  goToForm = () => {       
+    console.log("in goToForm", this.state, "userId", this.props.reduxState.user.id);
+    this.props.history.push("/home");
+  };
+
   render() {
     return (
       <div className="welcomePage">
@@ -29,9 +33,11 @@ class Welcome extends Component {
         </ul>
        
         <h3>How to Get Started</h3>
-        <p>Interested on getting your promotional event up and running? Wonderful! Complete the information by clicking the Start Your Fundraiser button. Once information is complete, Hope Chest will reach out with marketing materials to help your event.
-        </p>
-        <center><button className="fundButton">Start Your Fundraiser</button></center>
+        <p>Interested on getting your promotional event up and running? Wonderful! Complete the information
+           by clicking the Start Your Fundraiser button. Once information is complete, Hope Chest will reach
+          out with marketing materials to help your event.
+          </p>
+        <center><button className="fundButton" onClick={() => this.goToForm()}>Start Your Fundraiser</button></center>
       </div>
     );
   }
