@@ -85,6 +85,41 @@ class ReviewForm extends Component {
     });
   };
 
+
+  // handleChange = (event, typeOf) => {
+  //   console.log(event.target.value);
+  //   console.log(event.target.placeholder);
+
+  //   if (event.target.value === "") {
+  //     this.setState({
+  //       [typeOf]: event.target.placeholder,
+  //     });
+  //   } else {
+  //     this.setState({
+  //       [typeOf]: event.target.value,
+  //     });
+  //   }
+  // };
+
+  updateForm = () => {
+    console.log("update form", this.state);
+    // create new form object and dispatch to payload to saga
+    // this.props.dispatch({
+    //   type: "UPDATE_FORM",
+    //   payload: this.state
+    // });
+    this.setState({
+      isEditable: false,
+    });
+  };
+
+  edit = () => {
+    console.log("editing");
+    this.setState({
+      isEditable: true,
+    });
+  };
+
   cancel = () => {
     console.log("cancel edits");
     this.setState({
@@ -454,7 +489,6 @@ class ReviewForm extends Component {
           ) : (
             <button onClick={() => this.edit()}>Edit</button>
           )}
-
         </center>
       </div>
     );
