@@ -166,7 +166,7 @@ onClickHandler = () => {
           <button className="back" onClick={this.handleBackClick}>
             Back
           </button>
-          <input className="submit" type="submit" />
+          <input className="submit" type="submit" value="Review" />
         </form>
       </div>
       </div>

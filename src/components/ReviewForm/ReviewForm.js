@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import '../Form/Form.css';
 // import UpdateForm from "./UpdateForm";
 
 class ReviewForm extends Component {
@@ -126,7 +127,12 @@ class ReviewForm extends Component {
       isEditable: false,
     });
   };
-
+  
+  goHome = ()=>{
+    alert("Your form has been submitted!");
+    this.props.history.push("/home");
+  } 
+  
   render() {
     return (
       <div className="ReviewForm">
@@ -487,7 +493,10 @@ class ReviewForm extends Component {
               <button onClick={() => this.updateForm()}>Update</button>
             </>
           ) : (
-            <button onClick={() => this.edit()}>Edit</button>
+            <>
+              <button className="back" onClick={() => this.edit()}>Edit</button>
+              <button className="submit" onClick={() => this.goHome()}>Submit</button>
+            </>
           )}
         </center>
       </div>

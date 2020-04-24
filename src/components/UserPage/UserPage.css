@@ -52,16 +52,31 @@ button{
     row-gap: 30px;
 } */
 
-.userEventDisplay{
+/* .userEventDisplay */
+/* .userEvent {
     display: inline-grid;
     grid-template-columns: 200px 200px 200px;
     grid-template-rows: auto ; 
     grid-column-gap: 50px;
-    grid-row-gap: 20px;
-    align-content: center;
+    grid-row-gap: 20px; */
+    /* align-content: center; */
     /* background-color: blueviolet; */
-    width: fit-content;
+    /* width: fit-content;
     height:fit-content;
     padding: 20px;
      
+} */
+.userEvent{
+    margin-bottom: 40px;
+    padding-left: 50px;
+}
+
+.userEvent li {
+    list-style-type: none;
+    display: inline-block;
+    margin: 1em;
+    width: 300px;
+}
+.userEvent ul {
+    list-style-type: none;
 }

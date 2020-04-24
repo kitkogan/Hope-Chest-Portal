@@ -52,31 +52,31 @@ class UserPage extends Component {
         <br />
         <br />
         <h1>My Upcoming Events</h1>
-        <div className="userEventDisplay">
-          <center>
-            {this.props.reduxState.userEvents.length > 0 &&
-              this.props.reduxState.userEvents.map((events) => {
-                return (
-                  <p>
-                    {/* // className="childNameButton"
+        <div className="userEvent">
+       
+            <ul>
+              {this.props.reduxState.userEvents.length > 0 &&
+                this.props.reduxState.userEvents.map((events) => {
+                  return (
+                    <li>
+                      {/* // className="childNameButton"
                     // data-id={events.id}
                     // data-name={events.event_name}> */}
-                    <img src={events.image} alt="Event Image" />
-                    <br />
-                    <>{events.event_name}</>
-                    <br />
-                    <>{events.event_date}</>
-                    <>{events.event_time}</>
-                    <br />
-                    <>{events.event_description} </>
-                  </p>
-                );
-              })}
-            <br></br>
-            <br></br>
-          </center>
-        </div>
+                    
+                      <img src={events.image} alt="Event Image" />
+                      <br />
+                      <>{events.event_name}</>
+                      <br />
+                      <>{events.event_date}</>
+                      <>{events.event_time}</>
+                      <br />
+                      <>{events.event_description} </>
+                    </li>
+                  );
+                })}
+            </ul>
         
+        </div>
       </div>
     );
   }
