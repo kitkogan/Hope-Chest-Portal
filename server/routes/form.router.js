@@ -10,7 +10,7 @@ const router = express.Router();
  router.get("/:id", (req, res) => {
    console.log("in server/form/:id GET");
    const queryText = `select * from "form"
-where "user_id" = $1;`;
+where "user_id" = $1 order by "event_date" desc limit 3;`;
    pool
      .query(queryText, [req.params.id])
      .then((result) => {

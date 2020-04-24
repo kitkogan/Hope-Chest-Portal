@@ -43,6 +43,9 @@ class UserPage extends Component {
         <button className="start" onClick={this.goToFormPage}>
           Start a Fundraiser
         </button>
+        <button className="start" onClick={this.goToFormPage}>
+          My Previous Events
+        </button>
         <br />
         <br />
         <br />
@@ -52,25 +55,20 @@ class UserPage extends Component {
             {this.props.reduxState.userEvents.length > 0 &&
               this.props.reduxState.userEvents.map((events) => {
                 return (
-                  <button
-                    className="childNameButton"
-                    data-id={events.id}
-                    data-name={events.event_name}
-                    // onClick={this.displayEvent}
-                  >
-                    {events.event_name}
-                  </button>
+                  <p>
+                    {/* // className="childNameButton"
+                    // data-id={events.id}
+                    // data-name={events.event_name}> */}
+                    {events.event_name}, {events.event_date},{events.event_time}
+                    ,{events.event_description}
+                  </p>
                 );
               })}
             <br></br>
             <br></br>
           </center>
         </div>
-        <center>
-          <button className="addChildButton" onClick={this.toAddChildForm}>
-            Add Child
-          </button>
-        </center>
+        
       </div>
     );
   }
