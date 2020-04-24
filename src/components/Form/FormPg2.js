@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
 class FormPg2 extends Component {
-  state = {
+  state ={
+    event:{
     event_name: "",
     event_website: "",
     event_date: "",
@@ -16,6 +17,7 @@ class FormPg2 extends Component {
     event_description: "",
     event_first_time: false,
     user_id: this.props.reduxState.user.id,
+    }
   };
 
 // display text input for Event Type "other" select option
@@ -34,11 +36,30 @@ class FormPg2 extends Component {
     });
   };
 
+  populateInputs=()=>{
+    this.setState({
+      event: {
+        event_name: "Shopping Night",
+        event_website: "kathy.johnson@gmail.com",
+        event_date: "2020-08-20",
+        event_time: "12PM",
+        event_location_name: "Cedar Lake Park",
+        event_location_street: "Cedar Lake Parkway",
+        event_location_city: "Minneapolis",
+        event_location_state: "MN",
+        event_location_zip: "55416",
+        event_type: "Shopping Night",
+        event_description: "Shopping ",
+        event_first_time: true,
+        user_id: this.props.reduxState.user.id,
+      }
+    })
+  }
 
   //Stores user event inputs and advances user to form page 3 on "Next" button click
   goToFormPage3 = (event) => {
     event.preventDefault();
-    this.props.dispatch({ type: "POST_FORM2", payload: this.state});
+    this.props.dispatch({ type: "POST_FORM2", payload: this.state.event});
     console.log("in gotoformpage3", this.state);
     this.props.history.push("/form-page-3");
   };
@@ -56,12 +77,14 @@ class FormPg2 extends Component {
           Please enter your event information as you would like it to appear in
           the events calendar.
         </h3>
+        <div className="invisibleClick" onClick = {this.populateInputs}>
         <form onSubmit={this.goToFormPage3}>
           <label>Event Name: </label>
           <input
             type="text"
             placeholder="Event Name"
             onChange={(event) => this.handleChange(event, "event_name")}
+            value = {this.state.event.event_name}
           />
           <br />
           <label>Event Website: </label>
@@ -69,6 +92,7 @@ class FormPg2 extends Component {
             type="text"
             placeholder="Event Website"
             onChange={(event) => this.handleChange(event, "event_website")}
+            value = {this.state.event.event_website}
           />
           <br />
           <label>Date: </label>
@@ -76,6 +100,7 @@ class FormPg2 extends Component {
             type="date"
             placeholder="Date"
             onChange={(event) => this.handleChange(event, "event_date")}
+            value = {this.state.event.event_date}
           />
           <br></br>
           <label>Event Time: </label>
@@ -83,6 +108,7 @@ class FormPg2 extends Component {
             type="text"
             placeholder="Event Time"
             onChange={(event) => this.handleChange(event, "event_time")}
+            value = {this.state.event.event_time}
           />
           <br></br>
           <label>Event Location Name: </label>
@@ -92,6 +118,7 @@ class FormPg2 extends Component {
             onChange={(event) =>
               this.handleChange(event, "event_location_name")
             }
+            value = {this.state.event.event_location_name}
           />
           <div className="secondaryLabel">
             <label>Event Location Address</label>
@@ -103,6 +130,7 @@ class FormPg2 extends Component {
             onChange={(event) =>
               this.handleChange(event, "event_location_street")
             }
+            value = {this.state.event.event_location_street}
           />
           <br></br>
           <label>City:</label>
@@ -112,6 +140,7 @@ class FormPg2 extends Component {
             onChange={(event) =>
               this.handleChange(event, "event_location_city")
             }
+            value = {this.state.event.event_location_city}
           />
           <br></br>
           <label>Event State:</label>
@@ -121,6 +150,7 @@ class FormPg2 extends Component {
             onChange={(event) =>
               this.handleChange(event, "event_location_state")
             }
+            value = {this.state.event.event_location_state}
           />
           <br></br>
           <label>Zip:</label>
@@ -128,6 +158,7 @@ class FormPg2 extends Component {
             type="number"
             placeholder="Zip"
             onChange={(event) => this.handleChange(event, "event_location_zip")}
+            value = {this.state.event.event_location_zip}
           />
           <br></br>
           <select
@@ -154,8 +185,9 @@ class FormPg2 extends Component {
               <label>Other Event Type:</label>
               <input
                 type="text"
-                placeholder="o\Other"
-                onChange={(event) => this.handleChange(event, "other")}
+                placeholder="Other"
+                onChange={(event) => this.handleChange(event, "Other")}
+                value = {this.state.event.event_type}
               />
             </>
           ) : (
@@ -173,9 +205,11 @@ class FormPg2 extends Component {
             rows="10"
             cols="50"
             onChange={(event) => this.handleChange(event, "event_description")}
+            value = {this.state.event.event_description}
           />
           <select
             onChange={(event) => this.handleChange(event, "event_first_time")}
+            value = {this.state.event.event_first_time}
           >
             <option id="Is this a First Time event?">
               Is this a First Time event?
@@ -189,6 +223,7 @@ class FormPg2 extends Component {
           </button>
           <input className="submit" type="submit" value="Next" />
         </form>
+      </div>
       </div>
     );
   }

@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 
 class FormPg3 extends Component {
   state = {
+    fund: {
     fund_description: "",
     contribution_amount: "",
     contribution_submission: "",
@@ -11,7 +12,21 @@ class FormPg3 extends Component {
     other_comment: "",
     image: "",
     user_id: this.props.reduxState.user.id
-  };
+  }
+};
+
+  populateInputs=()=>{
+    this.setState({
+      fund: {
+        fund_description: "Shopping Night",
+        contribution_amount: "10000",
+        contribution_submission: "Check",
+        promotion: "Social Media",
+        other_comment: "n/a",
+        image: "",
+      }
+    })
+  }
 
   handleChange = (event, typeOf) => {
     this.setState({
@@ -27,7 +42,7 @@ class FormPg3 extends Component {
 
 addInformation = (event) => {
   console.log('in submitForm on ReviewForm', this.props.reduxState.form);
-  this.props.dispatch({ type: "POST_FORM3", payload: this.state })
+  this.props.dispatch({ type: "POST_FORM3", payload: this.state.fund })
     const formIntake = {
       form: this.props.reduxState.form,
       form2: this.props.reduxState.form2,
@@ -46,7 +61,7 @@ addInformation = (event) => {
         <h1>Event Submission Form</h1>
         <br />
         <h3>Share your promotional and donation plans</h3>
-
+        <div className="invisibleClick" onClick={this.populateInputs}>
         <form onSubmit={this.addInformation}>
           <label htmlFor="funds collection description">
             Please describe how you will be collecting funds for Hope Chest:
@@ -58,6 +73,7 @@ addInformation = (event) => {
             cols="50"
             placeholder="Please describe how you will be collecting funds for Hope Chest"
             onChange={(event) => this.handleChange(event, "fund_description")}
+            value = {this.state.fund.fund_description}
           />
           <br />
 
@@ -70,6 +86,7 @@ addInformation = (event) => {
             step="0.01"
             min=".01"
             onChange={(event) => this.handleChange(event, "contribution_amount")}
+            value = {this.state.fund.contribution_amount}
           />
           <br />
 
@@ -80,6 +97,7 @@ addInformation = (event) => {
           <select
             type="dropdown"
             onChange={(event) => this.handleChange(event, "contribution_submission")}
+            value = {this.state.fund.contribution_submission}
           >
             <option value="0">Please select method</option>
             <option value="Electronic payment">Electronic payment</option>
@@ -98,6 +116,7 @@ addInformation = (event) => {
             cols="50"
             placeholder="Please describe how you will be promoting the event"
             onChange={(event) => this.handleChange(event, "promotion")}
+            value = {this.state.fund.promotion}
           />
           <br />
 
@@ -107,15 +126,18 @@ addInformation = (event) => {
             type="text"
             placeholder="Other Comments/Questions"
             onChange={(event) => this.handleChange(event, "other_comment")}
+            value = {this.state.fund.other_comment}
           />
           <br />
 
           <label htmlFor="image">Upload your logo:</label>
           <br />
           <input
-            type="image"
+            type="file"
+            accept="image/*"
             alt="logo"
             onChange={(event) => this.handleChange(event, "image")}
+            value = {this.state.fund.image}
           />
           <br />
           <button className="back" onClick={this.handleBackClick}>
@@ -123,6 +145,7 @@ addInformation = (event) => {
           </button>
           <input className="submit" type="submit" />
         </form>
+      </div>
       </div>
     );
   }
