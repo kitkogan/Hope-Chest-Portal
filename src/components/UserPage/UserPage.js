@@ -31,14 +31,16 @@ class UserPage extends Component {
     });
   };
 
+  goAdmin= () =>{
+    this.props.history.push("/admin");
+  }
+
   render() {
     return (
       <div className="UserPage">
         <h1>User Home Page</h1>
         <h2>
-          Welcome, {this.props.reduxState.user.first_name}! Your ID is:
-          {this.props.reduxState.user.id}
-        </h2>
+          Welcome, {this.props.reduxState.user.first_name}!</h2>
         <br />
         <button className="start" onClick={this.goToFormPage}>
           Start a Fundraiser
@@ -77,6 +79,7 @@ class UserPage extends Component {
             </ul>
         
         </div>
+        <button className="adminButton" onClick={() => this.goAdmin()}>Admin</button>
       </div>
     );
   }

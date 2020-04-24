@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+
 // import {Button, Modal} from "react-bootstrap";
 // import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -17,6 +18,8 @@ class Calendar extends Component {
     return (
       <div className="Calendar">
        <h1>Events and Calendar</h1>
+       <img className="hclogo" src="./calendar.png" alt="Logo"/>
+
 {/* //        <Modal show={this.state.showHide}>
 //           <Modal.Header closeButton onClick={() => this.handleModalShowHide()}>
 //           <Modal.Title>Modal heading</Modal.Title>
