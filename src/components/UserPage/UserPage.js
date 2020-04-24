@@ -43,11 +43,11 @@ class UserPage extends Component {
         <button className="start" onClick={this.goToFormPage}>
           Start a Fundraiser
         </button>
-        <br />
+        {/* <br />
         <br />
         <button className="events" onClick={this.goToFormPage}>
           My Previous Events
-        </button>
+        </button> */}
         <br />
         <br />
         <br />
