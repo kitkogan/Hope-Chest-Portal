@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import axios from 'axios'
 
 class FormPg3 extends Component {
   state = {
@@ -10,12 +11,12 @@ class FormPg3 extends Component {
     contribution_submission: "",
     promotion: "",
     other_comment: "",
-    image: "",
+    image: {},
     user_id: this.props.reduxState.user.id
   }
 };
 
-  populateInputs=()=>{
+  populateInputs=(event)=>{
     this.setState({
       fund: {
         fund_description: "Shopping Night",
@@ -23,7 +24,7 @@ class FormPg3 extends Component {
         contribution_submission: "Check",
         promotion: "Social Media",
         other_comment: "n/a",
-        image: "",
+        image: {},
       }
     })
   }
@@ -53,6 +54,28 @@ addInformation = (event) => {
       payload: formIntake
     });
   this.props.history.push("/review");
+}
+
+imageHandler=(event)=>{
+
+  console.log('image file', event.target.files[0])
+  this.setState({
+    fund:{
+      image: event.target.files[0],
+      loaded: 0,
+    }
+  })
+}
+
+onClickHandler = () => {
+  const data = new FormData()
+  data.append('file', this.state.image)
+  axios.post("form", data, { 
+     // receive two    parameter endpoint url ,form data
+ })
+.then(res => { // then print response status
+   console.log(res.statusText)
+})
 }
 
   render() {
@@ -136,8 +159,8 @@ addInformation = (event) => {
             type="file"
             accept="image/*"
             alt="logo"
-            onChange={(event) => this.handleChange(event, "image")}
-            value = {this.state.fund.image}
+            onChange={(event) => this.imageHandler(event, 'image')}
+            // value = {this.state.fund.image}
           />
           <br />
           <button className="back" onClick={this.handleBackClick}>
