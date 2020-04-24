@@ -69,10 +69,10 @@ class ReviewForm extends Component {
   updateForm = () => {
     console.log("update form", this.state);
     // create new form object and dispatch to payload to saga
-    // this.props.dispatch({
-    //   type: "UPDATE_FORM",
-    //   payload: this.state
-    // });
+    this.props.dispatch({
+      type: "UPDATE_FORM",
+      payload: this.state,
+      id: this.props.reduxState.review[0].id});
     this.setState({
       isEditable: false,
     });
@@ -99,8 +99,7 @@ class ReviewForm extends Component {
         <h3> Review Your Form </h3>
         {this.state.isEditable ? (
           <>
-            {this.props.reduxState.review.map((intake) => (
-              <center>
+            {this.props.reduxState.review.map(intake => intake[0].map(intake => (<center>
                 <p>
                   Contact First Name:
                   <input
@@ -402,10 +401,11 @@ class ReviewForm extends Component {
                     onChange={(event) => this.handleChange(event, "image")}
                   />
                 </p>
-              </center>
-            ))}
+              </center>))
+              
+            )}
           </>
-        ) : (
+  ) : (
           <>
             {this.props.reduxState.review.map((intake) => (
               <center>

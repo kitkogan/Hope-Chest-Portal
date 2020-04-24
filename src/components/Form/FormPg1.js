@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import "./Form.css"
+import "./Form.css";
 
- 
 class FormPg1 extends Component {
   state = {
     contact_first_name: "",
@@ -11,7 +10,7 @@ class FormPg1 extends Component {
     contact_email: "",
     company_name: "",
     company_website: "",
-    company_street: "",
+    company_street_address: "",
     company_city: "",
     company_state: "",
     company_zip: "",
@@ -20,7 +19,7 @@ class FormPg1 extends Component {
     event_contact_last_name: "",
     event_contact_phone: "",
     event_contact_email: "",
-    user_id: this.props.reduxState.user.id
+    user_id: this.props.reduxState.user.id,
   }; //state holds the values of each input field from the form
   handleChange = (event, typeOf) => {
     // console.log(event.target.value, typeOf);
@@ -33,9 +32,14 @@ class FormPg1 extends Component {
     event.preventDefault();
     this.props.dispatch({
       type: "POST_FORM1",
-      payload: this.state
-    })        
-    console.log("in gotoformpage2", this.state, "userId", this.props.reduxState.user.id);
+      payload: this.state,
+    });
+    console.log(
+      "in gotoformpage2",
+      this.state,
+      "userId",
+      this.props.reduxState.user.id
+    );
     this.props.history.push("/form-page-2");
   }; //when the user clicks next, this function will run and take the user to the second page of the form
   render() {
@@ -106,7 +110,7 @@ class FormPg1 extends Component {
             type="text"
             placeholder="Street Address"
             onChange={(event) =>
-              this.handleChange(event, "company_street")
+              this.handleChange(event, "company_street_address")
             }
           />
           <br />
