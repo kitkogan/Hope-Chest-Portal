@@ -43,7 +43,9 @@ class UserPage extends Component {
         <button className="start" onClick={this.goToFormPage}>
           Start a Fundraiser
         </button>
-        <button className="start" onClick={this.goToFormPage}>
+        <br />
+        <br />
+        <button className="events" onClick={this.goToFormPage}>
           My Previous Events
         </button>
         <br />
@@ -59,8 +61,14 @@ class UserPage extends Component {
                     {/* // className="childNameButton"
                     // data-id={events.id}
                     // data-name={events.event_name}> */}
-                    {events.event_name}, {events.event_date},{events.event_time}
-                    ,{events.event_description}
+                    <img src={events.image} alt="Event Image" />
+                    <br />
+                    <>{events.event_name}</>
+                    <br />
+                    <>{events.event_date}</>
+                    <>{events.event_time}</>
+                    <br />
+                    <>{events.event_description} </>
                   </p>
                 );
               })}
