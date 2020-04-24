@@ -63,6 +63,7 @@ class FormPg1 extends Component {
     console.log("in gotoformpage2", this.state, "userId", this.props.reduxState.user.id);
     this.props.history.push("/form-page-2");
   }; //when the user clicks next, this function will run and take the user to the second page of the form
+  
   render() {
     return (
       <div className="FormPages">
