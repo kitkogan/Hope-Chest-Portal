@@ -65,7 +65,7 @@ class UserPage extends Component {
                     // data-id={events.id}
                     // data-name={events.event_name}> */}
                     
-                      <img src={events.image} alt="Event Image" />
+                      <img src={events.image} alt="Event" />
                       <br />
                       <>{events.event_name}</>
                       <br />

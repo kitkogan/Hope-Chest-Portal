@@ -23,15 +23,17 @@ function* submitForm(action) {
 }
 }
 
-// function* updateForm(action) {
-//   try {
-//   console.log('in updateFORM', action.payload);
-//   // yield axios.post("/form/fundForm", action.payload);
-// } catch (error) {
-//   console.log("Error updating event:", error);
-//   yield put({ type: "ADDING_EVENT_FAILED" });
-// }
-// }
+function* updateForm(action) {
+  try {
+  console.log('in updateFORM with', action.payload, 'id', action.id);
+    // yield axios.put(`/form/form/${action.id}`, action.payload);
+    // console.log('back from update server');
+    
+} catch (error) {
+  console.log("Error updating event:", error);
+  yield put({ type: "ADDING_EVENT_FAILED" });
+}
+}
 // function* deleteEvents(action) {
   
 // }
@@ -40,8 +42,8 @@ function* submitForm(action) {
 function* formSaga() {
   yield takeEvery('GET_FORM', getEvent);
   yield takeEvery('SUBMIT_FORM', submitForm);
-  // yield takeEvery('UPDATE_FORM', updateForm);
-  // yield takeEvery('', deleteEvents);
+  yield takeEvery('UPDATE_FORM', updateForm);
+  // yield takeEvery('', deleteEvents);u
 }
 
 export default formSaga;

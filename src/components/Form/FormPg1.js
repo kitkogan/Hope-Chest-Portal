@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import "./Form.css"
+import "./Form.css";
 
- 
 class FormPg1 extends Component {
   state = {
     contact: {
@@ -12,7 +11,7 @@ class FormPg1 extends Component {
     contact_email: "",
     company_name: "",
     company_website: "",
-    company_street: "",
+    company_street_address: "",
     company_city: "",
     company_state: "",
     company_zip: "",
@@ -140,7 +139,7 @@ class FormPg1 extends Component {
             type="text"
             placeholder="Street Address"
             onChange={(event) =>
-              this.handleChange(event, "company_street")
+              this.handleChange(event, "company_street_address")
             }
             value = {this.state.contact.company_street}
           />

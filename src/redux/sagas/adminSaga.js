@@ -5,9 +5,9 @@ import axios from 'axios';
 function* admin (action) {
     console.log("ADMIN saga coming from admin with:", action);
   try {
-    // const response = yield axios.get(`/form/${action.id}`);
-    // console.log("in saga with", response.data);
-    // yield put({ type: "SET_EVENT", payload: response.data });
+    const response = yield axios.get(`/form/${action.id}`);
+    console.log("in saga with", response.data);
+    yield put({ type: "SET_EVENT", payload: response.data });
   } catch (error) {
     console.log(error);
   }
@@ -19,4 +19,4 @@ function* adminSaga() {
   
 }
 
-export default admin;
+export default adminSaga;

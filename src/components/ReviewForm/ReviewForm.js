@@ -38,7 +38,7 @@ class ReviewForm extends Component {
     contribution_submission: "",
     promotion: "",
     other_comment: "",
-    image: "",
+    image: ""
   };
   componentDidMount = () => {
     this.getForm();
@@ -70,13 +70,14 @@ class ReviewForm extends Component {
   updateForm = () => {
     console.log("update form", this.state);
     // create new form object and dispatch to payload to saga
-    // this.props.dispatch({
-    //   type: "UPDATE_FORM",
-    //   payload: this.state
-    // });
+    this.props.dispatch({
+      type: "UPDATE_FORM",
+      payload: this.state,
+      id: this.props.reduxState.review[0].id
+    });
     this.setState({
       isEditable: false,
-    });
+    }); 
   };
 
   edit = () => {
@@ -102,23 +103,13 @@ class ReviewForm extends Component {
   //   }
   // };
 
-  updateForm = () => {
-    console.log("update form", this.state);
-    // create new form object and dispatch to payload to saga
-    // this.props.dispatch({
-    //   type: "UPDATE_FORM",
-    //   payload: this.state
-    // });
-    this.setState({
-      isEditable: false,
-    });
-  };
-
   edit = () => {
     console.log("editing");
     this.setState({
       isEditable: true,
     });
+    console.log(this.props.reduxState.review.length -1);
+    
   };
 
   cancel = () => {
@@ -140,8 +131,7 @@ class ReviewForm extends Component {
         <h3> Review Your Form </h3>
         {this.state.isEditable ? (
           <>
-            {this.props.reduxState.review.map((intake) => (
-              <center>
+            {this.props.reduxState.review.map(intake => (<center>
                 <p>
                   Contact First Name:
                   <input
@@ -443,10 +433,11 @@ class ReviewForm extends Component {
                     onChange={(event) => this.handleChange(event, "image")}
                   />
                 </p>
-              </center>
-            ))}
+              </center>)
+              
+            )}
           </>
-        ) : (
+  ) : (
           <>
             {this.props.reduxState.review.map((intake) => (
               <center>
