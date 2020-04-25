@@ -1,22 +1,48 @@
-import { put, takeLatest } from 'redux-saga/effects';
+import { put, takeEvery} from 'redux-saga/effects';
 import axios from 'axios';
 
 // worker Saga: will be fired on "LOGIN" actions
 function* admin (action) {
-    console.log("ADMIN saga coming from admin with:", action);
+    console.log("ADMIN saga coming from admin with:", action.payload);
   try {
-    const response = yield axios.get(`/form/${action.id}`);
+    const response = yield axios.get("/admin", action.payload);
     console.log("in saga with", response.data);
-    yield put({ type: "SET_EVENT", payload: response.data });
+    yield put({ type: "SET_ADMIN", payload: response.data });
   } catch (error) {
     console.log(error);
   }
 }
+
+//Get selected event form details to display on Admin Review page 
+function* getAdminEvent(action) { 
+  console.log("saga coming from formSaga with:", action);
+  try {
+    const response = yield axios.get(`/admin/get/${action.id}`);
+    console.log("in saga GETADMINEVENT with", response.data);
+    yield put({ type: 'SET_DETAILS', payload: response.data });
+  } catch (error) {
+    console.log("getAdminEvent Error", error);
+  }
+}
+
+
+//Edit event form details on Admin Review page
+function* updateAdminForm(action) {
+  try {
+  console.log('in updateFORM from ADMIN with', action.payload, 'id', action.id);
+    yield axios.put(`/admin/${action.id}`, action.payload);
+    console.log('update ADMIN FORM from admin saga');
+} catch (error) {
+  console.log("Error updating event:", error);
+  yield put({ type: "ADDING_EVENT_FAILED" });
+}
+}
  
 
 function* adminSaga() {
-  yield takeLatest('GET_ADMIN', admin);
-  
+  yield takeEvery('GET_ADMIN', admin);
+  yield takeEvery("UPDATE_ADMIN_FORM", updateAdminForm);
+  yield takeEvery('GET_ADMIN_FORM', getAdminEvent);
 }
 
 export default adminSaga;

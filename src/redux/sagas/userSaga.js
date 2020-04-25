@@ -24,6 +24,7 @@ function* fetchUser() {
   }
 }
 
+//Display events by user on user home page
 function* getUserEvents(action) {
 
   console.log("saga coming from userSaga with:", action);

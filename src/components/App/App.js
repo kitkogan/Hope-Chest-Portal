@@ -26,6 +26,7 @@ import FormPg3 from '../Form/FormPg3';
 import ReviewForm from '../ReviewForm/ReviewForm';
 import Calendar from '../Calendar/Calendar';
 import Admin from '../Admin/Admin';
+import AdminDetails from '../Admin/AdminDetails';
 
 import './App.css';
 
@@ -98,6 +99,12 @@ class App extends Component {
               exact
               path="/admin"
               component={Admin}
+            />
+              />
+             <ProtectedRoute
+              exact
+              path="/admin-details"
+              component={AdminDetails}
             />
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
