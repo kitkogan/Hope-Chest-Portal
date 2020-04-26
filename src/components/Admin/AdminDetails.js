@@ -136,10 +136,12 @@ class AdminDetails extends Component {
         <h3> Review Your Form </h3>
         {this.state.isEditable ? (
           <>
-            {this.props.reduxState.adminDetails.map(intake => (<center>
+            {this.props.reduxState.adminDetails.map((intake) => (
+              <center>
                 <p>
                   Contact First Name:
                   <input
+                    defaultValue={intake.contact_first_name}
                     placeholder={intake.contact_first_name}
                     onChange={(event) =>
                       this.handleChange(event, "contact_first_name")
@@ -147,8 +149,9 @@ class AdminDetails extends Component {
                   />
                 </p>
                 <p>
-                  Contact First Name:
+                  Contact Last Name:
                   <input
+                    defaultValue={intake.contact_last_name}
                     placeholder={intake.contact_last_name}
                     onChange={(event) =>
                       this.handleChange(event, "contact_last_name")
@@ -159,6 +162,7 @@ class AdminDetails extends Component {
                   Contact Phone:
                   <input
                     type="tel"
+                    defaultValue={intake.contact_phone}
                     placeholder={intake.contact_phone}
                     onChange={(event) =>
                       this.handleChange(event, "contact_phone")
@@ -169,6 +173,7 @@ class AdminDetails extends Component {
                   Contact Email:
                   <input
                     type="email"
+                    defaultValue={intake.contact_email}
                     placeholder={intake.contact_email}
                     onChange={(event) =>
                       this.handleChange(event, "contact_email")
@@ -178,6 +183,7 @@ class AdminDetails extends Component {
                 <p>
                   Company Name:
                   <input
+                    defaultValue={intake.company_name}
                     placeholder={intake.company_name}
                     onChange={(event) =>
                       this.handleChange(event, "company_name")
@@ -187,6 +193,7 @@ class AdminDetails extends Component {
                 <p>
                   Company Website:
                   <input
+                    defaultValue={intake.contact_website}
                     placeholder={intake.company_website}
                     onChange={(event) =>
                       this.handleChange(event, "company_website")
@@ -196,6 +203,7 @@ class AdminDetails extends Component {
                 <p>
                   Company Street:
                   <input
+                    defaultValue={intake.company_street}
                     placeholder={intake.company_street}
                     onChange={(event) =>
                       this.handleChange(event, "company_street")
@@ -205,6 +213,7 @@ class AdminDetails extends Component {
                 <p>
                   Company City:
                   <input
+                    defaultValue={intake.company_city}
                     placeholder={intake.company_city}
                     onChange={(event) =>
                       this.handleChange(event, "company_city")
@@ -214,6 +223,7 @@ class AdminDetails extends Component {
                 <p>
                   Company State:
                   <input
+                    defaultValue={intake.company_state}
                     placeholder={intake.company_state}
                     onChange={(event) =>
                       this.handleChange(event, "company_state")
@@ -224,6 +234,7 @@ class AdminDetails extends Component {
                   Company Zip Code:
                   <input
                     type="number"
+                    defaultValue={intake.company_zip}
                     placeholder={intake.company_zip}
                     onChange={(event) =>
                       this.handleChange(event, "company_zip")
@@ -233,6 +244,7 @@ class AdminDetails extends Component {
                 <p>
                   Event Name:
                   <input
+                    defaultValue={intake.event_name}
                     placeholder={intake.event_name}
                     onChange={(event) => this.handleChange(event, "event_name")}
                   />
@@ -241,6 +253,7 @@ class AdminDetails extends Component {
                   Event Website:
                   <input
                     type="url"
+                    defaultValue={intake.event_website}
                     placeholder={intake.event_website}
                     onChange={(event) =>
                       this.handleChange(event, "event_website")
@@ -251,6 +264,7 @@ class AdminDetails extends Component {
                   Event Date:
                   <input
                     type="date"
+                    defaultValue={intake.event_date}
                     placeholder={intake.event_date}
                     onChange={(event) => this.handleChange(event, "event_date")}
                   />
@@ -258,6 +272,7 @@ class AdminDetails extends Component {
                 <p>
                   Event Time:
                   <input
+                    defaultValue={intake.event_time}
                     placeholder={intake.event_time}
                     onChange={(event) => this.handleChange(event, "event_time")}
                   />
@@ -265,6 +280,7 @@ class AdminDetails extends Component {
                 <p>
                   Event Location Name:
                   <input
+                    defaultValue={intake.event_location_name}
                     placeholder={intake.event_location_name}
                     onChange={(event) =>
                       this.handleChange(event, "event_location_name")
@@ -274,6 +290,7 @@ class AdminDetails extends Component {
                 <p>
                   Event Location Street:
                   <input
+                    defaultValue={intake.event_location_street}
                     placeholder={intake.event_location_street}
                     onChange={(event) =>
                       this.handleChange(event, "event_location_street")
@@ -283,6 +300,7 @@ class AdminDetails extends Component {
                 <p>
                   Event Location City:
                   <input
+                    defaultValue={intake.event_location_city}
                     placeholder={intake.event_location_city}
                     onChange={(event) =>
                       this.handleChange(event, "event_location_city")
@@ -292,6 +310,7 @@ class AdminDetails extends Component {
                 <p>
                   Event Location State:
                   <input
+                    defaultValue={intake.event_location_state}
                     placeholder={intake.event_location_state}
                     onChange={(event) =>
                       this.handleChange(event, "event_location_state")
@@ -302,6 +321,7 @@ class AdminDetails extends Component {
                   Event Location Zip Code:
                   <input
                     type="number"
+                    defaultValue={intake.event_location_zip}
                     placeholder={intake.event_location_zip}
                     onChange={(event) =>
                       this.handleChange(event, "event_location_zip")
@@ -438,11 +458,10 @@ class AdminDetails extends Component {
                     onChange={(event) => this.handleChange(event, "image")}
                   />
                 </p>
-              </center>)
-              
-            )}
+              </center>
+            ))}
           </>
-  ) : (
+        ) : (
           <>
             {this.props.reduxState.adminDetails.map((intake) => (
               <center>
@@ -490,8 +509,12 @@ class AdminDetails extends Component {
             </>
           ) : (
             <>
-              <button className="back" onClick={() => this.edit()}>Edit</button>
-              <button className="submit" onClick={() => this.goToAdmin()}>Save</button>
+              <button className="back" onClick={() => this.edit()}>
+                Edit
+              </button>
+              <button className="submit" onClick={() => this.goToAdmin()}>
+                Save
+              </button>
             </>
           )}
         </center>
