@@ -75,7 +75,44 @@ class ReviewForm extends Component {
     console.log("editing");
     this.setState({
       isEditable: true,
+      contact_first_name: this.props.reduxState.review[0].contact_first_name,
+      contact_last_name: this.props.reduxState.review[0].contact_last_name,
+      contact_phone: "",
+      contact_email: this.props.reduxState.review[0].contact_email,
+      company_name: "",
+      company_website: "",
+      company_street: "",
+      company_city: "",
+      company_state: "",
+      company_zip: "",
+      show_contact_option: "",
+      event_contact_first_name: "",
+      event_contact_last_name: "",
+      event_contact_phone: "",
+      event_contact_email: "",
+      event_name: "",
+      event_website: "",
+      event_date: "",
+      event_time: "",
+      event_location_name: "",
+      event_location_street: "",
+      event_location_city: "",
+      event_location_state: "",
+      event_location_zip: "",
+      event_type: "",
+      event_description: "",
+      event_first_time: false,
+      fund_description: "",
+      contribution_amount: "",
+      contribution_submission: "",
+      promotion: "",
+      other_comment: "",
+      image: "",
     });
+    console.log(
+      "this is state!!!!!!!!!!!",
+      this.props.reduxState.review[0].contact_email
+    );
   };
 
   cancel = () => {
