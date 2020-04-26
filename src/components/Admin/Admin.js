@@ -34,12 +34,12 @@ class Admin extends Component {
     this.getAdminForm(); 
   };
 
-  details = () => {
+  details = (id) => {
     this.props.history.push("/admin-details");
-    // this.props.dispatch({
-    //     type: 'FETCH_DETAILS',
-    //     payload: id
-    // })
+    this.props.dispatch({
+      type: "GET_ADMIN_FORM",
+      formId: id,
+    });
   };
 
   render() {
@@ -105,7 +105,7 @@ class Admin extends Component {
                               </button>
                             </td>
                             <td className="tdEvent">
-                              <button onClick={() => this.details()}>
+                              <button onClick={() => this.details(events.id)}>
                                 Details
                               </button>
                             </td>

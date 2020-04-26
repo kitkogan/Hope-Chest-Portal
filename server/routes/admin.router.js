@@ -22,7 +22,7 @@ router.get("/", (req, res) => {
 router.get("/get/:id", (req, res) => {
   console.log("in server/:id GET");
   const queryText = `select * from "form"
-  where "user_id" = ${req.params.id};`;
+  where "id" = ${req.params.id};`;
   pool
   .query(queryText)
   .then((result) => {

@@ -17,7 +17,7 @@ function* admin (action) {
 function* getAdminEvent(action) { 
   console.log("saga coming from formSaga with:", action);
   try {
-    const response = yield axios.get(`/admin/get/${action.id}`);
+    const response = yield axios.get(`/admin/get/${action.formId}`);
     console.log("in saga GETADMINEVENT with", response.data);
     yield put({ type: 'SET_DETAILS', payload: response.data });
   } catch (error) {
