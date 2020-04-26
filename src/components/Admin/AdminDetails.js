@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import "../Form/Form.css";
+import '../Form/Form.css';
 // import UpdateForm from "./UpdateForm";
 
-class ReviewForm extends Component {
+class AdminDetails extends Component {
   state = {
     isEditable: false,
     contact_first_name: "",
@@ -38,44 +38,83 @@ class ReviewForm extends Component {
     contribution_submission: "",
     promotion: "",
     other_comment: "",
-    image: "",
+    image: ""
   };
+
   componentDidMount = () => {
     this.getForm();
   };
 
   getForm = () => {
-    console.log("in getForm on REVIEW FORM component");
+    console.log("in getForm on REVIEW FORM component", this.props.reduxState.user.id);
     this.props.dispatch({
-      type: "GET_FORM",
-      id: this.props.reduxState.user.id,
+      type: "GET_ADMIN_FORM",
+      id: this.props.reduxState.user.id
     });
   };
 
   handleChange = (event, typeOf) => {
-    this.setState({
-      [typeOf]: event.target.value,
-    });
+    console.log(event.target.value);
+    console.log(event.target.placeholder);
+
+    if (event.target.value === "") {
+      this.setState({
+        [typeOf]: event.target.placeholder,
+      });
+    } else {
+      this.setState({
+        [typeOf]: event.target.value,
+      });
+    }
   };
 
   updateForm = () => {
     console.log("update form", this.state);
+    console.log("ADMIN ID IS ", this.props.reduxState.user.id);
+
     // create new form object and dispatch to payload to saga
     this.props.dispatch({
-      type: "UPDATE_FORM",
+      type: "UPDATE_ADMIN_FORM",
       payload: this.state,
-      id: this.props.reduxState.review[0].id,
+      id: this.props.reduxState.user.id
     });
     this.setState({
       isEditable: false,
     });
+    this.getForm()
   };
+  
+
+  // edit = () => {
+  //   console.log("editing");
+  //   this.setState({
+  //     isEditable: true,
+  //   });
+  // };
+
+
+  // handleChange = (event, typeOf) => {
+  //   console.log(event.target.value);
+  //   console.log(event.target.placeholder);
+
+  //   if (event.target.value === "") {
+  //     this.setState({
+  //       [typeOf]: event.target.placeholder,
+  //     });
+  //   } else {
+  //     this.setState({
+  //       [typeOf]: event.target.value,
+  //     });
+  //   }
+  // };
 
   edit = () => {
     console.log("editing");
     this.setState({
       isEditable: true,
     });
+    console.log(this.props.reduxState.review.length -1);
+    
   };
 
   cancel = () => {
@@ -84,24 +123,25 @@ class ReviewForm extends Component {
       isEditable: false,
     });
   };
-
-  goHome = () => {
+  
+  goToAdmin = ()=>{
     alert("Your form has been submitted!");
-    this.props.history.push("/home");
-  };
-
+    this.props.history.push("/admin");
+  } 
+  
   render() {
     return (
-      <div className="ReviewForm">
+      <div className="AdminDetails">
         <h1>Event Submission Review</h1>
         <h3> Review Your Form </h3>
         {this.state.isEditable ? (
           <>
-            {this.props.reduxState.review.map((intake) => (
+            {this.props.reduxState.adminDetails.map((intake) => (
               <center>
                 <p>
                   Contact First Name:
                   <input
+                    defaultValue={intake.contact_first_name}
                     placeholder={intake.contact_first_name}
                     onChange={(event) =>
                       this.handleChange(event, "contact_first_name")
@@ -109,8 +149,9 @@ class ReviewForm extends Component {
                   />
                 </p>
                 <p>
-                  Contact First Name:
+                  Contact Last Name:
                   <input
+                    defaultValue={intake.contact_last_name}
                     placeholder={intake.contact_last_name}
                     onChange={(event) =>
                       this.handleChange(event, "contact_last_name")
@@ -121,6 +162,7 @@ class ReviewForm extends Component {
                   Contact Phone:
                   <input
                     type="tel"
+                    defaultValue={intake.contact_phone}
                     placeholder={intake.contact_phone}
                     onChange={(event) =>
                       this.handleChange(event, "contact_phone")
@@ -131,6 +173,7 @@ class ReviewForm extends Component {
                   Contact Email:
                   <input
                     type="email"
+                    defaultValue={intake.contact_email}
                     placeholder={intake.contact_email}
                     onChange={(event) =>
                       this.handleChange(event, "contact_email")
@@ -140,6 +183,7 @@ class ReviewForm extends Component {
                 <p>
                   Company Name:
                   <input
+                    defaultValue={intake.company_name}
                     placeholder={intake.company_name}
                     onChange={(event) =>
                       this.handleChange(event, "company_name")
@@ -149,6 +193,7 @@ class ReviewForm extends Component {
                 <p>
                   Company Website:
                   <input
+                    defaultValue={intake.contact_website}
                     placeholder={intake.company_website}
                     onChange={(event) =>
                       this.handleChange(event, "company_website")
@@ -158,6 +203,7 @@ class ReviewForm extends Component {
                 <p>
                   Company Street:
                   <input
+                    defaultValue={intake.company_street}
                     placeholder={intake.company_street}
                     onChange={(event) =>
                       this.handleChange(event, "company_street")
@@ -167,6 +213,7 @@ class ReviewForm extends Component {
                 <p>
                   Company City:
                   <input
+                    defaultValue={intake.company_city}
                     placeholder={intake.company_city}
                     onChange={(event) =>
                       this.handleChange(event, "company_city")
@@ -176,6 +223,7 @@ class ReviewForm extends Component {
                 <p>
                   Company State:
                   <input
+                    defaultValue={intake.company_state}
                     placeholder={intake.company_state}
                     onChange={(event) =>
                       this.handleChange(event, "company_state")
@@ -186,6 +234,7 @@ class ReviewForm extends Component {
                   Company Zip Code:
                   <input
                     type="number"
+                    defaultValue={intake.company_zip}
                     placeholder={intake.company_zip}
                     onChange={(event) =>
                       this.handleChange(event, "company_zip")
@@ -195,6 +244,7 @@ class ReviewForm extends Component {
                 <p>
                   Event Name:
                   <input
+                    defaultValue={intake.event_name}
                     placeholder={intake.event_name}
                     onChange={(event) => this.handleChange(event, "event_name")}
                   />
@@ -203,6 +253,7 @@ class ReviewForm extends Component {
                   Event Website:
                   <input
                     type="url"
+                    defaultValue={intake.event_website}
                     placeholder={intake.event_website}
                     onChange={(event) =>
                       this.handleChange(event, "event_website")
@@ -213,6 +264,7 @@ class ReviewForm extends Component {
                   Event Date:
                   <input
                     type="date"
+                    defaultValue={intake.event_date}
                     placeholder={intake.event_date}
                     onChange={(event) => this.handleChange(event, "event_date")}
                   />
@@ -220,6 +272,7 @@ class ReviewForm extends Component {
                 <p>
                   Event Time:
                   <input
+                    defaultValue={intake.event_time}
                     placeholder={intake.event_time}
                     onChange={(event) => this.handleChange(event, "event_time")}
                   />
@@ -227,6 +280,7 @@ class ReviewForm extends Component {
                 <p>
                   Event Location Name:
                   <input
+                    defaultValue={intake.event_location_name}
                     placeholder={intake.event_location_name}
                     onChange={(event) =>
                       this.handleChange(event, "event_location_name")
@@ -236,6 +290,7 @@ class ReviewForm extends Component {
                 <p>
                   Event Location Street:
                   <input
+                    defaultValue={intake.event_location_street}
                     placeholder={intake.event_location_street}
                     onChange={(event) =>
                       this.handleChange(event, "event_location_street")
@@ -245,6 +300,7 @@ class ReviewForm extends Component {
                 <p>
                   Event Location City:
                   <input
+                    defaultValue={intake.event_location_city}
                     placeholder={intake.event_location_city}
                     onChange={(event) =>
                       this.handleChange(event, "event_location_city")
@@ -254,6 +310,7 @@ class ReviewForm extends Component {
                 <p>
                   Event Location State:
                   <input
+                    defaultValue={intake.event_location_state}
                     placeholder={intake.event_location_state}
                     onChange={(event) =>
                       this.handleChange(event, "event_location_state")
@@ -264,6 +321,7 @@ class ReviewForm extends Component {
                   Event Location Zip Code:
                   <input
                     type="number"
+                    defaultValue={intake.event_location_zip}
                     placeholder={intake.event_location_zip}
                     onChange={(event) =>
                       this.handleChange(event, "event_location_zip")
@@ -405,7 +463,7 @@ class ReviewForm extends Component {
           </>
         ) : (
           <>
-            {this.props.reduxState.review.map((intake) => (
+            {this.props.reduxState.adminDetails.map((intake) => (
               <center>
                 <p>Contact First Name: {intake.contact_first_name}</p>
                 <p>Contact First Name: {intake.contact_last_name}</p>
@@ -454,8 +512,8 @@ class ReviewForm extends Component {
               <button className="back" onClick={() => this.edit()}>
                 Edit
               </button>
-              <button className="submit" onClick={() => this.goHome()}>
-                Submit
+              <button className="submit" onClick={() => this.goToAdmin()}>
+                Save
               </button>
             </>
           )}
@@ -469,4 +527,4 @@ const mapStateToProps = (reduxState) => ({
   reduxState,
 });
 
-export default connect(mapStateToProps)(ReviewForm);
+export default connect(mapStateToProps)(AdminDetails);

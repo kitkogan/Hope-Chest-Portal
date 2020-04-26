@@ -21,7 +21,7 @@ export default function* rootSaga() {
     registrationSaga(),
     userSaga(),
     formSaga(),
-    adminSaga,
+    adminSaga(),
     // reviewSaga(),
     // calendarSaga(),
   ]);

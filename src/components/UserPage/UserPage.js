@@ -16,25 +16,70 @@ import './UserPage.css';
 //   </div>
 // );
 class UserPage extends Component {
-
+  componentDidMount = () => {
+    this.displayEvent();
+  };
   goToFormPage = (event) => {
     this.props.history.push("/form-page-1");
+  };
+
+  displayEvent = () => {
+    console.log("in displayEvent", this.props.reduxState.form.user_id);
+    this.props.dispatch({
+      type: "SET_EVENT1",
+      userId: this.props.reduxState.user.id,
+    });
+  };
+
+  goAdmin= () =>{
+    this.props.history.push("/admin");
   }
 
   render() {
     return (
       <div className="UserPage">
-       <h1>User Home Page</h1>
-       <h2>
-       Welcome, { this.props.reduxState.user.first_name }!
-       Your ID is: {this.props.reduxState.user.id}
-      </h2>
-       <br/>
-       <button className="start" onClick={this.goToFormPage}>Start a Fundraiser</button>
-       <br/><br/><br/>
-       <h1>My Upcoming Events</h1>
+        <h1>User Home Page</h1>
+        <h2>
+          Welcome, {this.props.reduxState.user.first_name}!</h2>
+        <br />
+        <button className="start" onClick={this.goToFormPage}>
+          Start a Fundraiser
+        </button>
+        {/* <br />
+        <br />
+        <button className="events" onClick={this.goToFormPage}>
+          My Previous Events
+        </button> */}
+        <br />
+        <br />
+        <br />
+        <h1>My Upcoming Events</h1>
+        <div className="userEvent">
        
-       
+            <ul>
+              {this.props.reduxState.userEvents.length > 0 &&
+                this.props.reduxState.userEvents.map((events) => {
+                  return (
+                    <li>
+                      {/* // className="childNameButton"
+                    // data-id={events.id}
+                    // data-name={events.event_name}> */}
+                    
+                      <img src={events.image} alt="Event" />
+                      <br />
+                      <>{events.event_name}</>
+                      <br />
+                      <>{events.event_date}</>
+                      <>{events.event_time}</>
+                      <br />
+                      <>{events.event_description} </>
+                    </li>
+                  );
+                })}
+            </ul>
+        
+        </div>
+        <button className="adminButton" onClick={() => this.goAdmin()}>Admin</button>
       </div>
     );
   }

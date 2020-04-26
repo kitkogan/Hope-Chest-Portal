@@ -24,8 +24,9 @@ import FormPg1 from '../Form/FormPg1';
 import FormPg2 from '../Form/FormPg2';
 import FormPg3 from '../Form/FormPg3';
 import ReviewForm from '../ReviewForm/ReviewForm';
-import Calendar from '../Calendar/Calendar';
+import EventCalendar from '../Calendar/EventCalendar';
 import Admin from '../Admin/Admin';
+import AdminDetails from '../Admin/AdminDetails';
 
 import './App.css';
 
@@ -41,7 +42,7 @@ class App extends Component {
           <Nav />
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
-            <Redirect exact from="/" to="/home" />
+            <Redirect exact from="/" to="/welcome" />
             {/* Visiting localhost:3000/about will show the about page.
             This is a route anyone can see, no login necessary */}
             <Route
@@ -92,12 +93,18 @@ class App extends Component {
              <ProtectedRoute
               exact
               path="/calendar"
-              component={Calendar}
+              component={EventCalendar}
             />
              <ProtectedRoute
               exact
               path="/admin"
               component={Admin}
+            />
+              />
+             <ProtectedRoute
+              exact
+              path="/admin-details"
+              component={AdminDetails}
             />
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
