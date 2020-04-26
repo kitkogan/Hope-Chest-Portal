@@ -2,7 +2,7 @@ const express = require("express");
 const pool = require("../modules/pool");
 const router = express.Router();
 
-//Get route for admin page
+//Get route for admin page to display all event submissions
 router.get("/", (req, res) => {
     console.log("in ADMIN /admin GET");
     const queryText = `select * from "form"`;
@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
       });
   });
 
-// Get route to grab events by user_id and display on Admin Review page
+// Get route to grab events by event id and display on Admin Review page
 router.get("/get/:id", (req, res) => {
   console.log("in server/:id GET");
   const queryText = `select * from "form"
@@ -34,6 +34,23 @@ router.get("/get/:id", (req, res) => {
   });
 
   });
+
+//PUT to update evetn approval status on the admin page
+router.put('/update/:id', (req,res) => {
+  console.log("in task PUT router with", req.body.approved);
+  const formId = req.params.id;
+  const approvalStatus = req.body.approved;
+  const queryText = `Update "form" SET "approved" = $2 WHERE id=$1;`;
+  pool
+    .query(queryText, [formId, approvalStatus])
+    .then(() => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log("ERROR UPDATING EVENT APPROVAL STATUS", error);
+      res.sendStatus(500);
+    });
+})
 
 // Edit route to allow admin edit of user event submissions on Admin Review page
   router.put("/:id", (req, res) => {
