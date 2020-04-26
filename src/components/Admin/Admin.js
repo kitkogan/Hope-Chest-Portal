@@ -31,7 +31,7 @@ class Admin extends Component {
       payload: formId,update,
       approved,
     });
-    this.getAdminForm();
+    this.getAdminForm(); 
   };
 
   details = () => {
