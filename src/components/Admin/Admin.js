@@ -1,14 +1,15 @@
-import React, {Component} from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import "./Admin.css";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 class Admin extends Component {
-
   state = {
     formId: "",
-    approvalStatus: false
-  }
+
+    approvalStatus: false,
+  };
+
   componentDidMount = () => {
     // this.props.dispatch({ type: "GET_ADMIN" });
     this.getAdminForm();
@@ -31,7 +32,7 @@ class Admin extends Component {
       update,
       approved,
     });
-    this.getAdminForm(); 
+    this.getAdminForm();
   };
 
   details = (id) => {
@@ -72,6 +73,7 @@ class Admin extends Component {
                   {this.props.reduxState.admin.map((events) => {
                     return (
                       <tr className="adminTable">
+
                         {/* <td key={events.id}> */}
                           <center>
                             <td className="tdEvent">
@@ -111,6 +113,8 @@ class Admin extends Component {
                             </td>
                           </center>
                         {/* </td> */}
+
+                     
                       </tr>
                     );
                   })}
@@ -124,9 +128,8 @@ class Admin extends Component {
   }
 }
 
-const mapStateToProps = reduxState => ({
-  reduxState
-  
+const mapStateToProps = (reduxState) => ({
+  reduxState,
 });
 
 export default connect(mapStateToProps)(Admin);

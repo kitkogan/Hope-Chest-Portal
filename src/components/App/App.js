@@ -24,7 +24,7 @@ import FormPg1 from '../Form/FormPg1';
 import FormPg2 from '../Form/FormPg2';
 import FormPg3 from '../Form/FormPg3';
 import ReviewForm from '../ReviewForm/ReviewForm';
-import Calendar from '../Calendar/Calendar';
+import EventCalendar from '../Calendar/EventCalendar';
 import Admin from '../Admin/Admin';
 import AdminDetails from '../Admin/AdminDetails';
 
@@ -93,7 +93,7 @@ class App extends Component {
              <ProtectedRoute
               exact
               path="/calendar"
-              component={Calendar}
+              component={EventCalendar}
             />
              <ProtectedRoute
               exact
