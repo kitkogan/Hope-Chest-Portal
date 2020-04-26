@@ -104,7 +104,7 @@ class Admin extends Component {
                           </button>
                         </td>
                         <td className="tdEvent">
-                          <button onClick={() => this.details()}>
+                          <button onClick={() => this.details(events.id)}>
                             Details
                           </button>
                         </td>
