@@ -83,30 +83,6 @@ class AdminDetails extends Component {
     });
     this.getForm()
   };
-  
-
-  // edit = () => {
-  //   console.log("editing");
-  //   this.setState({
-  //     isEditable: true,
-  //   });
-  // };
-
-
-  // handleChange = (event, typeOf) => {
-  //   console.log(event.target.value);
-  //   console.log(event.target.placeholder);
-
-  //   if (event.target.value === "") {
-  //     this.setState({
-  //       [typeOf]: event.target.placeholder,
-  //     });
-  //   } else {
-  //     this.setState({
-  //       [typeOf]: event.target.value,
-  //     });
-  //   }
-  // };
 
   edit = () => {
     console.log("editing");

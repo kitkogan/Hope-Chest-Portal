@@ -38,15 +38,7 @@ class EventCalendar extends Component {
       showCloseButton: true,
     }).then((result) => {
       if (result.value) {
-        Swal.fire({
-          title: "Edit?",
-          text: 'Click "go" to be redirected to an edit form',
-          icon: "question",
-          confirmButtonText: "Go",
-          cancelButtonText: "Cancel",
-          showCancelButton: true,
-          showCloseButton: true,
-        });
+        this.props.history.push("/review");
       } else if (
         /* Read more about handling dismissals below */
         result.dismiss === Swal.DismissReason.cancel
@@ -60,6 +52,18 @@ class EventCalendar extends Component {
     });
   };
 
+  componentDidMount = () => {
+    this.getCalendar()
+  }
+
+  getCalendar = () => {
+    console.log("in getCalendar on CALENDAR component", this.props.reduxState.user.id);
+    this.props.dispatch({
+      type: "GET_CALENDAR",
+      payload: this.props.reduxState.user.id
+    });
+  };
+
   render() {
     return (
       <div className="Calendar">
@@ -70,7 +74,6 @@ class EventCalendar extends Component {
           defaultDate={new Date()}
           defaultView="month"
           events={this.state.events}
-          // onSelectSlot={this.handleSelect}
           onSelectEvent={(event) => this.handleSelect(event)}
           style={{ height: "100vh" }}
         />
