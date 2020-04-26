@@ -1,15 +1,13 @@
-import React, {Component} from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import "./Admin.css";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 class Admin extends Component {
-
   state = {
     formId: "",
-    approvalStatus: false
-
-  }
+    approvalStatus: false,
+  };
   componentDidMount = () => {
     // this.props.dispatch({ type: "GET_ADMIN" });
     this.getAdminForm();
@@ -28,10 +26,11 @@ class Admin extends Component {
     console.log("in updateApprovalStatus", update, formId);
     this.props.dispatch({
       type: "SET_STATUS_1",
-      payload: formId,update,
+      payload: formId,
+      update,
       approved,
     });
-    this.getAdminForm(); 
+    this.getAdminForm();
   };
 
   details = () => {
@@ -72,45 +71,42 @@ class Admin extends Component {
                   {this.props.reduxState.admin.map((events) => {
                     return (
                       <tr className="adminTable">
-                        <td key={events.id}>
-                          <center>
-                            <td className="tdEvent">
-                              {events.contact_first_name}{" "}
-                              {events.contact_last_name}
-                            </td>
-                            <td className="tdEvent">{events.contact_email}</td>
-                            <td className="tdEvent">{events.contact_phone}</td>
-                            <td className="tdEvent">{events.company_name}</td>
-                            <td className="tdEvent">{events.event_type}</td>
-                            <td>
-                              <button
-                                className="statusButton"
-                                onClick={() =>
-                                  this.updateApprovalStatus(
-                                    events.id,
-                                    events.user_id,
-                                    !events.approved
-                                  )
-                                }
-                              >
-                                {events.approved ? (
-                                  <span role="img" aria-label="star">
-                                    Approved
-                                  </span>
-                                ) : (
-                                  <span role="img" aria-label="blackSquare">
-                                    Unapproved
-                                  </span>
-                                )}
-                              </button>
-                            </td>
-                            <td className="tdEvent">
-                              <button onClick={() => this.details()}>
-                                Details
-                              </button>
-                            </td>
-                          </center>
+                        {/* <center> */}
+                        <td className="tdEvent">
+                          {events.contact_first_name} {events.contact_last_name}
                         </td>
+                        <td className="tdEvent">{events.contact_email}</td>
+                        <td className="tdEvent">{events.contact_phone}</td>
+                        <td className="tdEvent">{events.company_name}</td>
+                        <td className="tdEvent">{events.event_type}</td>
+                        <td>
+                          <button
+                            className="statusButton"
+                            onClick={() =>
+                              this.updateApprovalStatus(
+                                events.id,
+                                events.user_id,
+                                !events.approved
+                              )
+                            }
+                          >
+                            {events.approved ? (
+                              <span role="img" aria-label="star">
+                                Approved
+                              </span>
+                            ) : (
+                              <span role="img" aria-label="blackSquare">
+                                Unapproved
+                              </span>
+                            )}
+                          </button>
+                        </td>
+                        <td className="tdEvent">
+                          <button onClick={() => this.details()}>
+                            Details
+                          </button>
+                        </td>
+                        {/* </center> */}
                       </tr>
                     );
                   })}
@@ -124,9 +120,8 @@ class Admin extends Component {
   }
 }
 
-const mapStateToProps = reduxState => ({
-  reduxState
-  
+const mapStateToProps = (reduxState) => ({
+  reduxState,
 });
 
 export default connect(mapStateToProps)(Admin);
