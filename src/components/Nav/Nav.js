@@ -6,9 +6,11 @@ import './Nav.css';
 
 const Nav = (props) => (
   <div className="nav">
+    <center>
     <Link to="/home">
       <img className="hclogo" src="/HopeChestPNG.png" alt="Logo"/>
     </Link>
+    </center>
     <div className="row">
       <Link  to="/home"className="col-lg">
         {/* Show this link if they are logged in or not,

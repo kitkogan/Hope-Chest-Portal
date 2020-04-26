@@ -5,7 +5,7 @@ import userSaga from './userSaga';
 import formSaga from './formSaga';
 import adminSaga from './adminSaga';
 // import reviewSaga from './reviewSaga';
-// import calendarSaga from './calendarSaga';
+import calendarSaga from './calendarSaga';
 
 
 // rootSaga is the primary saga.
@@ -23,6 +23,6 @@ export default function* rootSaga() {
     formSaga(),
     adminSaga(),
     // reviewSaga(),
-    // calendarSaga(),
+    calendarSaga(),
   ]);
 }
