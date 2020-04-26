@@ -10,6 +10,7 @@ import form3 from './form3Reducer';
 import admin from './adminReducer';
 import userEvents from "./userEventReducer";
 import adminDetails from "./AdminDetailsReducer";
+import approvalStatus from "./approvalStatusReducer";
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -28,8 +29,8 @@ const rootReducer = combineReducers({
   calendar,
   admin,
   userEvents,
-  adminDetails
-
+  adminDetails,
+  approvalStatus,
 });
 
 export default rootReducer;

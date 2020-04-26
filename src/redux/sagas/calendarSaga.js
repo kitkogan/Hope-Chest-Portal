@@ -5,7 +5,7 @@ import axios from 'axios';
 function* fetchCalendarEvents(action) {
   console.log("CALENDAR SAGA:", action.payload);
   try {
-    const response = yield axios.get("/admin", action.payload);
+    const response = yield axios.get(`/form/${action.payload}`);
     console.log("CALENDAR RESPONSE", response.data);
     yield put({ type: "SET_EVENTS", payload: response.data });
   } catch (error) {
