@@ -37,12 +37,26 @@ function* updateAdminForm(action) {
   yield put({ type: "ADDING_EVENT_FAILED" });
 }
 }
+
+//Edit approval status between approved and unapproved on Admin Page
+function* updateApprovalStatus(update) {
+  console.log("in updateTask of ADMIN saga", update.payload, update.approved);
+  try {
+    yield axios.put(`admin/update/${update.payload}`, {
+      approved: update.approved,
+    });
+    yield put({ type: "SET_STATUS", formId: update.formId});
+  } catch (error) {
+    console.log("Error updating approval status", error);
+  }
+}
  
 
 function* adminSaga() {
   yield takeEvery('GET_ADMIN', admin);
   yield takeEvery("UPDATE_ADMIN_FORM", updateAdminForm);
   yield takeEvery('GET_ADMIN_FORM', getAdminEvent);
+  yield takeEvery('SET_STATUS_1', updateApprovalStatus);
 }
 
 export default adminSaga;
