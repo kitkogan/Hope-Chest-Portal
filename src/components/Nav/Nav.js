@@ -23,6 +23,7 @@ const Nav = (props) => (
         <>
           <Link  to="/form-page-1"className="col-lg">
             Start Fundraiser
+            {/* {props.user.admin: ? 'Admin' : 'Start Fundraiser'} */}
           </Link>
 
           <Link  to="/calendar"className="col-lg">

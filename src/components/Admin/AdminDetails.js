@@ -42,7 +42,7 @@ class AdminDetails extends Component {
   };
 
   componentDidMount = () => {
-    this.getForm();
+    // this.getForm();
   };
 
   getForm = () => {
