@@ -45,7 +45,7 @@ function* updateApprovalStatus(update) {
     yield axios.put(`admin/update/${update.payload}`, {
       approved: update.approved,
     });
-    yield put({ type: "SET_STATUS", formId: update.formId});
+    yield put({ type:"GET_ADMIN"});
   } catch (error) {
     console.log("Error updating approval status", error);
   }

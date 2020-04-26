@@ -8,7 +8,6 @@ class Admin extends Component {
   state = {
     formId: "",
     approvalStatus: false
-
   }
   componentDidMount = () => {
     // this.props.dispatch({ type: "GET_ADMIN" });
@@ -24,11 +23,12 @@ class Admin extends Component {
   };
 
   // Appproval status button function
-  updateApprovalStatus = (update, formId, approved) => {
+  updateApprovalStatus = (formId,update,approved) => {
     console.log("in updateApprovalStatus", update, formId);
     this.props.dispatch({
       type: "SET_STATUS_1",
-      payload: formId,update,
+      payload: formId,
+      update,
       approved,
     });
     this.getAdminForm(); 
@@ -72,7 +72,7 @@ class Admin extends Component {
                   {this.props.reduxState.admin.map((events) => {
                     return (
                       <tr className="adminTable">
-                        <td key={events.id}>
+                        {/* <td key={events.id}> */}
                           <center>
                             <td className="tdEvent">
                               {events.contact_first_name}{" "}
@@ -110,7 +110,7 @@ class Admin extends Component {
                               </button>
                             </td>
                           </center>
-                        </td>
+                        {/* </td> */}
                       </tr>
                     );
                   })}
