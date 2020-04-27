@@ -31,10 +31,6 @@ class UserPage extends Component {
     });
   };
 
-  goAdmin= () =>{
-    this.props.history.push("/admin");
-  }
-
   render() {
     return (
       <div className="UserPage">
@@ -79,7 +75,6 @@ class UserPage extends Component {
             </ul>
         
         </div>
-        <button className="adminButton" onClick={() => this.goAdmin()}>Admin</button>
       </div>
     );
   }

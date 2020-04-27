@@ -34,20 +34,20 @@ class FormPg1 extends Component {
     this.setState({
       contact: {
         contact_first_name: "Kathy",
-        contact_last_name: "Johnson",
+        contact_last_name: "Abbott",
         contact_phone: "(234) 345-5673",
-        contact_email: "kathy.johnson@gmail.com",
+        contact_email: "k4thy.4bb0tt@gmail.com",
         company_name: "Plush",
         company_website: "https://www.plush.com/",
         company_street: "PO Box 43",
         company_city: "Minneapolis",
         company_state: "MN",
         company_zip: "55440",
-        show_contact_option: "",
+        show_contact_option: "New contact",
         event_contact_first_name: "Kathy",
-        event_contact_last_name: "Johnson",
+        event_contact_last_name: "Abbott",
         event_contact_phone: "(234) 345-5673",
-        event_contact_email: "kathy.johnson@gmail.com",
+        event_contact_email: "k4thy.4bb0tt@gmail.com",
         user_id: this.props.reduxState.user.id
       }
     })
