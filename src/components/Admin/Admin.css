@@ -9,3 +9,20 @@
     
 }
 
+
+table {
+  border-collapse: collapse;
+  border: 1px solid #405AB9;
+  width: 50%;
+  object-position: center;
+  box-shadow: 1px 1px 2px #D1B7A5;
+  margin-left: 25%;
+  background-color: #efebdc;
+} 
+
+.adminHead{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: navy;
+  text-align: center;
+}

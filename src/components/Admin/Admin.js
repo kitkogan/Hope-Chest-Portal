@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./Admin.css";
-
-import Table from 'react-bootstrap/Table'
+import Table from 'react-bootstrap/Table';
 
 class Admin extends Component {
 
@@ -104,7 +103,7 @@ class Admin extends Component {
                           </button>
                         </td>
                         <td className="tdEvent">
-                          <button onClick={() => this.details()}>
+                          <button onClick={() => this.details(events.id)}>
                             Details
                           </button>
                         </td>

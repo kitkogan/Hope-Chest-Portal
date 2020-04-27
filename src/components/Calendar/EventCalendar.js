@@ -150,7 +150,32 @@ class EventCalendar extends Component {
     // { this.props.reduxState.calendar.map((event) => this.setState({events:{ title: event.event_name}}))}
     return (
       <div className="Calendar">
-        <h1>Events and Calendar</h1>
+
+        <h1 className="headCal">Events Calendar</h1>
+        {/* <Modal show={this.state.showHide}>
+          <Modal.Header closeButton onClick={() => this.handleModalShowHide()}>
+            <Modal.Title>Modal heading</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+          <Modal.Footer>
+            <Button
+              variant="secondary"
+              onClick={() => this.handleModalShowHide()}
+            >
+              Close
+            </Button>
+            <Button
+              variant="primary"
+              onClick={() => this.handleModalShowHide()}
+            >
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        </Modal> */}
+        {/* <Button variant="primary" onClick={() => this.handleModalShowHide()}>
+          Display Modal
+        </Button> */}
+
         <Calendar
           popup
           localizer={localizer}

@@ -31,41 +31,30 @@ class UserPage extends Component {
     });
   };
 
-  goAdmin= () =>{
-    this.props.history.push("/admin");
-  }
-
   render() {
     return (
       <div className="UserPage">
-        <h1>User Home Page</h1>
-        <h2>
+        <h1 className="head1">User Home Page</h1>
+        <div className="userHome">
+        <h2 className="head2">
           Welcome, {this.props.reduxState.user.first_name}!</h2>
         <br />
-        <button className="start" onClick={this.goToFormPage}>
+        <center><button className="start" onClick={this.goToFormPage}>
           Start a Fundraiser
-        </button>
-        {/* <br />
-        <br />
-        <button className="events" onClick={this.goToFormPage}>
-          My Previous Events
-        </button> */}
+        </button></center>
+        </div>
         <br />
         <br />
         <br />
-        <h1>My Upcoming Events</h1>
+        <h1 className="head1">My Upcoming Events</h1>
         <div className="userEvent">
        
             <ul>
               {this.props.reduxState.userEvents.length > 0 &&
                 this.props.reduxState.userEvents.map((events) => {
                   return (
-                    <li>
-                      {/* // className="childNameButton"
-                    // data-id={events.id}
-                    // data-name={events.event_name}> */}
-                    
-                      <img src={events.image} alt="Event" />
+                    <li className="eventLi">
+                        <img className="eventImg" src="/eventStock.jpg" alt="Logo"/>
                       <br />
                       <>{events.event_name}</>
                       <br />
@@ -73,13 +62,12 @@ class UserPage extends Component {
                       <>{events.event_time}</>
                       <br />
                       <>{events.event_description} </>
-                    </li>
+                     </li>
                   );
                 })}
             </ul>
         
         </div>
-        <button className="adminButton" onClick={() => this.goAdmin()}>Admin</button>
       </div>
     );
   }
