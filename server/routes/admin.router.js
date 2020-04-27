@@ -18,9 +18,10 @@ router.get("/", (req, res) => {
       });
   });
 
-// Get route to grab events by event id and display on Admin Review page
+// Get route to grab event by event id and display on Admin Review page
+//NOTE: ID is coming up as undefined right now
 router.get("/get/:id", (req, res) => {
-  console.log("in server/:id GET");
+  console.log("in server /get/:id GET", );
   const queryText = `select * from "form"
   where "id" = ${req.params.id};`;
   pool
