@@ -19,18 +19,9 @@ table {
   background-color: #efebdc;
 } 
 
-th {
-  border: 3px solid #405AB9;
-  /* background-color:#405AB9; */
-  color: white;
-  text-shadow: .5px .5px .5px #333;
-  text-align: left;
-  font-weight: bolder;
-}
-
-td{
-     /* background-color: #d9def2; */
-     color: black;
-     border: 3px solid #405AB9;
-     font-size: 15pt;
+.adminHead{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: navy;
+  text-align: center;
 }

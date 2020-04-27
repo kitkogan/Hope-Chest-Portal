@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./Form.css";
 
+
 class FormPg1 extends Component {
   state = {
     contact: {
@@ -67,15 +68,18 @@ class FormPg1 extends Component {
     return (
       <div className="FormPages">
         <h1>Event Submission Form</h1>
-        <h2>Progress bar here!!!</h2>
-        <h3>Contact Information</h3>
+        <center><div className="myProgress">
+       <div className="myBar">33%</div>
+      </div></center>
+         <h3>Contact Information</h3>
         <p className="PHead">
           Please enter the requested information in each field. If any
           information is unavailable, please put "N/A" or "TBD" on the form,
           otherwise the form cannot be submitted. All * fields are required.
         </p>
         <div className="invisibleClick" onClick = {this.populateInputs}>
-        <form onSubmit={this.goToFormPage2}>
+          
+        <form className='formPage' onSubmit={this.goToFormPage2}>
           <label>First Name: * </label>
           <input
             type="text"
@@ -182,7 +186,7 @@ class FormPg1 extends Component {
               value="Same contact"
               name="contact"
             />
-            <label htmlFor="sameContact">Same as above </label>
+            <label htmlFor="sameContact">Same as above </label><br/>
             <input
               type="radio"
               id="newContact"
@@ -238,7 +242,8 @@ class FormPg1 extends Component {
             <></>
           )}
           <br />
-          <input className="submit" type="submit" value="Next" />
+          <center>
+          <input className="nextButton" type="submit" value="Next" /></center>
         </form>
         </div>
       </div>

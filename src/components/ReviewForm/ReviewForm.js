@@ -130,8 +130,8 @@ class ReviewForm extends Component {
   render() {
     return (
       <div className="ReviewForm">
-        <h1>Event Submission Review</h1>
-        <h3> Review Your Form </h3>
+        <h1 className="reviewFormHead">Event Submission Review</h1>
+        <h3 className="reviewFormHead3"> Review Your Form </h3>
         {this.state.isEditable ? (
           <>
             {this.props.reduxState.review.map((intake) => (
@@ -483,8 +483,8 @@ class ReviewForm extends Component {
         <center>
           {this.state.isEditable ? (
             <>
-              <button onClick={() => this.cancel()}>Cancel</button>
-              <button onClick={() => this.updateForm()}>Update</button>
+              <button className="back" onClick={() => this.cancel()}>Cancel</button>
+              <button className="updateBtn" onClick={() => this.updateForm()}>Update</button>
             </>
           ) : (
             <>

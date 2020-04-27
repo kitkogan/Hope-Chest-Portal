@@ -6,8 +6,6 @@ button{
     display: block;
 }
 .start{
-    display: inline-block;
-    margin-left: 300px; 
     color: #f2f2f2;
     background-color: rgb(223, 69, 124);
     text-align: center;
@@ -16,18 +14,18 @@ button{
     font-weight: 700;
     border-color: rgb(223, 69, 124);
     border-radius: 8px;
-    box-shadow: 1px 5px 5px 0px rgb(0, 0, 0)
+    box-shadow: 1px 5px 5px 0px rgb(0, 0, 0);
+    transition-duration: 0.4s;
+    
 }
-
+    
 .start:hover {
     background-color: rgb(42, 41, 116);
     border-color:  rgb(42, 41, 116);
   }
 
   .events{
-  
     margin-left: 300px; 
-    
     color: #f2f2f2;
     background-color: rgb(223, 69, 124);
     text-align: center;
@@ -44,28 +42,6 @@ button{
     border-color:  rgb(42, 41, 116);
   }
 
-/* .userEventDisplay {
-    font-family: 'Martel';
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    row-gap: 30px;
-} */
-
-/* .userEventDisplay */
-/* .userEvent {
-    display: inline-grid;
-    grid-template-columns: 200px 200px 200px;
-    grid-template-rows: auto ; 
-    grid-column-gap: 50px;
-    grid-row-gap: 20px; */
-    /* align-content: center; */
-    /* background-color: blueviolet; */
-    /* width: fit-content;
-    height:fit-content;
-    padding: 20px;
-     
-} */
 .userEvent{
     margin-bottom: 40px;
     padding-left: 50px;
@@ -83,4 +59,28 @@ button{
 
 .adminButton{
 margin-top: 200px;
+}
+
+.head1{
+    margin-left: 20px;
+    color:rgb(42, 41, 116);
+    font-weight: 800;
+}
+
+.head2{
+    margin-left:20px;
+
+}
+
+.eventImg{
+    margin-top: 20px;
+    width: 250px;
+}
+
+.eventLi{
+    text-align: center;
+}
+
+.userHome{
+    text-align: center;
 }
