@@ -82,10 +82,13 @@ onClickHandler = () => {
     return (
       <div className="FormPages">
         <h1>Event Submission Form</h1>
+        <center><div className="myProgress3">
+       <div className="myBar3">100%</div>
+      </div></center>
         <br />
         <h3>Share your promotional and donation plans</h3>
         <div className="invisibleClick" onClick={this.populateInputs}>
-        <form onSubmit={this.addInformation}>
+        <form className='formPage' onSubmit={this.addInformation}>
           <label htmlFor="funds collection description">
             Please describe how you will be collecting funds for Hope Chest:
           </label>
@@ -163,10 +166,12 @@ onClickHandler = () => {
             // value = {this.state.fund.image}
           />
           <br />
+          <center>
           <button className="back" onClick={this.handleBackClick}>
             Back
           </button>
           <input className="submit" type="submit" value="Review" />
+          </center>
         </form>
       </div>
       </div>
@@ -178,5 +183,4 @@ const mapStateToProps = (reduxState) => ({
   reduxState,
 });
 
-// export default connect(mapStateToProps)(FormPg3);
 export default connect(mapStateToProps)(withRouter(FormPg3));

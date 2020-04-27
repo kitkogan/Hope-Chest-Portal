@@ -143,6 +143,7 @@ class ReviewForm extends Component {
         <h1>Event Submission Review</h1>
         <h3> Review Your Form </h3>
         {this.props.reduxState.newReducer.edit ? (
+
           <>
             {this.props.reduxState.review.map((intake) => (
               <center>
@@ -493,8 +494,8 @@ class ReviewForm extends Component {
         <center>
           {this.props.reduxState.newReducer.edit ? (
             <>
-              <button onClick={() => this.cancel()}>Cancel</button>
-              <button onClick={() => this.updateForm()}>Update</button>
+              <button className="back" onClick={() => this.cancel()}>Cancel</button>
+              <button className="updateBtn" onClick={() => this.updateForm()}>Update</button>
             </>
           ) : (
             <>

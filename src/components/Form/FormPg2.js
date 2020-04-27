@@ -40,7 +40,7 @@ class FormPg2 extends Component {
     this.setState({
       event: {
         event_name: "Shopping Night",
-        event_website: "kathy.johnson@gmail.com",
+        event_website: "https://www.plush.com/",
         event_date: "2020-08-20",
         event_time: "12PM",
         event_location_name: "Cedar Lake Park",
@@ -49,7 +49,7 @@ class FormPg2 extends Component {
         event_location_state: "MN",
         event_location_zip: "55416",
         event_type: "Shopping Night",
-        event_description: "Shopping ",
+        event_description: "20% of all proceeds made during this event will be donated to Hope Chest.",
         event_first_time: true,
         user_id: this.props.reduxState.user.id,
       }
@@ -72,13 +72,15 @@ class FormPg2 extends Component {
     return (
       <div className="FormPages">
         <h1>Event Submission Form</h1>
-        <h2>Progress bar here</h2>
+        <center><div className="myProgress">
+       <div className="myBar2">67%</div>
+      </div></center>
         <h3 className="PHead">
           Please enter your event information as you would like it to appear in
           the events calendar.
         </h3>
         <div className="invisibleClick" onClick = {this.populateInputs}>
-        <form onSubmit={this.goToFormPage3}>
+        <form className='formPage' onSubmit={this.goToFormPage3}>
           <label>Event Name: </label>
           <input
             type="text"
@@ -206,22 +208,24 @@ class FormPg2 extends Component {
             cols="50"
             onChange={(event) => this.handleChange(event, "event_description")}
             value = {this.state.event.event_description}
-          />
+          /><br/>
+          <p>Is this a First Time Event?</p>
           <select
             onChange={(event) => this.handleChange(event, "event_first_time")}
-            value = {this.state.event.event_first_time}
+            // value = {this.state.event.event_first_time}
           >
-            <option id="Is this a First Time event?">
+            {/* <option id="Is this a First Time event?">
               Is this a First Time event?
-            </option>
+            </option> */}
             <option id="true" value="true">Yes</option>
             <option id="false" value="false">No</option>
           </select>
           <br></br>
+          <center>
           <button className="back" onClick={this.backButton}>
             Back
           </button>
-          <input className="submit" type="submit" value="Next" />
+          <input className="submit" type="submit" value="Next" /></center>
         </form>
       </div>
       </div>

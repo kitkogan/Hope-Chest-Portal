@@ -88,3 +88,32 @@ input {
     border-radius: 8px;
     box-shadow: 1px 5px 5px 0px rgb(0, 0, 0)
 }
+
+.reviewFormHead{
+  margin-top: 10px;
+  margin-left: 20px;
+  color: rgb(42, 41, 116);
+  font-weight: 800;
+}
+
+.reviewFormHead3{
+  margin-top: 10px;
+  margin-left: 20px;
+  color:rgb(223, 69, 124);
+  font-weight: 800;
+}
+
+.updateBtn{
+    background-color: rgb(42, 41, 116);
+    border: none;
+    border-radius: 4px;
+    color: #f8f8f8;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 10px 30px;
+    cursor: pointer; 
+}
+
+.updateBtn:hover{
+  background-color: rgb(223, 69, 124);
+}

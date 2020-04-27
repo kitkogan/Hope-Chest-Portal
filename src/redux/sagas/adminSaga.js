@@ -54,8 +54,8 @@ function* updateApprovalStatus(update) {
   console.log("in updateTask of ADMIN saga", update.payload, update.approved);
   try {
     yield axios.put(`admin/update/${update.payload}`, {
-      approved: update.approved,
-    });
+      approved: update.approved
+    })
     yield put({ type:"GET_ADMIN"});
   } catch (error) {
     console.log("Error updating approval status", error);
