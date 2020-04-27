@@ -82,31 +82,7 @@ class AdminDetails extends Component {
       isEditable: false,
     });
     this.getForm()
-  };
-  
-
-  // edit = () => {
-  //   console.log("editing");
-  //   this.setState({
-  //     isEditable: true,
-  //   });
-  // };
-
-
-  // handleChange = (event, typeOf) => {
-  //   console.log(event.target.value);
-  //   console.log(event.target.placeholder);
-
-  //   if (event.target.value === "") {
-  //     this.setState({
-  //       [typeOf]: event.target.placeholder,
-  //     });
-  //   } else {
-  //     this.setState({
-  //       [typeOf]: event.target.value,
-  //     });
-  //   }
-  // };
+  };  
 
   edit = () => {
     console.log("editing");
@@ -125,15 +101,14 @@ class AdminDetails extends Component {
   };
   
   goToAdmin = ()=>{
-    alert("Your form has been submitted!");
+    alert("The form has been saved!");
     this.props.history.push("/admin");
   } 
   
   render() {
     return (
       <div className="AdminDetails">
-        <h1>Event Submission Review</h1>
-        <h3> Review Your Form </h3>
+        <h1 className="adminHead">Event Details</h1>
         {this.state.isEditable ? (
           <>
             {this.props.reduxState.adminDetails.map((intake) => (
@@ -504,8 +479,8 @@ class AdminDetails extends Component {
         <center>
           {this.state.isEditable ? (
             <>
-              <button onClick={() => this.cancel()}>Cancel</button>
-              <button onClick={() => this.updateForm()}>Update</button>
+              <button className="back" onClick={() => this.cancel()}>Cancel</button>
+              <button className="updateBtn" onClick={() => this.updateForm()}>Update</button>
             </>
           ) : (
             <>

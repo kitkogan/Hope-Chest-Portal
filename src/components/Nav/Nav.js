@@ -21,7 +21,10 @@ const Nav = (props) => (
         <>
           <Link  to="/form-page-1"className="col-lg">
             Start Fundraiser
-            {/* {props.user.admin: ? 'Admin' : 'Start Fundraiser'} */}
+            {/* {this.props.admin ?
+            <button> admin</button>
+            :
+            <button> not admin</button>} */}
           </Link>
 
           <Link  to="/calendar"className="col-lg">
@@ -42,6 +45,7 @@ const Nav = (props) => (
 // const mapStateToProps = ({ user }) => ({ user });
 const mapStateToProps = state => ({
   user: state.user,
+  // admin,
 });
 
 export default connect(mapStateToProps)(Nav);

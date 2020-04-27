@@ -78,7 +78,7 @@ class FormPg2 extends Component {
           the events calendar.
         </h3>
         <div className="invisibleClick" onClick = {this.populateInputs}>
-        <form onSubmit={this.goToFormPage3}>
+        <form className='formPage' onSubmit={this.goToFormPage3}>
           <label>Event Name: </label>
           <input
             type="text"
@@ -206,22 +206,24 @@ class FormPg2 extends Component {
             cols="50"
             onChange={(event) => this.handleChange(event, "event_description")}
             value = {this.state.event.event_description}
-          />
+          /><br/>
+          <p>Is this a First Time Event?</p>
           <select
             onChange={(event) => this.handleChange(event, "event_first_time")}
             value = {this.state.event.event_first_time}
           >
-            <option id="Is this a First Time event?">
+            {/* <option id="Is this a First Time event?">
               Is this a First Time event?
-            </option>
+            </option> */}
             <option id="true" value="true">Yes</option>
             <option id="false" value="false">No</option>
           </select>
           <br></br>
+          <center>
           <button className="back" onClick={this.backButton}>
             Back
           </button>
-          <input className="submit" type="submit" value="Next" />
+          <input className="submit" type="submit" value="Next" /></center>
         </form>
       </div>
       </div>
