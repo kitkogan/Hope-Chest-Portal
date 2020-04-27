@@ -4,11 +4,13 @@ import "./Admin.css";
 import Table from 'react-bootstrap/Table';
 
 class Admin extends Component {
+
+
   state = {
     formId: "",
+    approvalStatus: false
 
-    approvalStatus: false,
-  };
+  }
 
   componentDidMount = () => {
     // this.props.dispatch({ type: "GET_ADMIN" });
@@ -24,6 +26,7 @@ class Admin extends Component {
   };
 
   // Appproval status button function
+
   updateApprovalStatus = (formId,update,approved) => {
     console.log("in updateApprovalStatus", update, formId);
     this.props.dispatch({
@@ -43,10 +46,12 @@ class Admin extends Component {
     });
   };
 
+
   render() {
     console.log("checking admin reducer", this.props.reduxState.admin);
     return (
       <div className="Admin">
+
         <h1 className="adminHead">Events Waiting for Approval</h1>
 
        <Table striped bordered hover>
@@ -98,7 +103,7 @@ class Admin extends Component {
                           </button>
                         </td>
                         <td className="tdEvent">
-                          <button onClick={() => this.details()}>
+                          <button onClick={() => this.details(events.id)}>
                             Details
                           </button>
                         </td>
@@ -110,6 +115,7 @@ class Admin extends Component {
               )}
             </tbody>
            </Table>
+
 
       </div>
     );

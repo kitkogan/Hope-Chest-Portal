@@ -1,6 +1,8 @@
 .hclogo{
   height: 150px;
-  margin: 30px 10px 10px 510px;
+  margin: auto;
+  padding: 20px 0;
+  text-align: center;
 }
 
 .nav-title {
@@ -46,6 +48,7 @@
   font-size: 18px;
   border: 2px solid white;
   padding: 10px 133px 10px 132px;
+  width: 100vw;
 }
 .col-lg:hover {
   background-color: rgb(42, 41, 116);
@@ -53,7 +56,7 @@
   text-decoration: none;
 }
 .row{
-  width: 100%;
+  width: 100vw;
   display: flex;
 }
 

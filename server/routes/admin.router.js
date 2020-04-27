@@ -35,7 +35,9 @@ router.get("/get/:id", (req, res) => {
 
   });
 
+
 //PUT to update event approval status on the admin page
+
 router.put('/update/:id', (req,res) => {
   console.log("in task PUT router with", req.body.approved);
   const formId = req.params.id;

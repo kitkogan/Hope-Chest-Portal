@@ -84,6 +84,7 @@ class AdminDetails extends Component {
     this.getForm()
   };  
 
+
   edit = () => {
     console.log("editing");
     this.setState({
