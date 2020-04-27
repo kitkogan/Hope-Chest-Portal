@@ -15,7 +15,7 @@ function* admin (action) {
 
 //Get selected event form details to display on Admin Review page 
 function* getAdminEvent(action) { 
-  console.log("saga coming from formSaga with:", action);
+  console.log("saga coming from adminSaga with:", action);
   try {
     const response = yield axios.get(`/admin/get/${action.formId}`);
     console.log("in saga GETADMINEVENT with", response.data);
@@ -29,14 +29,25 @@ function* getAdminEvent(action) {
 //Edit event form details on Admin Review page
 function* updateAdminForm(action) {
   try {
-  console.log('in updateFORM from ADMIN with', action.payload, 'id', action.id);
-    yield axios.put(`/admin/${action.id}`, action.payload);
-    console.log('update ADMIN FORM from admin saga');
+  console.log('in updateAdminForm from ADMIN with', action.payload, 'id', action.id);
+    // yield axios.put(`/admin/${action.id}`, action.payload);
+    // console.log('update ADMIN FORM from admin saga');
 } catch (error) {
   console.log("Error updating event:", error);
-  yield put({ type: "ADDING_EVENT_FAILED" });
+  yield put({ type: "REVIEWING_EVENT_FAILED" });
 }
 }
+// function* updateForm(action) {
+//   try {
+//     console.log("in updateFORM with", action.payload, "id", action.id);
+//     // yield axios.put(`/form/form/${action.id}`, action.payload);
+//     // console.log('back from update server');
+//   } catch (error) {
+//     console.log("Error updating event:", error);
+//     yield put({ type: "ADDING_EVENT_FAILED" });
+//   }
+// }
+ 
 
 //Edit approval status between approved and unapproved on Admin Page
 function* updateApprovalStatus(update) {
@@ -50,7 +61,7 @@ function* updateApprovalStatus(update) {
     console.log("Error updating approval status", error);
   }
 }
- 
+
 
 function* adminSaga() {
   yield takeEvery('GET_ADMIN', admin);

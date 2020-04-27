@@ -39,6 +39,7 @@ class ReviewForm extends Component {
     promotion: "",
     other_comment: "",
     image: "",
+    approved: false,
   };
   componentDidMount = () => {
     this.getForm();
@@ -59,55 +60,64 @@ class ReviewForm extends Component {
   };
 
   updateForm = () => {
-    console.log("update form", this.state);
+    console.log("update form", this.props.reduxState.user.id);
     // create new form object and dispatch to payload to saga
     this.props.dispatch({
       type: "UPDATE_FORM",
       payload: this.state,
       id: this.props.reduxState.review[0].id,
+      user:{id: this.props.reduxState.user.id}
     });
-    this.setState({
-      isEditable: false,
-    });
+    // this.props.dispatch({
+    //   type: "TOGGLE_EDIT"
+    // })
   };
 
   edit = () => {
     console.log("editing");
+    this.props.dispatch({
+      type: "TOGGLE_EDIT"
+    })
     this.setState({
-      isEditable: true,
       contact_first_name: this.props.reduxState.review[0].contact_first_name,
       contact_last_name: this.props.reduxState.review[0].contact_last_name,
-      contact_phone: "",
+      contact_phone: this.props.reduxState.review[0].contact_phone,
       contact_email: this.props.reduxState.review[0].contact_email,
-      company_name: "",
-      company_website: "",
-      company_street: "",
-      company_city: "",
-      company_state: "",
-      company_zip: "",
-      show_contact_option: "",
-      event_contact_first_name: "",
-      event_contact_last_name: "",
-      event_contact_phone: "",
-      event_contact_email: "",
-      event_name: "",
-      event_website: "",
-      event_date: "",
-      event_time: "",
-      event_location_name: "",
-      event_location_street: "",
-      event_location_city: "",
-      event_location_state: "",
-      event_location_zip: "",
-      event_type: "",
-      event_description: "",
-      event_first_time: false,
-      fund_description: "",
-      contribution_amount: "",
-      contribution_submission: "",
-      promotion: "",
-      other_comment: "",
-      image: "",
+      company_name: this.props.reduxState.review[0].company_name,
+      company_website: this.props.reduxState.review[0].company_website,
+      company_street: this.props.reduxState.review[0].company_street,
+      company_city: this.props.reduxState.review[0].company_city,
+      company_state: this.props.reduxState.review[0].company_state,
+      company_zip: this.props.reduxState.review[0].company_zip,
+      show_contact_option: this.props.reduxState.review[0].show_contact_option,
+      event_contact_first_name: this.props.reduxState.review[0]
+        .event_contact_first_name,
+      event_contact_last_name: this.props.reduxState.review[0]
+        .event_contact_last_name,
+      event_contact_phone: this.props.reduxState.review[0].contact_phone,
+      event_contact_email: this.props.reduxState.review[0].contact_email,
+      event_name: this.props.reduxState.review[0].event_name,
+      event_website: this.props.reduxState.review[0].event_website,
+      event_date: this.props.reduxState.review[0].event_date,
+      event_time: this.props.reduxState.review[0].event_time,
+      event_location_name: this.props.reduxState.review[0].event_location_name,
+      event_location_street: this.props.reduxState.review[0]
+        .event_location_street,
+      event_location_city: this.props.reduxState.review[0].event_location_city,
+      event_location_state: this.props.reduxState.review[0]
+        .event_location_state,
+      event_location_zip: this.props.reduxState.review[0].event_location,
+      event_type: this.props.reduxState.review[0].event_type,
+      event_description: this.props.reduxState.review[0].event_description,
+      event_first_time: this.props.reduxState.review[0].event_first_time,
+      fund_description: this.props.reduxState.review[0].fund_description,
+      contribution_amount: this.props.reduxState.review[0].contribution_amount,
+      contribution_submission: this.props.reduxState.review[0]
+        .contribution_submission,
+      promotion: this.props.reduxState.review[0].promotion,
+      other_comment: this.props.reduxState.review[0].other_comment,
+      image: this.props.reduxState.review[0].image,
+      approved: this.props.reduxState.review[0].approved
     });
     console.log(
       "this is state!!!!!!!!!!!",
@@ -117,9 +127,9 @@ class ReviewForm extends Component {
 
   cancel = () => {
     console.log("cancel edits");
-    this.setState({
-      isEditable: false,
-    });
+   this.props.dispatch({
+     type:'TOGGLE_EDIT'
+   })
   };
 
   goHome = () => {
@@ -130,9 +140,10 @@ class ReviewForm extends Component {
   render() {
     return (
       <div className="ReviewForm">
-        <h1 className="reviewFormHead">Event Submission Review</h1>
-        <h3 className="reviewFormHead3"> Review Your Form </h3>
-        {this.state.isEditable ? (
+        <h1>Event Submission Review</h1>
+        <h3> Review Your Form </h3>
+        {this.props.reduxState.newReducer.edit ? (
+
           <>
             {this.props.reduxState.review.map((intake) => (
               <center>
@@ -481,7 +492,7 @@ class ReviewForm extends Component {
           </>
         )}
         <center>
-          {this.state.isEditable ? (
+          {this.props.reduxState.newReducer.edit ? (
             <>
               <button className="back" onClick={() => this.cancel()}>Cancel</button>
               <button className="updateBtn" onClick={() => this.updateForm()}>Update</button>
