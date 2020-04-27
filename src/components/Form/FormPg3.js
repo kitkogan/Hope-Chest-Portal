@@ -11,7 +11,7 @@ class FormPg3 extends Component {
     contribution_submission: "",
     promotion: "",
     other_comment: "",
-    image: {},
+    image: "",
     user_id: this.props.reduxState.user.id
   }
 };
@@ -24,7 +24,7 @@ class FormPg3 extends Component {
         contribution_submission: "Check",
         promotion: "Social Media",
         other_comment: "n/a",
-        image: {},
+        image: "",
       }
     })
   }
@@ -67,15 +67,11 @@ imageHandler=(event)=>{
   })
 }
 
-onClickHandler = () => {
-  const data = new FormData()
-  data.append('file', this.state.image)
-  axios.post("form", data, { 
-     // receive two    parameter endpoint url ,form data
- })
-.then(res => { // then print response status
-   console.log(res.statusText)
-})
+imageUploader = async (e)  => {
+  e.preventDefault();
+  const formData = new FormData()
+  formData.append('image file', this.state.image)
+this.props.dispatch({ type: "STORE_IMAGE", payload: formData})
 }
 
   render() {
@@ -168,6 +164,7 @@ onClickHandler = () => {
           </button>
           <input className="submit" type="submit" value="Review" />
         </form>
+        <button onClick={this.imageUploader}>Upload</button>
       </div>
       </div>
     );

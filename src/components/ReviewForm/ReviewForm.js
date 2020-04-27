@@ -42,6 +42,7 @@ class ReviewForm extends Component {
   };
   componentDidMount = () => {
     this.getForm();
+    this.props.dispatch({ type: "GET_STORED_IMAGES" });
   };
 
   getForm = () => {

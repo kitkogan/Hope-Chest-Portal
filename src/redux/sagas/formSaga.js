@@ -34,15 +34,34 @@ function* updateForm(action) {
   yield put({ type: "ADDING_EVENT_FAILED" });
 }
 }
-// function* deleteEvents(action) {
-  
-// }
+
+function* getImages(){
+  const imageList = yield axios.get('/form/form');
+  console.log('in saga - get images/GET with:', imageList.data);
+  yield put({type: 'SET_STORED_IMAGES', payload: imageList.data})
+}
+
+// posts new image to postgres
+function* addImage(image){
+  console.log('in saga images/POST with:', image.payload);
+  const config = { headers: {'Content-Type': 'multipart/form-data'} }
+  try {
+      const res = yield axios.post('/form/form', image.payload, config);
+      console.log('in saga post with res.data', res.data)
+      yield put({type: 'STORE_THIS_IMAGE', payload: res.data});
+      yield put({type: 'GET_STORED_IMAGES'});
+  } catch(error){
+      console.log('error in saga /images/POST:', error);
+  }
+}
 
 
 function* formSaga() {
   yield takeEvery('GET_FORM', getEvent);
   yield takeEvery('SUBMIT_FORM', submitForm);
   yield takeEvery('UPDATE_FORM', updateForm);
+  yield takeEvery('GET_STORED_IMAGES', getImages);
+  yield takeEvery('STORE_IMAGE', addImage);
   // yield takeEvery('', deleteEvents);u
 }
 

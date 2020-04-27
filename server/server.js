@@ -1,5 +1,6 @@
 
 const express = require('express');
+const fileUpload = require('express-fileupload')
 require('dotenv').config();
 
 const app = express();
@@ -19,6 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Passport Session Configuration //
 app.use(sessionMiddleware);
+app.use(fileUpload()); //to parse the files
 
 // start up passport sessions
 app.use(passport.initialize());

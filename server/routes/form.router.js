@@ -188,11 +188,13 @@ router.get("/:id", (req, res) => {
     const promotion = req.body.form3.promotion;
     const other_comment = req.body.form3.other_comment;
     const image = req.body.form3.image;
+    const name = req.body.form3.file.name;
+    const mime = req.body.file.mimetype;
     const user_id = req.body.form.user_id;
     const queryText = `INSERT INTO "form" ("contact_first_name","contact_last_name","contact_phone","contact_email", "company_name", "company_website",
   "company_street","company_city", "company_state", "company_zip","event_contact_first_name", "event_contact_last_name", "event_contact_phone", "event_contact_email", "event_name", "event_website","event_date","event_time","event_location_name",
   "event_location_street", "event_location_city", "event_location_state", "event_location_zip", "event_type", "event_description", 
-  "event_first_time","fund_description", "contribution_amount", "contribution_submission", "promotion","other_comment", "image", "user_id") 
+  "event_first_time","fund_description", "contribution_amount", "contribution_submission", "promotion","other_comment", "image", "name", "mime-type", "user_id") 
    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25,$26,$27,$28,$29,$30,$31,$32,$33);`;
     pool
       .query(queryText, [
@@ -228,13 +230,49 @@ router.get("/:id", (req, res) => {
         promotion,
         other_comment,
         image,
+        name,
+        mime-type,
         user_id,
       ])
-      .then(() => res.sendStatus(201))
+      .then(() => { res.status(201).json({ name: file.name, fileType: file.mimetype, image: file.data }); })
       .catch((err) => {
         console.log("Error POSTING Form page query into Database", err);
         res.sendStatus(500);
       });
   });
+
+
+// Upload new image post - send to image and info to postgres
+// router.post('/form', (req, res) => {
+//   console.log('in /api/postgres/POST with:', req.files.file.name);
+//   //checks to make sure there is a file coming, could put in other checks here such as image type or file size if needed
+//   if (req.files === null) {
+//     return res.status(400).json({ msg: 'No file uploaded' });
+//   }
+//   //packages info to be sent to postgres
+//   const file = req.files.file;
+//   const queryText = `INSERT INTO "images" ("data", "name", "mime_type") VALUES ($1, $2, $3)`;
+//   pool.query(queryText, [file.data, file.name, file.mimetype])
+//   //i found some fun ways of sending info back to redux, we get both the "ok" status and a jason object this way!
+//   .then(() => { res.status(201).json({ name: file.name, fileType: file.mimetype, image: file.data }); })
+//   .catch((err) => {
+//     console.log('Error completing new postgres post', err);
+//     res.sendStatus(500);
+//   });
+// });
+
+//sends array of images saved to server from our postgres database
+// router.get('/form', (req,res)=>{
+//   //the encode query will make it so data coming in will be readable by react as its not stored in postgres in a way we can easy read like varchar or int
+//   const queryText = `SELECT ENCODE(image, 'base64') as image, "name", "mime_type", "id" FROM "form";`;
+//   pool.query(queryText)
+//   .then( (result) => {
+//       res.send(result.rows);
+//   })
+//   .catch( (error) => {
+//       console.log(`Error on combo query ${error}`);
+//       res.sendStatus(500);
+//   });
+// })
 
 module.exports = router;
