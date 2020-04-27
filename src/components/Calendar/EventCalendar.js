@@ -17,28 +17,28 @@ const localizer = momentLocalizer(moment);
 class EventCalendar extends Component {
   state = {
     showHide: false,
-    events: this.props.reduxState.calendarReducer,
-    //   [{
-    //   start: moment().toDate(),
-    //   end: moment()
-    //     .add(1, "days")
-    //     .toDate(),
-    //   title: "Some title"
-    // }]
+    events: [{
+      start: moment().toDate(),
+      end: moment()
+        .add(1, "days")
+        .toDate(),
+      title: "Some title"
+    }]
   };
 
   //get events on page load
   componentDidMount = () => {
     this.getCalendar();
 
-    let event = this.props.reduxState.calendarReducer;
-    for (let i = 0; i < event.length; i++) {
-      event[i].start = moment.utc(event[i].start).toDate();
-      event[i].end = moment.utc(event[i].end).toDate();
-      event[i].event_name;
-      event[i].event_description;
-      event[i].event_website;
-    }
+    // let event = this.props.reduxState.calendarReducer;
+    // for (let i = 0; i < event.length; i++) {
+    //   event[i].start = moment.utc(event[i].start).toDate();
+    //   event[i].end = moment.utc(event[i].end).toDate();
+    //   event[i].event_name;
+    //   event[i].event_description;
+    //   event[i].event_website;
+    // }
+  
   };
 
   //fetching events from calendar reducer
@@ -51,6 +51,18 @@ class EventCalendar extends Component {
       type: "GET_CALENDAR",
       payload: this.props.reduxState.user.id,
     });
+
+    // const events = this.props.reduxState.calendar.map(event => {
+    //   const {id, event_name, event_date} = event;
+    //       return {
+    //         id: id,
+    //         title: event_name,
+    //         start: event_date
+    //       }
+    // });
+    // // this.setState({ events })  
+    console.log(this.state);
+    
   };
 
   //not in use right now but might be useful later
@@ -71,7 +83,7 @@ class EventCalendar extends Component {
       showCloseButton: true,
     }).then((result) => {
       if (result.value) {
-        this.props.history.push("/admin-details");
+          this.props.history.push('/admin-details')
       } else if (
         /* Read more about handling dismissals below */
         result.dismiss === Swal.DismissReason.cancel
@@ -86,6 +98,7 @@ class EventCalendar extends Component {
   };
 
   render() {
+    // { this.props.reduxState.calendar.map((event) => this.setState({events:{ title: event.event_name}}))}
     return (
       <div className="Calendar">
         <h1>Events and Calendar</h1>
@@ -94,8 +107,14 @@ class EventCalendar extends Component {
           localizer={localizer}
           defaultDate={new Date()}
           defaultView="month"
-          events={this.props.reduxState.calendarReducer}
-          // onSelectSlot={this.handleSelect}
+          events={[this.props.reduxState.calendar.map(event => {
+            const {id, event_name, event_date} = event;
+                return {
+                  id: id,
+                  title: event_name,
+                  start: event_date
+                }
+          })]}
           onSelectEvent={(event) => this.handleSelect(event)}
           style={{ height: "100vh" }}
         />

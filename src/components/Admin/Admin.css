@@ -9,28 +9,3 @@
     
 }
 
-table {
-  border-collapse: collapse;
-  border: 1px solid #405AB9;
-  width: 50%;
-  object-position: center;
-  box-shadow: 1px 1px 2px #D1B7A5;
-  margin-left: 25%;
-  background-color: #efebdc;
-} 
-
-th {
-  border: 3px solid #405AB9;
-  /* background-color:#405AB9; */
-  color: white;
-  text-shadow: .5px .5px .5px #333;
-  text-align: left;
-  font-weight: bolder;
-}
-
-td{
-     /* background-color: #d9def2; */
-     color: black;
-     border: 3px solid #405AB9;
-     font-size: 15pt;
-}
