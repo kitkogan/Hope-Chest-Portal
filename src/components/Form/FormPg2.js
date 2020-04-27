@@ -40,7 +40,7 @@ class FormPg2 extends Component {
     this.setState({
       event: {
         event_name: "Shopping Night",
-        event_website: "kathy.johnson@gmail.com",
+        event_website: "https://www.plush.com/",
         event_date: "2020-08-20",
         event_time: "12PM",
         event_location_name: "Cedar Lake Park",
@@ -50,7 +50,7 @@ class FormPg2 extends Component {
         event_location_zip: "55416",
         event_type: "Shopping Night",
         event_description: "Shopping ",
-        event_first_time: true,
+        event_first_time: false,
         user_id: this.props.reduxState.user.id,
       }
     })
@@ -209,7 +209,7 @@ class FormPg2 extends Component {
           />
           <select
             onChange={(event) => this.handleChange(event, "event_first_time")}
-            value = {this.state.event.event_first_time}
+            // value = {this.state.event.event_first_time}
           >
             <option id="Is this a First Time event?">
               Is this a First Time event?
