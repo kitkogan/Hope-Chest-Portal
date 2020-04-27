@@ -49,7 +49,7 @@ class FormPg2 extends Component {
         event_location_state: "MN",
         event_location_zip: "55416",
         event_type: "Shopping Night",
-        event_description: "Shopping ",
+        event_description: "20% of all proceeds made during this event will be donated to Hope Chest.",
         event_first_time: true,
         user_id: this.props.reduxState.user.id,
       }
