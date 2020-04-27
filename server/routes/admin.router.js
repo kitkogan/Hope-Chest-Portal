@@ -22,7 +22,7 @@ router.get("/", (req, res) => {
 router.get("/get/:id", (req, res) => {
   console.log("in server/:id GET");
   const queryText = `select * from "form"
-  where "user_id" = ${req.params.id};`;
+  where "id" = ${req.params.id};`;
   pool
   .query(queryText)
   .then((result) => {
@@ -35,7 +35,7 @@ router.get("/get/:id", (req, res) => {
 
   });
 
-//PUT to update evetn approval status on the admin page
+//PUT to update event approval status on the admin page
 router.put('/update/:id', (req,res) => {
   console.log("in task PUT router with", req.body.approved);
   const formId = req.params.id;
