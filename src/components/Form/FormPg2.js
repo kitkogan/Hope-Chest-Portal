@@ -72,7 +72,10 @@ class FormPg2 extends Component {
     return (
       <div className="FormPages">
         <h1>Event Submission Form</h1>
-        <h2>Progress bar here</h2>
+        <center><div class="progress">
+      <div class="progress-bar" role="progressbar" style={{width: '67%'}} aria-valuenow="25"
+       aria-valuemin="0" aria-valuemax="100">67%</div>
+      </div></center>
         <h3 className="PHead">
           Please enter your event information as you would like it to appear in
           the events calendar.

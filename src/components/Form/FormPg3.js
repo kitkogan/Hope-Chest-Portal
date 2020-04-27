@@ -82,6 +82,10 @@ onClickHandler = () => {
     return (
       <div className="FormPages">
         <h1>Event Submission Form</h1>
+        <center><div class="progress">
+      <div class="progress-bar" role="progressbar" style={{width: '100%'}} aria-valuenow="25"
+       aria-valuemin="0" aria-valuemax="100">100%</div>
+      </div></center>
         <br />
         <h3>Share your promotional and donation plans</h3>
         <div className="invisibleClick" onClick={this.populateInputs}>
