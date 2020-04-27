@@ -68,9 +68,8 @@ class FormPg1 extends Component {
     return (
       <div className="FormPages">
         <h1>Event Submission Form</h1>
-        <center><div class="progress">
-      <div class="progress-bar" role="progressbar" style={{width: '33%'}} aria-valuenow="25"
-       aria-valuemin="0" aria-valuemax="100">33%</div>
+        <center><div className="myProgress">
+       <div className="myBar">33%</div>
       </div></center>
          <h3>Contact Information</h3>
         <p className="PHead">

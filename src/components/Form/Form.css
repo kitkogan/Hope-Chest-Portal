@@ -75,9 +75,43 @@
   text-align: center;
 }
 
-.progress{
+.myProgress {
   width: 1200px;
+  background-color: #ddd;
+  height: 30px;
+  text-align: center; /* To center it horizontally (if you want) */
+  line-height: 30px; /* To center it vertically */
+  border-radius: 16px;
   margin-top: 20px;
   margin-bottom: 30px;
 }
 
+.myBar {
+  width: 400px;
+  height: 30px;
+  background-color: rgb(25, 102, 245);
+  text-align: center; /* To center it horizontally (if you want) */
+  line-height: 30px; /* To center it vertically */
+  color: white;
+  border-radius: 16px;
+}
+
+.myBar2 {
+  width: 800px;
+  height: 30px;
+  background-color: rgb(25, 102, 245);
+  text-align: center; /* To center it horizontally (if you want) */
+  line-height: 30px; /* To center it vertically */
+  color: white;
+  border-radius: 16px;
+}
+
+.myBar3 {
+  width: 1200px;
+  height: 30px;
+  background-color: rgb(25, 102, 245);
+  text-align: center; /* To center it horizontally (if you want) */
+  line-height: 30px; /* To center it vertically */
+  color: white;
+  border-radius: 16px;
+}
