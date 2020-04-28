@@ -48,17 +48,12 @@ function* updateForm(action) {
   yield put({ type: "ADDING_EVENT_FAILED" });
 }
 }
-// function* deleteEvents(action) {
-  
-// }
-
 
 function* formSaga() {
   yield takeEvery('GET_FORM', getEvent);
   yield takeEvery('SUBMIT_FORM', submitForm);
   yield takeEvery('UPDATE_FORM', updateForm);
   yield takeEvery('GET_THIS_FORM', getThisForm);
-  // yield takeEvery('', deleteEvents);u
 }
 
 export default formSaga;

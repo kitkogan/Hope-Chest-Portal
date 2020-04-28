@@ -34,10 +34,8 @@ class UserPage extends Component {
   render() {
     return (
       <div className="UserPage">
-        <h1 className="head1">User Home Page</h1>
+        <h1 className="head1"> Welcome, {this.props.reduxState.user.first_name}!</h1>
         <div className="userHome">
-        <h2 className="head2">
-          Welcome, {this.props.reduxState.user.first_name}!</h2>
         <br />
         <center><button className="start" onClick={this.goToFormPage}>
           Start a Fundraiser
@@ -54,11 +52,11 @@ class UserPage extends Component {
                 this.props.reduxState.userEvents.map((events) => {
                   return (
                     <li className="eventLi">
-                        <img className="eventImg" src="/eventStock.jpg" alt="Logo"/>
+                        <img className="eventImg" src="/userPic.jpg" alt="Logo"/>
                       <br />
                       <>{events.event_name}</>
                       <br />
-                      <>{events.event_date}</>
+                      <>{events.event_date.substring(0,10)}</><br/>
                       <>{events.event_time}</>
                       <br />
                       <>{events.event_description} </>

@@ -25,7 +25,6 @@ function* getAdminEvent(action) {
   }
 }
 
-
 //Edit event form details on Admin Review page
 function* updateAdminForm(action) {
   try {
@@ -37,18 +36,7 @@ function* updateAdminForm(action) {
   yield put({ type: "REVIEWING_EVENT_FAILED" });
 }
 }
-// function* updateForm(action) {
-//   try {
-//     console.log("in updateFORM with", action.payload, "id", action.id);
-//     // yield axios.put(`/form/form/${action.id}`, action.payload);
-//     // console.log('back from update server');
-//   } catch (error) {
-//     console.log("Error updating event:", error);
-//     yield put({ type: "ADDING_EVENT_FAILED" });
-//   }
-// }
  
-
 //Edit approval status between approved and unapproved on Admin Page
 function* updateApprovalStatus(update) {
   console.log("in updateTask of ADMIN saga", update.payload, update.approved);
@@ -61,7 +49,6 @@ function* updateApprovalStatus(update) {
     console.log("Error updating approval status", error);
   }
 }
-
 
 function* adminSaga() {
   yield takeEvery('GET_ADMIN', admin);

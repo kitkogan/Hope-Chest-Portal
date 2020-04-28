@@ -143,7 +143,7 @@ class AdminDetails extends Component {
   
   goToAdmin = ()=>{
     alert("The form has been saved!");
-    (this.props.history.push("/admin");
+    (this.props.history.push("/admin"))
   };
 
   render() {

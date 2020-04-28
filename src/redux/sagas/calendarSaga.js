@@ -1,7 +1,6 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
-
 function* fetchCalendarEvents(action) {
   console.log("CALENDAR SAGA:", action.payload);
   try {
@@ -13,14 +12,8 @@ function* fetchCalendarEvents(action) {
   }
 }
 
-// function* updateCalendarEvents(action) {
-  
-// }
-
-
 function* calendarSaga() {
   yield takeLatest('GET_CALENDAR', fetchCalendarEvents);
-  // yield takeLatest('', updateCalendarEvents);
 }
 
 export default calendarSaga;

@@ -46,5 +46,6 @@ contribution_submission varchar,
 promotion varchar,
 other_comment varchar,
 image bytea,
-user_id INT REFERENCES "user"
+user_id INT REFERENCES "user",
+approved boolean default false
 );

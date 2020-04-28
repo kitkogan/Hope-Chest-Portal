@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "../Form/Form.css";
 // import UpdateForm from "./UpdateForm";
+import Swal from "sweetalert2/dist/sweetalert2.js";
 
 class ReviewForm extends Component {
   state = {
@@ -133,7 +134,12 @@ class ReviewForm extends Component {
   };
 
   goHome = () => {
-    alert("Your form has been submitted!");
+        Swal.fire(
+          {title: "Thanks!",
+          text: "The Hope Chest Team will be in touch.",
+          icon: "success", 
+          timer: 5000
+          });
     this.props.history.push("/home");
   };
 

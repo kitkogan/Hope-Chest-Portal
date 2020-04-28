@@ -5,8 +5,7 @@ const router = express.Router();
 //Get route for admin page to display all event submissions
 router.get("/", (req, res) => {
     console.log("in ADMIN /admin GET");
-    const queryText = `select * from "form"`;
-//   where "user_id" = $1 order by "event_date" desc limit 3;`;
+    const queryText = `select * from "form" ORDER BY "id" DESC`;
     pool
       .query(queryText)
       .then((result) => {

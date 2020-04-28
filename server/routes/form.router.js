@@ -20,11 +20,11 @@ where "id" = ${req.params.id};`;
 
 //Get route to get event info by user id and display on user page
 router.get("/user/:id", (req, res) => {
-  console.log("in server/form/:id GET", req.params.id);
+  console.log("in server/form/USER/:id GET", req.params.id);
   const queryText = `select * from "form"
-where "user_id" = $1 order by "event_date" desc limit 3;`;
+where "user_id" = $1 order by "event_date" desc limit 5;`;
   pool
-    .query(queryText, [Number(req.params.id)])
+    .query(queryText, [req.params.id])
     .then((result) => {
       res.send(result.rows);
     })
@@ -39,12 +39,6 @@ router.get("/:id", (req, res) => {
   console.log("!!!!!!!!!!!!!!in server/:id GET", req.params.id);
   const queryText = `select * from "form"
   where "id" = ${Number(req.params.id)};`;
-  //   const queryText = `SELECT "contact_first_name","contact_last_name","contact_phone","contact_email", "company_name", "company_website",
-  //   "company_street","company_city", "company_state", "company_zip","event_contact_first_name", "event_contact_last_name", "event_contact_phone", "event_contact_email", "event_name", "event_website","event_date","event_time","event_location_name",
-  //   "event_location_street", "event_location_city", "event_location_state", "event_location_zip", "event_type", "event_description",
-  //   "event_first_time","fund_description", "contribution_amount", "contribution_submission", "promotion","other_comment", "image", "user_id" FROM "form"
-  // JOIN "user" ON "form"."user_id" = "user"."id"
-  // WHERE "form"."user_id" = ${req.params.id}`;
     pool
       .query(queryText)
       .then((result) => {

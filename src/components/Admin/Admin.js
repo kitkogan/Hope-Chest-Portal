@@ -80,8 +80,8 @@ class Admin extends Component {
                         <td className="tdEvent">{events.contact_phone}</td>
                         <td className="tdEvent">{events.company_name}</td>
                         <td className="tdEvent">{events.event_type}</td>
-                        <td>
-                          <button
+                        
+                          <td
                             className="statusButton"
                             onClick={() =>
                               this.updateApprovalStatus(
@@ -90,24 +90,25 @@ class Admin extends Component {
                                 !events.approved
                               )
                             }
-                          >
+                          ><center>
                             {events.approved ? (
-                              <span role="img" aria-label="star">
+                              <button className="approved">
                                 Approved
-                              </span>
+                              </button>
                             ) : (
-                              <span role="img" aria-label="blackSquare">
+                              <button className="unapproved">
                                 Unapproved
-                              </span>
+                              </button>
                             )}
-                          </button>
-                        </td>
-                        <td className="tdEvent">
-                          <button onClick={() => this.details(events.id)}>
+                            </center>
+                          </td>
+                       
+                        <td><center>
+                          <button className="detailsButton" onClick={() => this.details(events.id)}>
                             Details
                           </button>
+                          </center>
                         </td>
-
                       </tr>
                     );
                   })}

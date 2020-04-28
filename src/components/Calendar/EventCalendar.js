@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { Button, Modal } from "react-bootstrap";
+// import { Button, Modal } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 // import { render } from 'react-dom';
@@ -125,9 +125,9 @@ class EventCalendar extends Component {
     Swal.fire({
       title: event.title,
       text: event.desc,
-      // showCancelButton: true,
+      showCancelButton: true,
       confirmButtonText: "More Details",
-      // cancelButtonText: "Unpublish",
+      cancelButtonText: "Unpublish",
       reverseButtons: false,
       showCloseButton: true,
     }).then((result) => {
@@ -137,11 +137,11 @@ class EventCalendar extends Component {
         /* Read more about handling dismissals below */
         result.dismiss === Swal.DismissReason.cancel
       ) {
-        // Swal.fire(
-        //   "Unpublished!",
-        //   "Your event has been successfully unpublished.",
-        //   "success"
-        // );
+        Swal.fire(
+          "Unpublished!",
+          "Your event has been successfully unpublished.",
+          "success"
+        );
       }
     });
   };

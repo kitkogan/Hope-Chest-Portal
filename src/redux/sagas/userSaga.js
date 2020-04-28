@@ -29,7 +29,7 @@ function* getUserEvents(action) {
 
   console.log("saga coming from userSaga with:", action);
   try {
-    const response = yield axios.get(`/form/${action.userId}`);
+    const response = yield axios.get(`/form/user/${action.userId}`);
     console.log("in saga with", response.data);
     yield put({ type: "SET_EVENT", payload: response.data });
   } catch (error) {
