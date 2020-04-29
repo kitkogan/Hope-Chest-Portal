@@ -42,7 +42,7 @@ class LoginPage extends Component {
         )}
         <form onSubmit={this.login} className="LoginForm">
           <h1>Login</h1>
-          <div>
+          <div className="loginEmail"> 
             <label htmlFor="username">
               Email:
               <input

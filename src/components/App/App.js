@@ -19,7 +19,6 @@ import InfoPage from '../InfoPage/InfoPage';
 
 //importing the newly built components:
 import Welcome from '../Welcome/Welcome';
-import Confirmation from '../Confirmation/Confirmation';
 import FormPg1 from '../Form/FormPg1';
 import FormPg2 from '../Form/FormPg2';
 import FormPg3 from '../Form/FormPg3';
@@ -64,11 +63,6 @@ class App extends Component {
               exact
               path="/welcome"
               component={Welcome}
-            />
-             <ProtectedRoute
-              exact
-              path="/confirmation"
-              component={Confirmation}
             />
              <ProtectedRoute
               exact

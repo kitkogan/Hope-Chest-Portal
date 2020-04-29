@@ -19,16 +19,7 @@ class FormPg2 extends Component {
     user_id: this.props.reduxState.user.id,
     }
   };
-
-// display text input for Event Type "other" select option
-  // otherEventType = () => {
-  //   if (this.value === "other") {
-  //     this.form["other"].style.visibility = "visible";
-  //   } else {
-  //     this.form["other"].style.visibility = "hidden";
-  //   }
-  // };
-
+  
   //Saves user inputs upon entry
   handleChange = (event, typeOf) => {
     this.setState({

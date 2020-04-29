@@ -9,20 +9,34 @@
     
 }
 
-
-table {
-  border-collapse: collapse;
-  border: 1px solid #405AB9;
-  width: 50%;
-  object-position: center;
-  box-shadow: 1px 1px 2px #D1B7A5;
-  margin-left: 25%;
-  background-color: #efebdc;
-} 
-
 .adminHead{
   margin-top: 30px;
   margin-bottom: 30px;
   color: navy;
   text-align: center;
+}
+
+.approved{
+  border: 2pt solid rgb(43, 185, 102);
+  border-radius: 12px;
+  background-color:  rgb(43, 185, 102);
+  color:white;
+  padding: 5px;
+  width:100px
+}
+
+.unapproved{
+  border: 2pt solid rgb(141, 140, 140);
+  border-radius: 12px;
+  background-color:  rgb(141, 140, 140);
+  color:white;
+  padding: 5px;
+}
+
+.detailsButton{
+  border: 2pt solid cornflowerblue; 
+  border-radius: 12px;
+  background-color: cornflowerblue;
+  color:white;
+  padding: 5px;
 }

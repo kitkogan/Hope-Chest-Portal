@@ -5,8 +5,7 @@ const router = express.Router();
 //Get route for admin page to display all event submissions
 router.get("/", (req, res) => {
     console.log("in ADMIN /admin GET");
-    const queryText = `select * from "form"`;
-//   where "user_id" = $1 order by "event_date" desc limit 3;`;
+    const queryText = `select * from "form" ORDER BY "id" DESC`;
     pool
       .query(queryText)
       .then((result) => {
@@ -18,9 +17,10 @@ router.get("/", (req, res) => {
       });
   });
 
-// Get route to grab events by event id and display on Admin Review page
+// Get route to grab event by event id and display on Admin Review page
+//NOTE: ID is coming up as undefined right now
 router.get("/get/:id", (req, res) => {
-  console.log("in server/:id GET");
+  console.log("in server /get/:id GET", );
   const queryText = `select * from "form"
   where "id" = ${req.params.id};`;
   pool

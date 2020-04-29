@@ -37,7 +37,7 @@ class RegisterPage extends Component {
 
   render() {
     return (
-      <div>
+      <div className="registerPage">
         {this.props.errors.registrationMessage && (
           <h2
             className="alert"
@@ -70,7 +70,7 @@ class RegisterPage extends Component {
               />
             </label>
           </div>
-          <div>
+          <div className="emailSpace">
             <label htmlFor="username">
               Email:
               <input

@@ -38,18 +38,21 @@ class AdminDetails extends Component {
     contribution_submission: "",
     promotion: "",
     other_comment: "",
-    image: ""
+    image: "",
   };
 
   componentDidMount = () => {
-    // this.getForm();
+    this.getForm();
   };
 
   getForm = () => {
-    console.log("in getForm on REVIEW FORM component", this.props.reduxState.user.id);
+    console.log(
+      "in getForm on ADMIN FORM component",
+      this.props.reduxState.user.id
+    );
     this.props.dispatch({
       type: "GET_ADMIN_FORM",
-      id: this.props.reduxState.user.id
+      id: this.props.reduxState.user.id,
     });
   };
 
@@ -70,28 +73,64 @@ class AdminDetails extends Component {
 
   updateForm = () => {
     console.log("update form", this.state);
-    console.log("ADMIN ID IS ", this.props.reduxState.user.id);
+    console.log("ADMIN ID IS ", this.props.reduxState.adminDetails[0].id);
 
     // create new form object and dispatch to payload to saga
     this.props.dispatch({
       type: "UPDATE_ADMIN_FORM",
       payload: this.state,
-      id: this.props.reduxState.user.id
+      id: this.props.reduxState.adminDetails[0].id,
     });
     this.setState({
       isEditable: false,
     });
-    this.getForm()
-  };  
+    this.getForm();
+  };
 
 
   edit = () => {
     console.log("editing");
     this.setState({
       isEditable: true,
+      contact_first_name: this.props.reduxState.adminDetails[0]
+        .contact_email
+      // contact_last_name: this.props.reduxState.review[0].contact_last_name,
+      // contact_phone: this.props.reduxState.review[0].contact_phone,
+      // contact_email: this.props.reduxState.review[0].contact_email,
+      // company_name: this.props.reduxState.review[0].company_name,
+      // company_website: this.props.reduxState.review[0].company_website,
+      // company_street: this.props.reduxState.review[0].company_street,
+      // company_city: this.props.reduxState.review[0].company_city,
+      // company_state: this.props.reduxState.review[0].company_state,
+      // company_zip: this.props.reduxState.review[0].company_zip,
+      // show_contact_option: "",
+      // event_contact_first_name: this.props.reduxState.review[0].event_contact_first_name,
+      // event_contact_last_name: this.props.reduxState.review[0].event_contact_last_name,
+      // event_contact_phone: this.props.reduxState.review[0].event_contact_phone,
+      // event_contact_email: this.props.reduxState.review[0].event_contact_email,
+      // event_name: this.props.reduxState.review[0].event_name,
+      // event_website: this.props.reduxState.review[0].event_website,
+      // event_date: this.props.reduxState.review[0].event_date,
+      // event_time: this.props.reduxState.review[0].event_time,
+      // event_location_name: this.props.reduxState.review[0].event_location_name,
+      // event_location_street: this.props.reduxState.review[0].event_location_street,
+      // event_location_city: this.props.reduxState.review[0].event_location_city,
+      // event_location_state: this.props.reduxState.review[0].event_location_state,
+      // event_location_zip: this.props.reduxState.review[0].event_location_zip,
+      // event_type: this.props.reduxState.review[0].event_type,
+      // event_description: this.props.reduxState.review[0].event_description,
+      // event_first_time: this.props.reduxState.review[0].event_first_time,
+      // fund_description: this.props.reduxState.review[0].fund_description,
+      // contribution_amount: this.props.reduxState.review[0].contribution_amount,
+      // contribution_submission: this.props.reduxState.review[0].contribution_submission,
+      // promotion: this.props.reduxState.review[0].promotion,
+      // other_comment: this.props.reduxState.review[0].other_comment,
+      // image: this.props.reduxState.review[0].other_comment
     });
-    console.log(this.props.reduxState.review.length -1);
-    
+    console.log(
+      "this is state!!!!!!!!!!!",this.props.reduxState.adminDetails[0]
+        .contact_first_name
+    );
   };
 
   cancel = () => {
@@ -100,12 +139,13 @@ class AdminDetails extends Component {
       isEditable: false,
     });
   };
+
   
   goToAdmin = ()=>{
     alert("The form has been saved!");
-    this.props.history.push("/admin");
-  } 
-  
+    (this.props.history.push("/admin"))
+  };
+
   render() {
     return (
       <div className="AdminDetails">
