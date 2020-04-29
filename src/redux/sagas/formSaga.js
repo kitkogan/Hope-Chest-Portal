@@ -38,7 +38,7 @@ function* submitForm(action) {
 
 function* updateForm(action) {
   try {
-  console.log('in updateFORM with', action.payload, 'id', action.user);
+  console.log('in updateFORM with', action.payload, 'id', action.user, "checking action.id", action.id);
     yield axios.put(`/form/form/${action.id}`, action.payload);
     console.log('back from update server');
     yield put({ type: 'GET_THIS_FORM', payload: action});

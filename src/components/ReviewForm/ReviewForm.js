@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "../Form/Form.css";
-// import UpdateForm from "./UpdateForm";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 
 class ReviewForm extends Component {
@@ -17,11 +16,6 @@ class ReviewForm extends Component {
     company_city: "",
     company_state: "",
     company_zip: "",
-    show_contact_option: "",
-    event_contact_first_name: "",
-    event_contact_last_name: "",
-    event_contact_phone: "",
-    event_contact_email: "",
     event_name: "",
     event_website: "",
     event_date: "",
@@ -39,7 +33,7 @@ class ReviewForm extends Component {
     contribution_submission: "",
     promotion: "",
     other_comment: "",
-    image: "",
+    user_id: this.props.reduxState.user.id,
     approved: false,
   };
   componentDidMount = () => {
@@ -47,7 +41,6 @@ class ReviewForm extends Component {
   };
 
   getForm = () => {
-    console.log("in getForm on REVIEW FORM component");
     this.props.dispatch({
       type: "GET_FORM",
       id: this.props.reduxState.user.id,
@@ -61,24 +54,19 @@ class ReviewForm extends Component {
   };
 
   updateForm = () => {
-    console.log("update form", this.props.reduxState.user.id);
     // create new form object and dispatch to payload to saga
     this.props.dispatch({
       type: "UPDATE_FORM",
       payload: this.state,
       id: this.props.reduxState.review[0].id,
-      user:{id: this.props.reduxState.user.id}
+      user: { id: this.props.reduxState.user.id },
     });
-    // this.props.dispatch({
-    //   type: "TOGGLE_EDIT"
-    // })
   };
 
   edit = () => {
-    console.log("editing");
     this.props.dispatch({
-      type: "TOGGLE_EDIT"
-    })
+      type: "TOGGLE_EDIT",
+    });
     this.setState({
       contact_first_name: this.props.reduxState.review[0].contact_first_name,
       contact_last_name: this.props.reduxState.review[0].contact_last_name,
@@ -90,13 +78,6 @@ class ReviewForm extends Component {
       company_city: this.props.reduxState.review[0].company_city,
       company_state: this.props.reduxState.review[0].company_state,
       company_zip: this.props.reduxState.review[0].company_zip,
-      show_contact_option: this.props.reduxState.review[0].show_contact_option,
-      event_contact_first_name: this.props.reduxState.review[0]
-        .event_contact_first_name,
-      event_contact_last_name: this.props.reduxState.review[0]
-        .event_contact_last_name,
-      event_contact_phone: this.props.reduxState.review[0].contact_phone,
-      event_contact_email: this.props.reduxState.review[0].contact_email,
       event_name: this.props.reduxState.review[0].event_name,
       event_website: this.props.reduxState.review[0].event_website,
       event_date: this.props.reduxState.review[0].event_date,
@@ -107,7 +88,7 @@ class ReviewForm extends Component {
       event_location_city: this.props.reduxState.review[0].event_location_city,
       event_location_state: this.props.reduxState.review[0]
         .event_location_state,
-      event_location_zip: this.props.reduxState.review[0].event_location,
+      event_location_zip: this.props.reduxState.review[0].event_location_zip,
       event_type: this.props.reduxState.review[0].event_type,
       event_description: this.props.reduxState.review[0].event_description,
       event_first_time: this.props.reduxState.review[0].event_first_time,
@@ -117,39 +98,33 @@ class ReviewForm extends Component {
         .contribution_submission,
       promotion: this.props.reduxState.review[0].promotion,
       other_comment: this.props.reduxState.review[0].other_comment,
-      image: this.props.reduxState.review[0].image,
-      approved: this.props.reduxState.review[0].approved
+      user_id: this.props.reduxState.review[0].user_id,
+      approved: this.props.reduxState.review[0].approved,
     });
-    console.log(
-      "this is state!!!!!!!!!!!",
-      this.props.reduxState.review[0].contact_email
-    );
   };
 
   cancel = () => {
-    console.log("cancel edits");
-   this.props.dispatch({
-     type:'TOGGLE_EDIT'
-   })
+    this.props.dispatch({
+      type: "TOGGLE_EDIT",
+    });
   };
 
   goHome = () => {
-        Swal.fire(
-          {title: "Thanks!",
-          text: "The Hope Chest Team will be in touch.",
-          icon: "success", 
-          timer: 5000
-          });
+    Swal.fire({
+      title: "Thanks!",
+      text: "The Hope Chest Team will be in touch.",
+      icon: "success",
+      timer: 5000,
+    });
     this.props.history.push("/home");
   };
 
   render() {
     return (
       <div className="ReviewForm">
-        <h1>Event Submission Review</h1>
-        <h3> Review Your Form </h3>
+        <h1 className="reviewHead1">Event Submission Review</h1>
+        <center><h3 className="reviewHead3"> Review Your Form </h3></center>
         {this.props.reduxState.newReducer.edit ? (
-
           <>
             {this.props.reduxState.review.map((intake) => (
               <center>
@@ -445,15 +420,6 @@ class ReviewForm extends Component {
                     }
                   />
                 </p>
-                <p>
-                  Logo:
-                  <input
-                    type="file"
-                    accept="image/*"
-                    placeholder={intake.image}
-                    onChange={(event) => this.handleChange(event, "image")}
-                  />
-                </p>
               </center>
             ))}
           </>
@@ -492,7 +458,6 @@ class ReviewForm extends Component {
                 </p>
                 <p>Promotion: {intake.promotion}</p>
                 <p>Other Comments: {intake.other_comment}</p>
-                {/* <img>Logo: {intake.image}</p> */}
               </center>
             ))}
           </>
@@ -500,8 +465,12 @@ class ReviewForm extends Component {
         <center>
           {this.props.reduxState.newReducer.edit ? (
             <>
-              <button className="back" onClick={() => this.cancel()}>Cancel</button>
-              <button className="updateBtn" onClick={() => this.updateForm()}>Update</button>
+              <button className="back" onClick={() => this.cancel()}>
+                Cancel
+              </button>
+              <button className="updateBtn" onClick={() => this.updateForm()}>
+                Update
+              </button>
             </>
           ) : (
             <>

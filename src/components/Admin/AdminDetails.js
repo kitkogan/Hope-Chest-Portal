@@ -16,11 +16,6 @@ class AdminDetails extends Component {
     company_city: "",
     company_state: "",
     company_zip: "",
-    show_contact_option: "",
-    event_contact_first_name: "",
-    event_contact_last_name: "",
-    event_contact_phone: "",
-    event_contact_email: "",
     event_name: "",
     event_website: "",
     event_date: "",
@@ -38,7 +33,6 @@ class AdminDetails extends Component {
     contribution_submission: "",
     promotion: "",
     other_comment: "",
-    image: "",
   };
 
   componentDidMount = () => {
@@ -424,16 +418,8 @@ class AdminDetails extends Component {
                 </p>
                 <p>
                   Contribution Amount:
-                  <input
-                    type="number"
-                    step="0.01"
-                    min=".01"
-                    placeholder={intake.contribution_amount}
-                    onChange={(event) =>
-                      this.handleChange(event, "contribution_amount")
-                    }
-                  />
-                </p>
+                 </p>
+               
                 <p>
                   Contribution Submission Method:{" "}
                   <select
