@@ -26,7 +26,6 @@ class Admin extends Component {
   };
 
   // Appproval status button function
-
   updateApprovalStatus = (formId,update,approved) => {
     console.log("in updateApprovalStatus", update, formId);
     this.props.dispatch({

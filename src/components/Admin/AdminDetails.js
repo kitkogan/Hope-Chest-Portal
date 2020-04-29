@@ -16,11 +16,6 @@ class AdminDetails extends Component {
     company_city: "",
     company_state: "",
     company_zip: "",
-    show_contact_option: "",
-    event_contact_first_name: "",
-    event_contact_last_name: "",
-    event_contact_phone: "",
-    event_contact_email: "",
     event_name: "",
     event_website: "",
     event_date: "",
@@ -38,7 +33,6 @@ class AdminDetails extends Component {
     contribution_submission: "",
     promotion: "",
     other_comment: "",
-    image: "",
   };
 
   componentDidMount = () => {
@@ -124,8 +118,7 @@ class AdminDetails extends Component {
       // contribution_amount: this.props.reduxState.review[0].contribution_amount,
       // contribution_submission: this.props.reduxState.review[0].contribution_submission,
       // promotion: this.props.reduxState.review[0].promotion,
-      // other_comment: this.props.reduxState.review[0].other_comment,
-      // image: this.props.reduxState.review[0].other_comment
+      // other_comment: this.props.reduxState.review[0].other_comment
     });
     console.log(
       "this is state!!!!!!!!!!!",this.props.reduxState.adminDetails[0]
@@ -424,16 +417,8 @@ class AdminDetails extends Component {
                 </p>
                 <p>
                   Contribution Amount:
-                  <input
-                    type="number"
-                    step="0.01"
-                    min=".01"
-                    placeholder={intake.contribution_amount}
-                    onChange={(event) =>
-                      this.handleChange(event, "contribution_amount")
-                    }
-                  />
-                </p>
+                 </p>
+               
                 <p>
                   Contribution Submission Method:{" "}
                   <select
@@ -465,15 +450,6 @@ class AdminDetails extends Component {
                     }
                   />
                 </p>
-                <p>
-                  Logo:
-                  <input
-                    type="file"
-                    accept="image/*"
-                    placeholder={intake.image}
-                    onChange={(event) => this.handleChange(event, "image")}
-                  />
-                </p>
               </center>
             ))}
           </>
@@ -491,7 +467,6 @@ class AdminDetails extends Component {
                 <p>Company City: {intake.company_city}</p>
                 <p>Company State: {intake.company_state}</p>
                 <p>Company Zip Code: {intake.company_zip}</p>
-
                 <p>Event Name: {intake.event_name}</p>
                 <p>Event Website: {intake.event_website}</p>
                 <p>Event Date: {intake.event_date}</p>
@@ -504,15 +479,11 @@ class AdminDetails extends Component {
                 <p>Event Type:{intake.event_type}</p>
                 <p>Event Description: {intake.event_description}</p>
                 <p>First Time Event:{intake.event_first_time}</p>
-
                 <p>Fund Collection Method: {intake.funds_description}</p>
                 <p>Contribution Amount: {intake.contribution_amount}</p>
-                <p>
-                  Contribution Submission Method{intake.contribution_submission}
-                </p>
+                <p>Contribution Submission Method{intake.contribution_submission}</p>
                 <p>Promotion: {intake.promotion}</p>
                 <p>Other Comments: {intake.other_comment}</p>
-                {/* <img>Logo: {intake.image}</p> */}
               </center>
             ))}
           </>
