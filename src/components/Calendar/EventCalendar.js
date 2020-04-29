@@ -1,10 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
-import { Button, Modal } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-
-// import { render } from 'react-dom';
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "./calendar.css";
@@ -24,7 +19,8 @@ class EventCalendar extends Component {
         end: moment("2020-04-10 12:00").toDate(),
         title: "Rise n' Shine with Coffee",
         desc:
-          "20% of all proceeds made during this event will be donated to Hope Chest.",
+          "Details: 20 % of all proceeds made during this event will be donated to Hope Chest.",
+        location: "Location: 501 4th St "
       },
       {
         start: moment("2020-04-17 18:00").toDate(),
@@ -80,15 +76,6 @@ class EventCalendar extends Component {
   //get events on page load
   componentDidMount = () => {
     this.getCalendar();
-
-    // let event = this.props.reduxState.calendarReducer;
-    // for (let i = 0; i < event.length; i++) {
-    //   event[i].start = moment.utc(event[i].start).toDate();
-    //   event[i].end = moment.utc(event[i].end).toDate();
-    //   event[i].event_name;
-    //   event[i].event_description;
-    //   event[i].event_website;
-    // }
   };
 
   //fetching events from calendar reducer
@@ -101,16 +88,6 @@ class EventCalendar extends Component {
       type: "GET_CALENDAR",
       payload: this.props.reduxState.user.id,
     });
-
-    // const events = this.props.reduxState.calendar.map(event => {
-    //   const {id, event_name, event_date} = event;
-    //       return {
-    //         id: id,
-    //         title: event_name,
-    //         start: event_date
-    //       }
-    // });
-    // // this.setState({ events })
     console.log(this.state);
   };
 
@@ -125,71 +102,28 @@ class EventCalendar extends Component {
     Swal.fire({
       title: event.title,
       text: event.desc,
-      // showCancelButton: true,
-      confirmButtonText: "More Details",
-      // cancelButtonText: "Unpublish",
-      reverseButtons: false,
+      footer: event.location,
+      confirmButtonText: "Back",
       showCloseButton: true,
     }).then((result) => {
-      if (result.value) {
-        this.props.history.push("/admin-details");
-      } else if (
+      if (
         /* Read more about handling dismissals below */
         result.dismiss === Swal.DismissReason.cancel
       ) {
-        // Swal.fire(
-        //   "Unpublished!",
-        //   "Your event has been successfully unpublished.",
-        //   "success"
-        // );
       }
     });
   };
 
   render() {
-    // { this.props.reduxState.calendar.map((event) => this.setState({events:{ title: event.event_name}}))}
     return (
       <div className="Calendar">
-
         <h1 className="headCal">Events Calendar</h1>
-        {/* <Modal show={this.state.showHide}>
-          <Modal.Header closeButton onClick={() => this.handleModalShowHide()}>
-            <Modal.Title>Modal heading</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-          <Modal.Footer>
-            <Button
-              variant="secondary"
-              onClick={() => this.handleModalShowHide()}
-            >
-              Close
-            </Button>
-            <Button
-              variant="primary"
-              onClick={() => this.handleModalShowHide()}
-            >
-              Save Changes
-            </Button>
-          </Modal.Footer>
-        </Modal> */}
-        {/* <Button variant="primary" onClick={() => this.handleModalShowHide()}>
-          Display Modal
-        </Button> */}
-
         <Calendar
           popup
           localizer={localizer}
           defaultDate={new Date()}
           defaultView="month"
           events={this.state.events}
-          // {[this.props.reduxState.calendar.map(event => {
-          //   const {id, event_name, event_date} = event;
-          //       return {
-          //         id: id,
-          //         title: event_name,
-          //         start: event_date
-          //       }
-          // })]}
           onSelectEvent={(event) => this.handleSelect(event)}
           style={{ height: "100vh" }}
         />
