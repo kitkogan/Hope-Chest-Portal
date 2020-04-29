@@ -55,6 +55,7 @@ function* updateAdminForm(action) {
     console.log("back from update server");
     yield put({ type: "GET_ADMIN_FORM", payload: action });
     yield put({ type: "TOGGLE_EDIT" });
+ 
   } catch (error) {
     console.log("Error updating event:", error);
     yield put({ type: "ADDING_EVENT_FAILED" });

@@ -72,7 +72,7 @@ class AdminDetails extends Component {
       type: "UPDATE_ADMIN_FORM",
       payload: this.state,
       id: this.props.reduxState.adminDetails[0].id,
-      // user: { id: this.props.reduxState.user.id },
+      form: { id: this.props.reduxState.form.id },
     });
     // this.setState({
     //   isEditable: false,
