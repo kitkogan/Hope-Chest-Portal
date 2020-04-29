@@ -4,6 +4,7 @@ import "../Form/Form.css";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 
 class ReviewForm extends Component {
+  //sets any input changes to state
   state = {
     isEditable: false,
     contact_first_name: "",
@@ -36,25 +37,25 @@ class ReviewForm extends Component {
     user_id: this.props.reduxState.user.id,
     approved: false,
   };
+  //load page with information on page load
   componentDidMount = () => {
     this.getForm();
   };
-
+//get information ready for page load
   getForm = () => {
     this.props.dispatch({
       type: "GET_FORM",
       id: this.props.reduxState.user.id,
     });
   };
-
+//changes state to new changes on each input
   handleChange = (event, typeOf) => {
     this.setState({
       [typeOf]: event.target.value,
     });
   };
-
+//sends new updated information to database
   updateForm = () => {
-    // create new form object and dispatch to payload to saga
     this.props.dispatch({
       type: "UPDATE_FORM",
       payload: this.state,
@@ -62,7 +63,7 @@ class ReviewForm extends Component {
       user: { id: this.props.reduxState.user.id },
     });
   };
-
+//presets state to keep previous information whole allowing new changes
   edit = () => {
     this.props.dispatch({
       type: "TOGGLE_EDIT",
@@ -102,13 +103,13 @@ class ReviewForm extends Component {
       approved: this.props.reduxState.review[0].approved,
     });
   };
-
+//toggles state for editing access
   cancel = () => {
     this.props.dispatch({
       type: "TOGGLE_EDIT",
     });
   };
-
+//when clicked, user will be notified with success and pushed to home page
   goHome = () => {
     Swal.fire({
       title: "Thanks!",
@@ -487,7 +488,7 @@ class ReviewForm extends Component {
     );
   }
 }
-
+//connects to redux store
 const mapStateToProps = (reduxState) => ({
   reduxState,
 });
