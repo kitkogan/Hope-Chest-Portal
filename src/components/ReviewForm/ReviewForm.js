@@ -41,20 +41,20 @@ class ReviewForm extends Component {
   componentDidMount = () => {
     this.getForm();
   };
-//get information ready for page load
+  //get information ready for page load
   getForm = () => {
     this.props.dispatch({
       type: "GET_FORM",
       id: this.props.reduxState.user.id,
     });
   };
-//changes state to new changes on each input
+  //changes state to new changes on each input
   handleChange = (event, typeOf) => {
     this.setState({
       [typeOf]: event.target.value,
     });
   };
-//sends new updated information to database
+  //sends new updated information to database
   updateForm = () => {
     this.props.dispatch({
       type: "UPDATE_FORM",
@@ -63,7 +63,7 @@ class ReviewForm extends Component {
       user: { id: this.props.reduxState.user.id },
     });
   };
-//presets state to keep previous information whole allowing new changes
+  //presets state to keep previous information whole allowing new changes
   edit = () => {
     this.props.dispatch({
       type: "TOGGLE_EDIT",
@@ -103,13 +103,13 @@ class ReviewForm extends Component {
       approved: this.props.reduxState.review[0].approved,
     });
   };
-//toggles state for editing access
+  //toggles state for editing access
   cancel = () => {
     this.props.dispatch({
       type: "TOGGLE_EDIT",
     });
   };
-//when clicked, user will be notified with success and pushed to home page
+  //when clicked, user will be notified with success and pushed to home page
   goHome = () => {
     Swal.fire({
       title: "Thanks!",
@@ -124,7 +124,18 @@ class ReviewForm extends Component {
     return (
       <div className="ReviewForm">
         <h1 className="reviewHead1">Event Submission Review</h1>
-        <center><h3 className="reviewHead3"> Review Your Form </h3></center>
+        <div className="PHead">
+        <center>
+          <h3 className="reviewHead3"> Review Your Form </h3>
+          <p>
+            Please review your form to ensure that everything is correct. To make
+            edits to the form, click on the Edit button at the bottom of the
+            page to edit the desired form field if necessary. Once complete, 
+            click the Update button to save changes.
+         </p>
+          </center>
+          <hr></hr>
+        </div>
         {this.props.reduxState.newReducer.edit ? (
           <>
             {this.props.reduxState.review.map((intake) => (

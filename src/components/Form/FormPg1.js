@@ -52,6 +52,7 @@ class FormPg1 extends Component {
           information is unavailable, please put "N/A" or "TBD" on the form,
           otherwise the form cannot be submitted. All * fields are required.
         </p>
+        <div className="PHead"><hr></hr></div>
         <div className="invisibleClick" onClick={this.populateInputs}>
           <form className="formPage" onSubmit={this.goToFormPage2}>
             <label>First Name: * </label>

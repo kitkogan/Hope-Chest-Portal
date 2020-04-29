@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import "./Form.css";
 
 class FormPg2 extends Component {
   //state holds the values of each input field from the form
@@ -51,6 +52,7 @@ class FormPg2 extends Component {
           Please enter your event information as you would like it to appear in
           the events calendar.
         </h3>
+        <div className="PHead"><hr></hr></div>
         <div className="invisibleClick" onClick={this.populateInputs}>
           <form className="formPage" onSubmit={this.goToFormPage3}>
             <label>Event Name: </label>

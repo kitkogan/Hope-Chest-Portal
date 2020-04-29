@@ -143,6 +143,7 @@ class AdminDetails extends Component {
     return (
       <div className="AdminDetails">
         <h1 className="adminHead">Event Details</h1>
+       
         {this.state.isEditable ? (
           <>
             {this.props.reduxState.adminDetails.map((intake) => (
