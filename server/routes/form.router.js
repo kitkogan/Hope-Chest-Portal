@@ -4,7 +4,6 @@ const router = express.Router();
 
 //GET route to grab all inputs from event submission and display to Review page
 router.get("/form/:id", (req, res) => {
-  console.log("$$$$$$$$$----in form with ID",req.params.id);
   const queryText = `select * from "form"
 where "id" = ${req.params.id};`;
   pool
@@ -20,7 +19,6 @@ where "id" = ${req.params.id};`;
 
 //Get route to get event info by user id and display on user page
 router.get("/user/:id", (req, res) => {
-  console.log("in server/form/USER/:id GET", req.params.id);
   const queryText = `select * from "form"
 where "user_id" = $1 order by "event_date" desc limit 5;`;
   pool
@@ -36,7 +34,6 @@ where "user_id" = $1 order by "event_date" desc limit 5;`;
 
 //Get route to grab events by user_id and display on the review form page
 router.get("/:id", (req, res) => {
-  console.log("!!!!!!!!!!!!!!in server/:id GET", req.params.id);
   const queryText = `select * from "form"
   where "id" = ${Number(req.params.id)};`;
     pool
@@ -51,12 +48,6 @@ router.get("/:id", (req, res) => {
   });
 
   router.put("/form/:id", (req, res) => {
-    console.log(
-      "in review PUT router with",
-      req.body.user_id,
-      "form id",
-      req.params.id
-    );
     //form1
     const contact_first_name = req.body.contact_first_name;
     const contact_last_name = req.body.contact_last_name;
@@ -138,7 +129,6 @@ router.get("/:id", (req, res) => {
 
   //Post route to send event form inputs to the form table in the db
   router.post("/form", (req, res) => {
-    console.log("in router form POST with", req.body);
     //form1
     const contact_first_name = req.body.form.contact_first_name;
     const contact_last_name = req.body.form.contact_last_name;

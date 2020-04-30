@@ -126,14 +126,14 @@ class ReviewForm extends Component {
       <div className="ReviewForm">
         <h1 className="reviewHead1">Event Submission Review</h1>
         <div className="PHead">
-        <center>
-          <h3 className="reviewHead3"> Review Your Form </h3>
-          <p>
-            Please review your form to ensure that everything is correct. To make
-            edits to the form, click on the Edit button at the bottom of the
-            page to edit the desired form field if necessary. Once complete, 
-            click the Update button to save changes.
-         </p>
+          <center>
+            <h3 className="reviewHead3"> Review Your Form </h3>
+            <p>
+              Please review your form to ensure that everything is correct. To
+              make edits to the form, click on the Edit button at the bottom of
+              the page to edit the desired form field if necessary. Once
+              complete, click the Update button to save changes.
+            </p>
           </center>
           <hr></hr>
         </div>

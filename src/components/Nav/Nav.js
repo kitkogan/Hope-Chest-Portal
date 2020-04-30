@@ -5,11 +5,12 @@ import LogOutButton from "../LogOutButton/LogOutButton";
 import "./Nav.css";
 
 const Nav = (props) => (
+  //links to home and other components of the app
   <div className="nav">
-      <Link to="/home">
-        <img className="hclogo" src="/HopeChestPNG.png" alt="Logo" />
-      </Link>
-   
+    <Link to="/home">
+      <img className="hclogo" src="/HopeChestPNG.png" alt="Logo" />
+    </Link>
+
     <div className="row">
       <Link to="/home" className="col-lg">
         {/* Show this link if they are logged in or not,
@@ -22,15 +23,14 @@ const Nav = (props) => (
         <>
           <Link to="/form-page-1" className="col-lg">
             Start Fundraiser
-            {/* {this.props.admin ?
-            <button> admin</button>
-            :
-            <button> not admin</button>} */}
           </Link>
 
           <Link to="/calendar" className="col-lg">
             Events/Calendar
           </Link>
+          {/*if the user's admin privilage is true,
+          show admin in the nav bar, if not,
+          don't show admin in nav bar*/}
           {props.user.admin ? (
             <Link to="/admin" className="col-lg">
               Admin
@@ -45,14 +45,8 @@ const Nav = (props) => (
   </div>
 );
 
-// Instead of taking everything from state, we just want the user
-// object to determine if they are logged in
-// if they are logged in, we show them a few more links
-// if you wanted you could write this code like this:
-// const mapStateToProps = ({ user }) => ({ user });
 const mapStateToProps = (state) => ({
   user: state.user,
-  // admin,
 });
 
 export default connect(mapStateToProps)(Nav);

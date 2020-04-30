@@ -1,7 +1,6 @@
 import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
-
 function* getEvent(action) { 
   try {
     const response = yield axios.get(`/form/user/${action.id}`);
@@ -25,7 +24,7 @@ function* submitForm(action) {
     const response = yield axios.post("/form/form", action.payload);
     yield put({ type: "GET_THIS_FORM", payload: response.data[0]});
 } catch (error) {
-  console.log("Error with adding event:", error);
+  console.log(error);
   yield put({ type: "ADDING_EVENT_FAILED" });
 }
 }
@@ -36,7 +35,7 @@ function* updateForm(action) {
     yield put({ type: 'GET_THIS_FORM', payload: action});
     yield put({ type: 'TOGGLE_EDIT'});
 } catch (error) {
-  console.log("Error updating event:", error);
+  console.log(error);
   yield put({ type: "ADDING_EVENT_FAILED" });
 }
 }

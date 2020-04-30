@@ -54,8 +54,10 @@ class FormPg3 extends Component {
         </center>
         <br />
         <h3>Share your promotional and donation plans</h3>
-        <div className="PHead"><hr></hr></div>
-        
+        <div className="PHead">
+          <hr></hr>
+        </div>
+
         <div className="invisibleClick" onClick={this.populateInputs}>
           <form className="formPage" onSubmit={this.goToReview}>
             <label htmlFor="funds collection description">

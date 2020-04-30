@@ -10,7 +10,6 @@ import form3 from './form3Reducer';
 import admin from './adminReducer';
 import userEvents from "./userEventReducer";
 import adminDetails from "./AdminDetailsReducer";
-import approvalStatus from "./approvalStatusReducer";
 import newReducer from "./newReview";
 import adminReview from "./adminReviewReducer"
 
@@ -32,7 +31,6 @@ const rootReducer = combineReducers({
   admin,
   userEvents,
   adminDetails,
-  approvalStatus,
   newReducer,
   adminReview,
 });

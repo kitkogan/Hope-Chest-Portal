@@ -4,7 +4,6 @@ const router = express.Router();
 
 //Get route for admin page to display all event submissions
 router.get("/:id", (req, res) => {
-  // console.log("in ADMIN /admin GET reqparamsID:", req.params.id);
   const queryText = `SELECT *, "form"."id" as formId FROM "form"
   JOIN "user" ON "form"."user_id" = "user"."id"
   WHERE "user"."admin" = 'true'
@@ -23,7 +22,6 @@ router.get("/:id", (req, res) => {
 // Get route to grab event by event id and display on Admin Details page
 //NOTE: ID is coming up as undefined right now
 router.get("/get/:id", (req, res) => {
-  console.log("in server /get/:id GET", req.params.id);
   const queryText = `select * from "form"
   where "id" = ${req.params.id};`;
   pool
@@ -32,15 +30,13 @@ router.get("/get/:id", (req, res) => {
       res.send(result.rows);
     })
     .catch((error) => {
-      console.log("!!!!on ADMIN DETAILS PAGE Error getting admin query", error);
+      console.log("Error:", error);
       res.sendStatus(500);
     });
 });
 
 //PUT to update event approval status on the admin page
-
 router.put("/update/:id", (req, res) => {
-  console.log("in task PUT router with", req.body.approved);
   const formId = req.params.id;
   const approvalStatus = req.body.approved;
   const queryText = `Update "form" SET "approved" = $2 WHERE id=$1;`;
@@ -57,12 +53,6 @@ router.put("/update/:id", (req, res) => {
 
 // Edit route to allow admin edit of user event submissions on Admin Details page
 router.put("/review/:id", (req, res) => {
-  console.log(
-    "in review PUT router with",
-    req.body.contact_first_name,
-    "form id",
-    req.params.id
-  );
   //form1
   const contact_first_name = req.body.contact_first_name;
   const contact_last_name = req.body.contact_last_name;

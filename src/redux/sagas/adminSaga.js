@@ -17,7 +17,7 @@ function* getAdminEvent(action) {
     const response = yield axios.get(`/admin/get/${action.formId}`);
     yield put({ type: "SET_DETAILS", payload: response.data });
   } catch (error) {
-    console.log("getAdminEvent Error", error);
+    console.log(error);
   }
 }
 
@@ -27,21 +27,20 @@ function* updateAdminForm(action) {
     yield put({ type: "GET_ADMIN_FORM", payload: action });
     yield put({ type: "TOGGLE_EDIT" });
   } catch (error) {
-    console.log("Error updating event:", error);
+    console.log(error);
     yield put({ type: "ADDING_EVENT_FAILED" });
   }
 }
 
 //Edit approval status between approved and unapproved on Admin Page
 function* updateApprovalStatus(update) {
-  console.log("in updateTask of ADMIN saga", update.payload, update.approved);
   try {
     yield axios.put(`admin/update/${update.payload}`, {
       approved: update.approved,
     });
     yield put({ type: "GET_ADMIN" });
   } catch (error) {
-    console.log("Error updating approval status", error);
+    console.log(error);
   }
 }
 

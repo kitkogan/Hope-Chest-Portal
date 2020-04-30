@@ -1,48 +1,51 @@
-import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
 class RegisterPage extends Component {
+  //state holds the values of each input field from register page
   state = {
-    email: '',
-    password: '',
-    first_name: '', 
-    last_name: '',
+    email: "",
+    password: "",
+    first_name: "",
+    last_name: "",
   };
 
+  //this allows a new user to register and stores the info
   registerUser = (event) => {
     event.preventDefault();
-
-    if (this.state.email && this.state.password && this.state.first_name && this.state.last_name) {
-      console.log('in reg saga if statement')
+    if (
+      this.state.email &&
+      this.state.password &&
+      this.state.first_name &&
+      this.state.last_name
+    ) {
       this.props.dispatch({
-        type: 'REGISTER',
+        type: "REGISTER",
         payload: {
           username: this.state.email,
           password: this.state.password,
           first_name: this.state.first_name,
-          last_name: this.state.last_name
+          last_name: this.state.last_name,
         },
       });
     } else {
-      this.props.dispatch({type: 'REGISTRATION_INPUT_ERROR'});
-      console.log('in REGISTERUSER saga below error')
+      this.props.dispatch({ type: "REGISTRATION_INPUT_ERROR" });
+      console.log("in REGISTERUSER below error");
     }
-  } // end registerUser
+  }; // end registerUser
 
-  handleInputChangeFor = propertyName => (event) => {
+  //captures input entry
+  handleInputChangeFor = (propertyName) => (event) => {
     this.setState({
       [propertyName]: event.target.value,
     });
-  }
+  };
 
   render() {
     return (
       <div className="registerPage">
         {this.props.errors.registrationMessage && (
-          <h2
-            className="alert"
-            role="alert"
-          >
+          <h2 className="alert" role="alert">
             {this.props.errors.registrationMessage}
           </h2>
         )}
@@ -55,7 +58,7 @@ class RegisterPage extends Component {
                 type="text"
                 name="first_name"
                 value={this.state.first_name}
-                onChange={this.handleInputChangeFor('first_name')}
+                onChange={this.handleInputChangeFor("first_name")}
               />
             </label>
           </div>
@@ -66,7 +69,7 @@ class RegisterPage extends Component {
                 type="text"
                 name="last_name"
                 value={this.state.last_name}
-                onChange={this.handleInputChangeFor('last_name')}
+                onChange={this.handleInputChangeFor("last_name")}
               />
             </label>
           </div>
@@ -77,7 +80,7 @@ class RegisterPage extends Component {
                 type="text"
                 name="email"
                 value={this.state.email}
-                onChange={this.handleInputChangeFor('email')}
+                onChange={this.handleInputChangeFor("email")}
               />
             </label>
           </div>
@@ -88,7 +91,7 @@ class RegisterPage extends Component {
                 type="password"
                 name="password"
                 value={this.state.password}
-                onChange={this.handleInputChangeFor('password')}
+                onChange={this.handleInputChangeFor("password")}
               />
             </label>
           </div>
@@ -105,7 +108,9 @@ class RegisterPage extends Component {
           <button
             type="button"
             className="link-button"
-            onClick={() => {this.props.dispatch({type: 'SET_TO_LOGIN_MODE'})}}
+            onClick={() => {
+              this.props.dispatch({ type: "SET_TO_LOGIN_MODE" });
+            }}
           >
             Login
           </button>
@@ -115,12 +120,8 @@ class RegisterPage extends Component {
   }
 }
 
-// Instead of taking everything from state, we just want the error messages.
-// if you wanted you could write this code like this:
-// const mapStateToProps = ({errors}) => ({ errors });
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   errors: state.errors,
 });
 
 export default connect(mapStateToProps)(RegisterPage);
-
