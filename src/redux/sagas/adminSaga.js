@@ -15,7 +15,16 @@ function* admin(action) {
 
 //Get selected event form details to display on Admin Review page
 function* getAdminEvent(action) {
-  console.log("saga coming from adminSaga with:", action.payload);
+  console.log(
+    "s?!?!?!?!:",
+    action.formId,
+    "bob",
+    action.id,
+    "jerry",
+    action.payload,
+    "erin",
+    action.user
+  );
   try {
     const response = yield axios.get(`/admin/get/${action.formId}`);
     console.log("in saga GETADMINEVENT with", response.data);
@@ -24,20 +33,6 @@ function* getAdminEvent(action) {
     console.log("getAdminEvent Error", error);
   }
 }
-
-// function* updateAdminForm(action) {
-//   try {
-//     console.log("in updateFORM with", action.payload);
-//     yield axios.put(`/admin/review/${action.id}`, action.payload);
-//     console.log("back from update server");
-//     yield put({ type: "GET_ADMIN_FORM", payload: action });
-//     yield put({ type: "TOGGLE_EDIT" });
-
-//   } catch (error) {
-//     console.log("Error updating event:", error);
-//     yield put({ type: "ADDING_EVENT_FAILED" });
-//   }
-// }
 
 function* updateAdminForm(action) {
   try {

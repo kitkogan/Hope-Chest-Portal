@@ -33,6 +33,7 @@ class AdminDetails extends Component {
     contribution_submission: "",
     promotion: "",
     other_comment: "",
+    user_id: this.props.reduxState.user.id,
     approved: false,
   };
 
@@ -66,7 +67,7 @@ class AdminDetails extends Component {
       type: "UPDATE_ADMIN_FORM",
       payload: this.state,
       id: this.props.reduxState.adminDetails[0].user_id,
-      form: { id: this.props.reduxState.form.id },
+      form: this.props.reduxState.form.id,
     });
     this.setState({
       isEditable: false,
