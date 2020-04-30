@@ -47,7 +47,12 @@ Open up your editor of choice and run an npm install
 
 * On the admin home page, the admin user can click “Admin” in the navigation bar at the top of the page to advance to the table of submitted event forms to review and approve. When a user submits an event, it will automatically be added to the list of events awaiting approval. The admin user can view event details by clicking the Details button on each event row, as well as approve or unapproved events in each row. Clicking the Details button will advance the user to the Admin Details page where they can view all form field entries. Entries can be edited by the admin user by clicking the Update button at the bottom of the details page. Once edits are complete, the admin user can click “Update” to save their changes. The changes will also be saved on the Admin page where all events are listed.
 
-* ADD CALENDAR INSTRUCTIONS
+* to change the date and time, replace the information in the first parenthesis after "moment"
+  start is the first day of the event and the time it will begin
+  end is when the last day of the event and the time it will stop
+  to add an event, copy and paste an event from openening bracket { to closing bracket } after the last event and include a comma after the closing bracket, then replace with dates, title, description, and location
+  to remove an event, delete from opening bracket { to closing bracket }, along with the following comma
+  time is fomatted as following: year, month, day, hour(24 hour military time), minute, seconds
 
 ## Built With
 

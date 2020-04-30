@@ -115,7 +115,7 @@ class ReviewForm extends Component {
       title: "Thanks!",
       text: "The Hope Chest Team will be in touch.",
       icon: "success",
-      timer: 5000,
+      timer: 3750,
       showCloseButton: true,
     });
     this.props.history.push("/home");

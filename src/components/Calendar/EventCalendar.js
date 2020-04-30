@@ -11,7 +11,13 @@ import "sweetalert2/src/sweetalert2.scss";
 const localizer = momentLocalizer(moment);
 
 class EventCalendar extends Component {
-  //year, month, day, hour(24 hour military time), minute, seconds
+  //to change the date and time, replace the information in the first parenthesis after "moment"
+  //start is the first day of the event and the time it will begin
+  //end is when the last day of the event and the time it will stop
+  //to add an event, copy and paste an event from openening bracket { to closing bracket } after the last event and include a comma after the closing bracket, then replace with dates, title, description, and location
+  //to remove an event, delete from opening bracket { to closing bracket }, along with the following comma
+  //time is fomatted as following: year, month, day, hour(24 hour military time), minute, seconds
+
   state = {
     showHide: false,
     events: [
@@ -21,7 +27,7 @@ class EventCalendar extends Component {
         title: "Rise n' Shine with Coffee",
         desc:
           "Details: 20 % of all proceeds made during this event will be donated to Hope Chest.",
-        location: "Location: 501 4th St ",
+        location: "Location: 501 4th St Minneapolis MN 55555",
       },
       {
         start: moment("2020-04-17 18:00").toDate(),
@@ -29,7 +35,7 @@ class EventCalendar extends Component {
         title: "Virtual Ball",
         desc:
           "$10 will be added to the fundraiser for each person in attendance.",
-        location: "Location: 501 4th St ",
+        location: "Location: 501 4th St Minneapolis MN 55555",
       },
       {
         start: moment("2020-04-21 14:00").toDate(),
@@ -37,7 +43,7 @@ class EventCalendar extends Component {
         title: "Minneapolis Cook Off",
         desc:
           "Proceeds from every ticket purchased will be dontated to Hope Chest.",
-        location: "Location: 501 4th St ",
+        location: "Location: 501 4th St Minneapolis MN 55555",
       },
       {
         start: moment("2020-04-27 18:00").toDate(),
@@ -45,7 +51,7 @@ class EventCalendar extends Component {
         title: "Happy Hour",
         desc:
           "20% of all proceeds made from our raffel this week will be donated to Hope Chest.",
-        location: "Location: 501 4th St ",
+        location: "Location: 501 4th St Minneapolis MN 55555",
       },
       {
         start: moment("2020-04-28 16:00").toDate(),
@@ -53,7 +59,7 @@ class EventCalendar extends Component {
         title: "Shopping Night",
         desc:
           "20% of all proceeds made during this event will be donated to Hope Chest.",
-        location: "Location: 501 4th St ",
+        location: "Location: 501 4th St Minneapolis MN 55555",
       },
       {
         start: moment("2020-05-09 10:00").toDate(),
@@ -61,7 +67,7 @@ class EventCalendar extends Component {
         title: "Brunch with Mom: Mother's Day Weekend",
         desc:
           "20% of all proceeds made during this event will be donated to Hope Chest.",
-        location: "Location: 501 4th St ",
+        location: "Location: 501 4th St Minneapolis MN 55555",
       },
       {
         start: moment("2020-05-14 12:00").toDate(),
@@ -76,36 +82,26 @@ class EventCalendar extends Component {
         title: "Auction of the Arts",
         desc:
           "20% of all proceeds made during this event will be donated to Hope Chest.",
-        location: "Location: 501 4th St ",
+        location: "Location: 501 4th St Minneapolis MN 55555",
       },
     ],
   };
 
   //sweet alert for selected event
+  //event clicked from the calendar will open a modal for the
+  //user to view the description and location of the event
   handleSelect = (event) => {
     Swal.fire({
       title: event.title,
       text: event.desc,
       footer: event.location,
-      confirmButtonText: "Unpublish",
-      cancelButtonText: "Back",
-      showCancelButton: true,
+      confirmButtonText: "Back",
       showCloseButton: true,
-    }).then((result) => {
-      if (result.value) {
-        Swal.fire({
-          title: 'Success!',
-          text: 'Your file has been unpublished.',
-          icon: 'success',
-          showCloseButton: true,
-          timer: 3750,
-        })
-        console.log("modal show hide function");
-        this.setState({ showHide: !this.state.showHide });
-      }
     });
   };
 
+  //rendering calendar fron react-big-calendar
+  //maps each event listed in state -> events
   render() {
     return (
       <div className="Calendar">
@@ -124,8 +120,4 @@ class EventCalendar extends Component {
   }
 }
 
-const mapStateToProps = (reduxState) => ({
-  reduxState,
-});
-
-export default connect(mapStateToProps)(EventCalendar);
+export default EventCalendar;
