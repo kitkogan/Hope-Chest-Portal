@@ -2,9 +2,8 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
 class Welcome extends Component {
-
+//pushes users to the home page
   goToForm = () => {       
-    console.log("in goToForm", this.state, "userId", this.props.reduxState.user.id);
     this.props.history.push("/home");
   };
 

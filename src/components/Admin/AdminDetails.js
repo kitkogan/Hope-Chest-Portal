@@ -4,6 +4,7 @@ import '../Form/Form.css';
 import Swal from "sweetalert2/dist/sweetalert2.js";
 
 class AdminDetails extends Component {
+  //state holds the values of the form
   state = {
     isEditable: false,
     contact_first_name: "",
@@ -37,35 +38,28 @@ class AdminDetails extends Component {
     approved: false,
   };
 
+  //this function loads the page with information done by the getAdminForm function
   componentDidMount = () => {
     this.getForm();
   };
 
+  //gets info to display on details page
   getForm = () => {
-    console.log(
-      "LOOK AT ME",
-      this.props.reduxState.form.id,
-      "checking form.USER_ID:", this.props.reduxState.user.id,
-      "hate this dumb thing", this.props.reduxState.user.id
-    );
     this.props.dispatch({
       type: "GET_ADMIN_FORM",
       id: this.props.reduxState.user.id,
-      // form: this.props.reduxState.form.id,
     });
   };
 
+  //captures admin edits to the form
   handleChange = (event, typeOf) => {
     this.setState({
       [typeOf]: event.target.value,
     });
   };
 
+  // create new form object and dispatch to payload to saga
   updateForm = () => {
-    console.log("update form", this.state);
-    console.log("ADMIN ID IS ", this.props.reduxState.adminDetails[0].id);
-
-    // create new form object and dispatch to payload to saga
     this.props.dispatch({
       type: "UPDATE_ADMIN_FORM",
       payload: this.state,
@@ -85,6 +79,7 @@ class AdminDetails extends Component {
     this.props.history.push("/admin");
   };
 
+  //toggles edit inputs for the form
   edit = () => {
     this.props.dispatch({
       type: "TOGGLE_EDIT",
@@ -131,12 +126,14 @@ class AdminDetails extends Component {
     });
   };
 
+  //cancel editing the form
   cancel = () => {
     this.props.dispatch({
       type: "TOGGLE_EDIT",
     });
   };
   
+  //go back to admin
   goToAdmin = ()=>{
     this.props.history.push("/admin");
   };

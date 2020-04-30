@@ -4,21 +4,19 @@ import "./Admin.css";
 import Table from 'react-bootstrap/Table';
 
 class Admin extends Component {
-
-
+//state holds the values of formId and Approval Status
   state = {
     formId: "",
     approvalStatus: false
 
   }
-
+//this function loads the page with information done by the getAdminForm function
   componentDidMount = () => {
-    // this.props.dispatch({ type: "GET_ADMIN" });
     this.getAdminForm();
   };
 
+//get info to put on the admin page
   getAdminForm = () => {
-    console.log("in getForm on ADMIN component", this.props.reduxState.user.id);
     this.props.dispatch({
       type: "GET_ADMIN",
       payload: this.props.reduxState.user.id,
@@ -27,7 +25,6 @@ class Admin extends Component {
 
   // Appproval status button function
   updateApprovalStatus = (formId,update,approved) => {
-    console.log("in updateApprovalStatus", update, formId);
     this.props.dispatch({
       type: "SET_STATUS_1",
       payload: formId,
@@ -37,6 +34,7 @@ class Admin extends Component {
     this.getAdminForm();
   };
 
+//takes user to admin details page and loads the details
   details = (id) => {
     this.props.history.push("/admin-details");
     this.props.dispatch({
@@ -44,7 +42,6 @@ class Admin extends Component {
       formId: id,
     });
   };
-
 
   render() {
     console.log("checking admin reducer", this.props.reduxState.admin);

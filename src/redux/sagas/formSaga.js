@@ -1,7 +1,6 @@
 import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
-
 function* getEvent(action) { 
   console.log("saga coming from formSaga with:", action.id);
   try {
