@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import '../Form/Form.css';
-// import UpdateForm from "./UpdateForm";
+import Swal from "sweetalert2/dist/sweetalert2.js";
 
 class AdminDetails extends Component {
   state = {
@@ -78,7 +78,14 @@ class AdminDetails extends Component {
     this.setState({
       isEditable: false,
     });
-    this.getForm();
+    Swal.fire({
+      title: "Thanks!",
+      text: "The form has been updated!",
+      icon: "success",
+      timer: 5000,
+      showCloseButton: true,
+    });
+    this.props.history.push("/admin");
   };
 
 
@@ -120,14 +127,9 @@ class AdminDetails extends Component {
       // promotion: this.props.reduxState.review[0].promotion,
       // other_comment: this.props.reduxState.review[0].other_comment
     });
-    console.log(
-      "this is state!!!!!!!!!!!",this.props.reduxState.adminDetails[0]
-        .contact_first_name
-    );
   };
 
   cancel = () => {
-    console.log("cancel edits");
     this.setState({
       isEditable: false,
     });
@@ -135,8 +137,7 @@ class AdminDetails extends Component {
 
   
   goToAdmin = ()=>{
-    alert("The form has been saved!");
-    (this.props.history.push("/admin"))
+    this.props.history.push("/admin");
   };
 
   render() {
@@ -501,7 +502,7 @@ class AdminDetails extends Component {
                 Edit
               </button>
               <button className="submit" onClick={() => this.goToAdmin()}>
-                Save
+                Back
               </button>
             </>
           )}
