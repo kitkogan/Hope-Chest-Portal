@@ -12,6 +12,7 @@ import userEvents from "./userEventReducer";
 import adminDetails from "./AdminDetailsReducer";
 import approvalStatus from "./approvalStatusReducer";
 import newReducer from "./newReview";
+import adminReview from "./adminReviewReducer"
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -33,6 +34,7 @@ const rootReducer = combineReducers({
   adminDetails,
   approvalStatus,
   newReducer,
+  adminReview,
 });
 
 export default rootReducer;

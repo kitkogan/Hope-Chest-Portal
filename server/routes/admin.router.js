@@ -17,12 +17,12 @@ router.get("/", (req, res) => {
       });
   });
 
-// Get route to grab event by event id and display on Admin Review page
+// Get route to grab event by event id and display on Admin Details page
 //NOTE: ID is coming up as undefined right now
 router.get("/get/:id", (req, res) => {
-  console.log("in server /get/:id GET", );
+  console.log("in server /get/:id GET", req.params.id);
   const queryText = `select * from "form"
-  where "id" = ${req.params.id};`;
+  where "id" = ${Number(req.params.id)};`;
   pool
   .query(queryText)
   .then((result) => {
@@ -54,9 +54,13 @@ router.put('/update/:id', (req,res) => {
     });
 })
 
-// Edit route to allow admin edit of user event submissions on Admin Review page
-  router.put("/:id", (req, res) => {
-    console.log("in admin PUT router with",req.body.contact_first_name,"form id",req.params.id
+// Edit route to allow admin edit of user event submissions on Admin Details page
+  router.put("/review/:id", (req, res) => {
+    console.log(
+      "in review PUT router with",
+      req.body.contact_first_name,
+      "form id",
+      req.params.id
     );
     //form1
     const contact_first_name = req.body.contact_first_name;
@@ -89,7 +93,8 @@ router.put('/update/:id', (req,res) => {
     const promotion = req.body.promotion;
     const other_comment = req.body.other_comment;
     const user_id = req.body.user_id;
-    const form_id = req.params.id;
+    const form_id = Number(req.params.id);
+    const approved = req.body.approved;
     const queryText = `Update "form" SET ("contact_first_name","contact_last_name","contact_phone","contact_email", "company_name", "company_website",
   "company_street","company_city", "company_state", "company_zip", "event_name", "event_website","event_date","event_time","event_location_name",
   "event_location_street", "event_location_city", "event_location_state", "event_location_zip", "event_type", "event_description", 
@@ -126,13 +131,14 @@ router.put('/update/:id', (req,res) => {
         promotion,
         other_comment,
         user_id,
+        approved,
         form_id,
       ])
       .then(() => {
         res.sendStatus(200);
       })
       .catch((error) => {
-        console.log("error updating event status", error);
+        console.log("error updating task status", error);
         res.sendStatus(500);
       });
   });
