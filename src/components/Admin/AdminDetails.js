@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import '../Form/Form.css';
+import "../Form/Form.css";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 
 class AdminDetails extends Component {
@@ -35,23 +35,23 @@ class AdminDetails extends Component {
     other_comment: "",
     user_id: this.props.reduxState.user.id,
     approved: false,
+    // formId: this.props.reduxState.
   };
 
-  componentDidMount = () => {
-    this.getForm();
-  };
+  // componentDidMount = () => {
+  //   this.getForm();
+  // };
 
   getForm = () => {
     console.log(
       "LOOK AT ME",
       this.props.reduxState.form.id,
-      "checking form.USER_ID:", this.props.reduxState.user.id,
-      "hate this dumb thing", this.props.reduxState.user.id
+      "checking form.USER_ID:",
+      this.props.reduxState.user.id,
     );
     this.props.dispatch({
       type: "GET_ADMIN_FORM",
-      id: this.props.reduxState.user.id,
-      // form: this.props.reduxState.form.id,
+      id: this.props.reduxState.form.id,
     });
   };
 
@@ -62,8 +62,8 @@ class AdminDetails extends Component {
   };
 
   updateForm = () => {
-    console.log("update form", this.state);
-    console.log("ADMIN ID IS ", this.props.reduxState.adminDetails[0].id);
+    console.log("update form", this.state, 'formid', this.props.reduxState.form.id);
+    console.log("ADMIN ID IS ", this.props.reduxState.adminDetails[0]);
 
     // create new form object and dispatch to payload to saga
     this.props.dispatch({
@@ -114,7 +114,8 @@ class AdminDetails extends Component {
         .event_location_city,
       event_location_state: this.props.reduxState.adminDetails[0]
         .event_location_state,
-      event_location_zip: this.props.reduxState.adminDetails[0].event_location_zip,
+      event_location_zip: this.props.reduxState.adminDetails[0]
+        .event_location_zip,
       event_type: this.props.reduxState.adminDetails[0].event_type,
       event_description: this.props.reduxState.adminDetails[0]
         .event_description,
@@ -136,8 +137,8 @@ class AdminDetails extends Component {
       type: "TOGGLE_EDIT",
     });
   };
-  
-  goToAdmin = ()=>{
+
+  goToAdmin = () => {
     this.props.history.push("/admin");
   };
 
@@ -145,8 +146,7 @@ class AdminDetails extends Component {
     return (
       <div className="AdminDetails">
         <h1 className="adminHead">Event Details</h1>
-         {this.props.reduxState.adminReview.edit ? (
-
+        {this.props.reduxState.adminReview.edit ? (
           <>
             {this.props.reduxState.adminDetails.map((intake) => (
               <center>
@@ -418,10 +418,8 @@ class AdminDetails extends Component {
                     }
                   />
                 </p>
-                <p>
-                  Contribution Amount:
-                 </p>
-               
+                <p>Contribution Amount:</p>
+
                 <p>
                   Contribution Submission Method:{" "}
                   <select
@@ -484,7 +482,9 @@ class AdminDetails extends Component {
                 <p>First Time Event:{intake.event_first_time}</p>
                 <p>Fund Collection Method: {intake.funds_description}</p>
                 <p>Contribution Amount: {intake.contribution_amount}</p>
-                <p>Contribution Submission Method{intake.contribution_submission}</p>
+                <p>
+                  Contribution Submission Method{intake.contribution_submission}
+                </p>
                 <p>Promotion: {intake.promotion}</p>
                 <p>Other Comments: {intake.other_comment}</p>
               </center>
@@ -493,7 +493,6 @@ class AdminDetails extends Component {
         )}
         <center>
           {this.props.reduxState.adminReview.edit ? (
-          
             <>
               <button className="back" onClick={() => this.cancel()}>
                 Cancel

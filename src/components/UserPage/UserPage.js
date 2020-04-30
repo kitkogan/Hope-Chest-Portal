@@ -49,9 +49,9 @@ class UserPage extends Component {
        
             <ul>
               {this.props.reduxState.userEvents.length > 0 &&
-                this.props.reduxState.userEvents.map((events) => {
+                this.props.reduxState.userEvents.map((events, index) => {
                   return (
-                    <li className="eventLi">
+                    <li className="eventLi" key={index}>
                         <img className="eventImg" src="/userPic.jpg" alt="Logo"/>
                       <br />
                       <>{events.event_name}</>

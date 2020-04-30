@@ -3,9 +3,9 @@ import axios from "axios";
 
 // Displays all events on Admin page with table
 function* admin(action) {
-  console.log("ADMIN saga coming from admin with:", action.payload);
+  console.log("ADMIN saga coming from admin with:", action.payload, 'timmy', action.formId);
   try {
-    const response = yield axios.get("/admin", action.payload);
+    const response = yield axios.get(`/admin/${action.id}`, action.payload);
     console.log("in saga with", response.data);
     yield put({ type: "SET_ADMIN", payload: response.data });
   } catch (error) {
@@ -26,13 +26,24 @@ function* getAdminEvent(action) {
     action.user
   );
   try {
-    const response = yield axios.get(`/admin/get/${action.id}`);
+    const response = yield axios.get(`/admin/get/${action.formId}`);
     console.log("in saga GETADMINEVENT with", response.data);
     yield put({ type: "SET_DETAILS", payload: response.data });
   } catch (error) {
     console.log("getAdminEvent Error", error);
   }
 }
+
+// function* getAdminEvent(action) { 
+//   console.log("saga coming from adminSaga with:", action.payload);
+//   try {
+//     const response = yield axios.get(`/admin/get/${action.formId}`);
+//     console.log("in saga GETADMINEVENT with", response.data);
+//     yield put({ type: 'SET_DETAILS', payload: response.data });
+//   } catch (error) {
+//     console.log("getAdminEvent Error", error);
+//   }
+// }
 
 function* updateAdminForm(action) {
   try {
