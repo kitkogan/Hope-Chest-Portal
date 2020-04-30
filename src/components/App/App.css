@@ -136,3 +136,13 @@ input {
 .updateBtn:hover{
   background-color: rgb(223, 69, 124);
 }
+
+.reviewHead1{
+  color: rgb(223, 69, 124);
+  margin-top: 10px;
+}
+
+.reviewHead3{
+  color:rgb(42, 41, 116);
+  margin-bottom: 10px;
+}

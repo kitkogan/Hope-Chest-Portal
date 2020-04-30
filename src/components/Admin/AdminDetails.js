@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import '../Form/Form.css';
-// import UpdateForm from "./UpdateForm";
+import Swal from "sweetalert2/dist/sweetalert2.js";
 
 class AdminDetails extends Component {
   state = {
@@ -16,11 +16,6 @@ class AdminDetails extends Component {
     company_city: "",
     company_state: "",
     company_zip: "",
-    show_contact_option: "",
-    event_contact_first_name: "",
-    event_contact_last_name: "",
-    event_contact_phone: "",
-    event_contact_email: "",
     event_name: "",
     event_website: "",
     event_date: "",
@@ -38,7 +33,6 @@ class AdminDetails extends Component {
     contribution_submission: "",
     promotion: "",
     other_comment: "",
-    image: "",
     approved: false,
   };
 
@@ -74,10 +68,17 @@ class AdminDetails extends Component {
       id: this.props.reduxState.adminDetails[0].id,
       form: { id: this.props.reduxState.form.id },
     });
-    // this.setState({
-    //   isEditable: false,
-    // });
-    this.getForm();
+    this.setState({
+      isEditable: false,
+    });
+    Swal.fire({
+      title: "Thanks!",
+      text: "The form has been updated!",
+      icon: "success",
+      timer: 5000,
+      showCloseButton: true,
+    });
+    this.props.history.push("/admin");
   };
 
   edit = () => {
@@ -146,9 +147,8 @@ class AdminDetails extends Component {
       type: "TOGGLE_EDIT",
     });
   };
-
-  goToAdmin = () => {
-    alert("The form has been saved!");
+  
+  goToAdmin = ()=>{
     this.props.history.push("/admin");
   };
 
@@ -157,7 +157,7 @@ class AdminDetails extends Component {
       <div className="AdminDetails">
         <h1 className="adminHead">Event Details</h1>
          {this.props.reduxState.adminReview.edit ? (
-        
+
           <>
             {this.props.reduxState.adminDetails.map((intake) => (
               <center>
@@ -431,16 +431,8 @@ class AdminDetails extends Component {
                 </p>
                 <p>
                   Contribution Amount:
-                  <input
-                    type="number"
-                    step="0.01"
-                    min=".01"
-                    placeholder={intake.contribution_amount}
-                    onChange={(event) =>
-                      this.handleChange(event, "contribution_amount")
-                    }
-                  />
-                </p>
+                 </p>
+               
                 <p>
                   Contribution Submission Method:{" "}
                   <select
@@ -472,15 +464,6 @@ class AdminDetails extends Component {
                     }
                   />
                 </p>
-                <p>
-                  Logo:
-                  <input
-                    type="file"
-                    accept="image/*"
-                    placeholder={intake.image}
-                    onChange={(event) => this.handleChange(event, "image")}
-                  />
-                </p>
               </center>
             ))}
           </>
@@ -498,7 +481,6 @@ class AdminDetails extends Component {
                 <p>Company City: {intake.company_city}</p>
                 <p>Company State: {intake.company_state}</p>
                 <p>Company Zip Code: {intake.company_zip}</p>
-
                 <p>Event Name: {intake.event_name}</p>
                 <p>Event Website: {intake.event_website}</p>
                 <p>Event Date: {intake.event_date}</p>
@@ -511,15 +493,11 @@ class AdminDetails extends Component {
                 <p>Event Type:{intake.event_type}</p>
                 <p>Event Description: {intake.event_description}</p>
                 <p>First Time Event:{intake.event_first_time}</p>
-
                 <p>Fund Collection Method: {intake.funds_description}</p>
                 <p>Contribution Amount: {intake.contribution_amount}</p>
-                <p>
-                  Contribution Submission Method{intake.contribution_submission}
-                </p>
+                <p>Contribution Submission Method{intake.contribution_submission}</p>
                 <p>Promotion: {intake.promotion}</p>
                 <p>Other Comments: {intake.other_comment}</p>
-                {/* <img>Logo: {intake.image}</p> */}
               </center>
             ))}
           </>
@@ -541,7 +519,7 @@ class AdminDetails extends Component {
                 Edit
               </button>
               <button className="submit" onClick={() => this.goToAdmin()}>
-                Save
+                Back
               </button>
             </>
           )}

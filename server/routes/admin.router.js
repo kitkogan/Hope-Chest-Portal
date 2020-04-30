@@ -74,10 +74,6 @@ router.put('/update/:id', (req,res) => {
     const company_state = req.body.company_state;
     const company_zip = req.body.company_zip;
     //form2
-    const event_contact_first_name = req.body.event_contact_first_name;
-    const event_contact_last_name = req.body.event_contact_last_name;
-    const event_contact_phone = req.body.event_contact_phone;
-    const event_contact_email = req.body.event_contact_email;
     const event_name = req.body.event_name;
     const event_website = req.body.event_website;
     const event_date = req.body.event_date;
@@ -96,14 +92,15 @@ router.put('/update/:id', (req,res) => {
     const contribution_submission = req.body.contribution_submission;
     const promotion = req.body.promotion;
     const other_comment = req.body.other_comment;
-    const image = req.body.image;
     const user_id = req.body.user_id;
     const form_id = Number(req.params.id);
     const approved = req.body.approved;
     const queryText = `Update "form" SET ("contact_first_name","contact_last_name","contact_phone","contact_email", "company_name", "company_website",
-  "company_street","company_city", "company_state", "company_zip","event_contact_first_name", "event_contact_last_name", "event_contact_phone", "event_contact_email", "event_name", "event_website","event_date","event_time","event_location_name",
+  "company_street","company_city", "company_state", "company_zip", "event_name", "event_website","event_date","event_time","event_location_name",
   "event_location_street", "event_location_city", "event_location_state", "event_location_zip", "event_type", "event_description", 
-  "event_first_time","fund_description", "contribution_amount", "contribution_submission", "promotion","other_comment", "image", "user_id", "approved") = ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25,$26,$27,$28,$29,$30,$31,$32,$33,$34) WHERE "form"."id"=($35);`;
+  "event_first_time","fund_description", "contribution_amount", "contribution_submission", "promotion","other_comment", "user_id") = 
+  ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25,$26,$27,$28,$29)
+   WHERE "form"."id"=($30);`;
     pool
       .query(queryText, [
         contact_first_name,
@@ -116,10 +113,6 @@ router.put('/update/:id', (req,res) => {
         company_city,
         company_state,
         company_zip,
-        event_contact_first_name,
-        event_contact_last_name,
-        event_contact_phone,
-        event_contact_email,
         event_name,
         event_website,
         event_date,
@@ -137,7 +130,6 @@ router.put('/update/:id', (req,res) => {
         contribution_submission,
         promotion,
         other_comment,
-        image,
         user_id,
         approved,
         form_id,
@@ -150,8 +142,5 @@ router.put('/update/:id', (req,res) => {
         res.sendStatus(500);
       });
   });
-
-
-
 
 module.exports = router;

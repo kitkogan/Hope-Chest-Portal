@@ -22,14 +22,14 @@
 }
 .PHead {
   text-align: center;
-  margin: 0 22%;
+  margin: 0 25%;
+
 }
 .eventDesc{
   text-align: center;
 }
 .secondaryLabel{
     margin: 10px 0;
-    /* text-align: center; */
     font-size: large;
 }
 .radioInput{

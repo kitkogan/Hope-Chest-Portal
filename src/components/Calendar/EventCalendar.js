@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
-// import { Button, Modal } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-
-// import { render } from 'react-dom';
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "./calendar.css";
@@ -24,7 +20,8 @@ class EventCalendar extends Component {
         end: moment("2020-04-10 12:00").toDate(),
         title: "Rise n' Shine with Coffee",
         desc:
-          "20% of all proceeds made during this event will be donated to Hope Chest.",
+          "Details: 20 % of all proceeds made during this event will be donated to Hope Chest.",
+        location: "Location: 501 4th St ",
       },
       {
         start: moment("2020-04-17 18:00").toDate(),
@@ -32,6 +29,7 @@ class EventCalendar extends Component {
         title: "Virtual Ball",
         desc:
           "$10 will be added to the fundraiser for each person in attendance.",
+        location: "Location: 501 4th St ",
       },
       {
         start: moment("2020-04-21 14:00").toDate(),
@@ -39,6 +37,7 @@ class EventCalendar extends Component {
         title: "Minneapolis Cook Off",
         desc:
           "Proceeds from every ticket purchased will be dontated to Hope Chest.",
+        location: "Location: 501 4th St ",
       },
       {
         start: moment("2020-04-27 18:00").toDate(),
@@ -46,6 +45,7 @@ class EventCalendar extends Component {
         title: "Happy Hour",
         desc:
           "20% of all proceeds made from our raffel this week will be donated to Hope Chest.",
+        location: "Location: 501 4th St ",
       },
       {
         start: moment("2020-04-28 16:00").toDate(),
@@ -53,6 +53,7 @@ class EventCalendar extends Component {
         title: "Shopping Night",
         desc:
           "20% of all proceeds made during this event will be donated to Hope Chest.",
+        location: "Location: 501 4th St ",
       },
       {
         start: moment("2020-05-09 10:00").toDate(),
@@ -60,12 +61,14 @@ class EventCalendar extends Component {
         title: "Brunch with Mom: Mother's Day Weekend",
         desc:
           "20% of all proceeds made during this event will be donated to Hope Chest.",
+        location: "Location: 501 4th St ",
       },
       {
         start: moment("2020-05-14 12:00").toDate(),
         end: moment("2020-05-14 14:00").toDate(),
         title: "Pink-Out Track Competition",
         desc: "Show support by wearing pink.",
+        location: "Location: 501 4th St ",
       },
       {
         start: moment("2020-05-26 14:00").toDate(),
@@ -73,6 +76,7 @@ class EventCalendar extends Component {
         title: "Auction of the Arts",
         desc:
           "20% of all proceeds made during this event will be donated to Hope Chest.",
+        location: "Location: 501 4th St ",
       },
     ],
   };
@@ -80,38 +84,14 @@ class EventCalendar extends Component {
   //get events on page load
   componentDidMount = () => {
     this.getCalendar();
-
-    // let event = this.props.reduxState.calendarReducer;
-    // for (let i = 0; i < event.length; i++) {
-    //   event[i].start = moment.utc(event[i].start).toDate();
-    //   event[i].end = moment.utc(event[i].end).toDate();
-    //   event[i].event_name;
-    //   event[i].event_description;
-    //   event[i].event_website;
-    // }
   };
 
   //fetching events from calendar reducer
   getCalendar = () => {
-    console.log(
-      "in getCalendar on CALENDAR component",
-      this.props.reduxState.user.id
-    );
     this.props.dispatch({
       type: "GET_CALENDAR",
       payload: this.props.reduxState.user.id,
     });
-
-    // const events = this.props.reduxState.calendar.map(event => {
-    //   const {id, event_name, event_date} = event;
-    //       return {
-    //         id: id,
-    //         title: event_name,
-    //         start: event_date
-    //       }
-    // });
-    // // this.setState({ events })
-    console.log(this.state);
   };
 
   //not in use right now but might be useful later
@@ -125,71 +105,36 @@ class EventCalendar extends Component {
     Swal.fire({
       title: event.title,
       text: event.desc,
+      footer: event.location,
+      confirmButtonText: "Unpublish",
+      cancelButtonText: "Back",
       showCancelButton: true,
-      confirmButtonText: "More Details",
-      cancelButtonText: "Unpublish",
-      reverseButtons: false,
       showCloseButton: true,
     }).then((result) => {
       if (result.value) {
-        this.props.history.push("/admin-details");
-      } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        Swal.fire(
-          "Unpublished!",
-          "Your event has been successfully unpublished.",
-          "success"
-        );
+        Swal.fire({
+          title: 'Success!',
+          text: 'Your file has been unpublished.',
+          icon: 'success',
+          showCloseButton: true,
+          timer: 3750,
+        })
+        console.log("modal show hide function");
+        this.setState({ showHide: !this.state.showHide });
       }
     });
   };
 
   render() {
-    // { this.props.reduxState.calendar.map((event) => this.setState({events:{ title: event.event_name}}))}
     return (
       <div className="Calendar">
-
         <h1 className="headCal">Events Calendar</h1>
-        {/* <Modal show={this.state.showHide}>
-          <Modal.Header closeButton onClick={() => this.handleModalShowHide()}>
-            <Modal.Title>Modal heading</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-          <Modal.Footer>
-            <Button
-              variant="secondary"
-              onClick={() => this.handleModalShowHide()}
-            >
-              Close
-            </Button>
-            <Button
-              variant="primary"
-              onClick={() => this.handleModalShowHide()}
-            >
-              Save Changes
-            </Button>
-          </Modal.Footer>
-        </Modal> */}
-        {/* <Button variant="primary" onClick={() => this.handleModalShowHide()}>
-          Display Modal
-        </Button> */}
-
         <Calendar
           popup
           localizer={localizer}
           defaultDate={new Date()}
           defaultView="month"
           events={this.state.events}
-          // {[this.props.reduxState.calendar.map(event => {
-          //   const {id, event_name, event_date} = event;
-          //       return {
-          //         id: id,
-          //         title: event_name,
-          //         start: event_date
-          //       }
-          // })]}
           onSelectEvent={(event) => this.handleSelect(event)}
           style={{ height: "100vh" }}
         />
