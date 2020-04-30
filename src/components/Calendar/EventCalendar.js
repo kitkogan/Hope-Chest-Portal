@@ -81,25 +81,6 @@ class EventCalendar extends Component {
     ],
   };
 
-  //get events on page load
-  componentDidMount = () => {
-    this.getCalendar();
-  };
-
-  //fetching events from calendar reducer
-  getCalendar = () => {
-    this.props.dispatch({
-      type: "GET_CALENDAR",
-      payload: this.props.reduxState.user.id,
-    });
-  };
-
-  //not in use right now but might be useful later
-  handleModalShowHide() {
-    console.log("modal show hide function");
-    this.setState({ showHide: !this.state.showHide });
-  }
-
   //sweet alert for selected event
   handleSelect = (event) => {
     Swal.fire({

@@ -62,7 +62,7 @@ class AdminDetails extends Component {
   };
 
   updateForm = () => {
-    console.log("update form", this.state, 'formid', this.props.reduxState.form.id);
+    console.log("update form", this.state, 'formid', this.props.reduxState.adminDetails[0].id);
     console.log("ADMIN ID IS ", this.props.reduxState.adminDetails[0]);
 
     // create new form object and dispatch to payload to saga
@@ -70,7 +70,7 @@ class AdminDetails extends Component {
       type: "UPDATE_ADMIN_FORM",
       payload: this.state,
       id: this.props.reduxState.adminDetails[0].user_id,
-      form: this.props.reduxState.form.id,
+      form: this.props.reduxState.adminDetails[0].id,
     });
     this.setState({
       isEditable: false,
