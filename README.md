@@ -56,12 +56,11 @@ Open up your editor of choice and run an npm install
 - To remove an event, delete from opening bracket { to closing bracket }, along with the following comma
   time is formatted as following: year, month, day, hour(24 hour military time), minute, seconds
 
-``
-Things to note:
+#### Things to note:
     - Calendar view is available to logged in users only
     - There is not currently a 'remove event' feature
     - There will be an error in the console when you click to see the details of an event from the admin view. This should not affect the use of the application.
-``
+    
 ## Built With
 
 - React.js
