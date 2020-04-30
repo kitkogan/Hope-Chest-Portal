@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class LoginPage extends Component {
+  //the state holds the users entered email and password
   state = {
     email: '',
     password: '',
   };
 
+//logs in user by sending the email and password
   login = (event) => {
     event.preventDefault();
-
     if (this.state.email && this.state.password) {
       this.props.dispatch({
         type: 'LOGIN',
@@ -23,6 +24,7 @@ class LoginPage extends Component {
     }
   } // end login
 
+  //captures what was typed into the inputs
   handleInputChangeFor = propertyName => (event) => {
     this.setState({
       [propertyName]: event.target.value,

@@ -1,7 +1,6 @@
 import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
-
 function* getEvent(action) { 
   try {
     const response = yield axios.get(`/form/user/${action.id}`);

@@ -3,19 +3,8 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import './UserPage.css';
 
-// this could also be written with destructuring parameters as:
-// const UserPage = ({ user }) => (
-// and then instead of `props.user.username` you could use `user.username`
-// const UserPage = (props) => (
-//   <div>
-//     <h1 id="welcome">
-//       Welcome, { props.user.email }!
-//     </h1>
-//     <p>Your ID is: {props.user.id}</p>
-//     <LogOutButton className="log-in" />
-//   </div>
-// );
 class UserPage extends Component {
+  //displays events on page load and pushes to form page 1
   componentDidMount = () => {
     this.displayEvent();
   };
@@ -23,8 +12,8 @@ class UserPage extends Component {
     this.props.history.push("/form-page-1");
   };
 
+  //displays events on the user home page
   displayEvent = () => {
-    console.log("in displayEvent", this.props.reduxState.form.user_id);
     this.props.dispatch({
       type: "SET_EVENT1",
       userId: this.props.reduxState.user.id,

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
 class RegisterPage extends Component {
+  //state holds the values of each input field from register page
   state = {
     email: '',
     password: '',
@@ -9,9 +10,9 @@ class RegisterPage extends Component {
     last_name: '',
   };
 
+  //this allows a new user to register and stores the info
   registerUser = (event) => {
     event.preventDefault();
-
     if (this.state.email && this.state.password && this.state.first_name && this.state.last_name) {
       console.log('in reg saga if statement')
       this.props.dispatch({
@@ -29,6 +30,7 @@ class RegisterPage extends Component {
     }
   } // end registerUser
 
+  //captures input entry
   handleInputChangeFor = propertyName => (event) => {
     this.setState({
       [propertyName]: event.target.value,
