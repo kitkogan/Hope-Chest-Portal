@@ -65,24 +65,23 @@ class AdminDetails extends Component {
     this.props.dispatch({
       type: "UPDATE_ADMIN_FORM",
       payload: this.state,
-      id: this.props.reduxState.adminDetails[0].id,
+      id: this.props.reduxState.adminDetails[0].user_id,
       form: { id: this.props.reduxState.form.id },
     });
     this.setState({
       isEditable: false,
     });
     Swal.fire({
-      title: "Thanks!",
+      title: "Success!",
       text: "The form has been updated!",
       icon: "success",
-      timer: 5000,
+      timer: 3750,
       showCloseButton: true,
     });
     this.props.history.push("/admin");
   };
 
   edit = () => {
-    console.log("editing");
     this.props.dispatch({
       type: "TOGGLE_EDIT",
     });
@@ -99,14 +98,6 @@ class AdminDetails extends Component {
       company_city: this.props.reduxState.adminDetails[0].company_city,
       company_state: this.props.reduxState.adminDetails[0].company_state,
       company_zip: this.props.reduxState.adminDetails[0].company_zip,
-      show_contact_option: this.props.reduxState.adminDetails[0]
-        .show_contact_option,
-      event_contact_first_name: this.props.reduxState.adminDetails[0]
-        .event_contact_first_name,
-      event_contact_last_name: this.props.reduxState.adminDetails[0]
-        .event_contact_last_name,
-      event_contact_phone: this.props.reduxState.adminDetails[0].contact_phone,
-      event_contact_email: this.props.reduxState.adminDetails[0].contact_email,
       event_name: this.props.reduxState.adminDetails[0].event_name,
       event_website: this.props.reduxState.adminDetails[0].event_website,
       event_date: this.props.reduxState.adminDetails[0].event_date,
@@ -119,7 +110,7 @@ class AdminDetails extends Component {
         .event_location_city,
       event_location_state: this.props.reduxState.adminDetails[0]
         .event_location_state,
-      event_location_zip: this.props.reduxState.adminDetails[0].event_location,
+      event_location_zip: this.props.reduxState.adminDetails[0].event_location_zip,
       event_type: this.props.reduxState.adminDetails[0].event_type,
       event_description: this.props.reduxState.adminDetails[0]
         .event_description,
@@ -131,18 +122,12 @@ class AdminDetails extends Component {
         .contribution_submission,
       promotion: this.props.reduxState.adminDetails[0].promotion,
       other_comment: this.props.reduxState.adminDetails[0].other_comment,
-      image: this.props.reduxState.adminDetails[0].image,
       approved: this.props.reduxState.adminDetails[0].approved,
+      user_id: this.props.reduxState.adminDetails[0].user_id,
     });
-
-    console.log(
-      "this is state!!!!!!!!!!!",
-      this.props.reduxState.adminDetails[0].contact_first_name
-    );
   };
 
   cancel = () => {
-    console.log("cancel edits");
     this.props.dispatch({
       type: "TOGGLE_EDIT",
     });

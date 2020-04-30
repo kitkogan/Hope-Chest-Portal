@@ -93,12 +93,12 @@ router.put('/update/:id', (req,res) => {
     const promotion = req.body.promotion;
     const other_comment = req.body.other_comment;
     const user_id = req.body.user_id;
-    const form_id = Number(req.params.id);
+    const form_id = req.params.id;
     const approved = req.body.approved;
     const queryText = `Update "form" SET ("contact_first_name","contact_last_name","contact_phone","contact_email", "company_name", "company_website",
   "company_street","company_city", "company_state", "company_zip", "event_name", "event_website","event_date","event_time","event_location_name",
   "event_location_street", "event_location_city", "event_location_state", "event_location_zip", "event_type", "event_description", 
-  "event_first_time","fund_description", "contribution_amount", "contribution_submission", "promotion","other_comment", "user_id") = 
+  "event_first_time","fund_description", "contribution_amount", "contribution_submission", "promotion","other_comment", "user_id", "approved") = 
   ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25,$26,$27,$28,$29)
    WHERE "form"."id"=($30);`;
     pool
