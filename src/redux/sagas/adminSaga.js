@@ -3,10 +3,8 @@ import axios from "axios";
 
 // Displays all events on Admin page with table
 function* admin(action) {
-  console.log("ADMIN saga coming from admin with:", action.payload);
   try {
-    const response = yield axios.get("/admin", action.payload);
-    console.log("in saga with", response.data);
+    const response = yield axios.get(`/admin/${action.id}`, action.payload);
     yield put({ type: "SET_ADMIN", payload: response.data });
   } catch (error) {
     console.log(error);
@@ -15,19 +13,8 @@ function* admin(action) {
 
 //Get selected event form details to display on Admin Review page
 function* getAdminEvent(action) {
-  console.log(
-    "s?!?!?!?!:",
-    action.formId,
-    "bob",
-    action.id,
-    "jerry",
-    action.payload,
-    "erin",
-    action.user
-  );
   try {
-    const response = yield axios.get(`/admin/get/${action.id}`);
-    console.log("in saga GETADMINEVENT with", response.data);
+    const response = yield axios.get(`/admin/get/${action.formId}`);
     yield put({ type: "SET_DETAILS", payload: response.data });
   } catch (error) {
     console.log("getAdminEvent Error", error);
@@ -36,16 +23,7 @@ function* getAdminEvent(action) {
 
 function* updateAdminForm(action) {
   try {
-    console.log(
-      "ADMIN FORM!!!!!!!!!!!!!!!",
-      action.payload,
-      "id",
-      action.user,
-      "checking action.id",
-      action.id
-    );
-    yield axios.put(`/admin/review/${action.id}`, action.payload);
-    console.log("back from update server");
+    yield axios.put(`/admin/review/${action.form}`, action.payload);
     yield put({ type: "GET_ADMIN_FORM", payload: action });
     yield put({ type: "TOGGLE_EDIT" });
   } catch (error) {

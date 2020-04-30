@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import '../Form/Form.css';
+import "../Form/Form.css";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 
 class AdminDetails extends Component {
@@ -64,7 +64,7 @@ class AdminDetails extends Component {
       type: "UPDATE_ADMIN_FORM",
       payload: this.state,
       id: this.props.reduxState.adminDetails[0].user_id,
-      form: this.props.reduxState.form.id,
+      form: this.props.reduxState.adminDetails[0].id,
     });
     this.setState({
       isEditable: false,
@@ -109,7 +109,8 @@ class AdminDetails extends Component {
         .event_location_city,
       event_location_state: this.props.reduxState.adminDetails[0]
         .event_location_state,
-      event_location_zip: this.props.reduxState.adminDetails[0].event_location_zip,
+      event_location_zip: this.props.reduxState.adminDetails[0]
+        .event_location_zip,
       event_type: this.props.reduxState.adminDetails[0].event_type,
       event_description: this.props.reduxState.adminDetails[0]
         .event_description,
@@ -142,8 +143,7 @@ class AdminDetails extends Component {
     return (
       <div className="AdminDetails">
         <h1 className="adminHead">Event Details</h1>
-         {this.props.reduxState.adminReview.edit ? (
-
+        {this.props.reduxState.adminReview.edit ? (
           <>
             {this.props.reduxState.adminDetails.map((intake) => (
               <center>
@@ -415,10 +415,8 @@ class AdminDetails extends Component {
                     }
                   />
                 </p>
-                <p>
-                  Contribution Amount:
-                 </p>
-               
+                <p>Contribution Amount:</p>
+
                 <p>
                   Contribution Submission Method:{" "}
                   <select
@@ -481,7 +479,9 @@ class AdminDetails extends Component {
                 <p>First Time Event:{intake.event_first_time}</p>
                 <p>Fund Collection Method: {intake.funds_description}</p>
                 <p>Contribution Amount: {intake.contribution_amount}</p>
-                <p>Contribution Submission Method{intake.contribution_submission}</p>
+                <p>
+                  Contribution Submission Method{intake.contribution_submission}
+                </p>
                 <p>Promotion: {intake.promotion}</p>
                 <p>Other Comments: {intake.other_comment}</p>
               </center>
@@ -490,7 +490,6 @@ class AdminDetails extends Component {
         )}
         <center>
           {this.props.reduxState.adminReview.edit ? (
-          
             <>
               <button className="back" onClick={() => this.cancel()}>
                 Cancel
@@ -515,6 +514,7 @@ class AdminDetails extends Component {
   }
 }
 
+//connects to redux store
 const mapStateToProps = (reduxState) => ({
   reduxState,
 });
