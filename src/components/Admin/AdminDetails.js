@@ -43,12 +43,15 @@ class AdminDetails extends Component {
 
   getForm = () => {
     console.log(
-      "in getForm on ADMIN FORM component",
-      this.props.reduxState.form.id
+      "LOOK AT ME",
+      this.props.reduxState.form.id,
+      "checking form.USER_ID:", this.props.reduxState.user.id,
+      "hate this dumb thing", this.props.reduxState.user.id
     );
     this.props.dispatch({
       type: "GET_ADMIN_FORM",
-      id: this.props.reduxState.form.id,
+      id: this.props.reduxState.user.id,
+      // form: this.props.reduxState.form.id,
     });
   };
 
