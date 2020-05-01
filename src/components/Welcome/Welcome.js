@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 
 class Welcome extends Component {
   //pushes users to the home page
