@@ -24,6 +24,7 @@ Open up your editor of choice and run an npm install
 
 - Run `npm install`
 - Create a `.env` file at the root of the project and paste this line into the file:
+
   ```
   SERVER_SESSION_SECRET=superDuperSecret
   ```
